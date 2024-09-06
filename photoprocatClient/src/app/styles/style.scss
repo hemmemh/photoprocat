@@ -1,0 +1,52 @@
+@use "sass:math";
+
+@import "./_mixins.scss";
+@import "./_fonts.scss";
+@import "./icons.scss";
+@import "./null.scss";
+@import './_vars.scss';
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic);
+
+
+// Обнуление и общие параметры ============================================================================================================================================================================================== =============================================================================================== ===============================================================================================
+
+:root{
+	--mainColor:#000
+}
+
+
+.App{
+	max-width:$maxWidth + px ;
+	margin: 0 auto;
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	> * {
+		min-width: 0;
+	}
+}
+
+
+
+[class*="__container"] {
+	@if ($maxWidthContainer>0) {
+		max-width: rem($maxWidthContainer);
+		box-sizing: content-box;
+		margin: 0 auto;
+	}
+	@if ($containerPadding>0) {
+		padding: 0 rem(math.div($containerPadding, 2));
+	}
+}
+
+
+body{
+	&.hidden{
+		overflow: hidden;
+	}
+}
+//============================================================================================================================
+
+
+@import './swiper.scss';

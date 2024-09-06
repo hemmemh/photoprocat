@@ -1,0 +1,37 @@
+@import "../../../app/styles/style.scss";
+.Fold {
+    &.product{
+        display: none;
+        pointer-events: none;
+        position: absolute;
+        &.active{
+        display: block;
+        pointer-events: inherit;
+        position: inherit;
+        }
+        .Fold__body{
+           
+        }
+    }
+    &.origin{
+        .Fold__body{
+            overflow: visible;
+        }
+    }
+    &__body {
+        overflow: hidden;
+        transition: height 0.3s ease 0s;
+    }
+
+    &__item {
+       
+    }
+
+    &__buttonCover {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__button {
+    }
+}

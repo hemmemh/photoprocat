@@ -1,0 +1,37 @@
+@import "../../../app/styles/style.scss";
+
+
+.possibileHome {
+    margin-bottom:rem(40);
+    @media (max-width:$mobile){
+        margin-bottom:rem(10);
+    }
+    background: #F5F5F5;
+    @media (max-width:$mobileSmall){
+        background: #fff;
+    }
+}
+
+    .body {
+        display: flex;
+        padding: rem(44) 0;
+        justify-content: space-between;
+        gap:rem(10);
+        @media (max-width:rem(1000)){
+            flex-wrap: wrap; 
+            justify-content: left;
+            row-gap:rem(30);
+            
+        }
+        @media (max-width:$mobileSmall){
+             display: grid; 
+             gap: rem(20);
+             grid-template-columns: 1fr 1fr;
+             grid-template-rows: 1fr 1fr 1fr;
+             padding: rem(20) 0;
+        }
+        //padding-right: rem(185);
+    }
+
+   
+    

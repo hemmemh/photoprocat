@@ -1,0 +1,45 @@
+@import "../../../../../../app/styles/style.scss";
+.top-basket {
+    display: flex;
+    padding: 14px 0;
+    border-bottom: 1px solid #EFEFEF;
+    :nth-child(1){
+        flex: 0 0 rem(96);
+        @media (max-width:$mobile){
+            flex: 0 0 rem(40);
+        }
+    }
+    :nth-child(2){
+        @media (max-width:497px){
+            flex: 0 0 rem(112);
+        }
+        flex: 0 1 rem(285);
+    }
+    :nth-child(3){
+        flex: 0 1 rem(186);
+    }
+    :nth-child(4){
+        flex: 0 1 rem(288);
+    }
+    :nth-child(5){
+        flex: 1 0 rem(130);
+        @media (max-width:$mobile){
+            flex: 0 0 rem(70);
+        }
+    }
+        &__item {
+            font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    @media (max-width:$mobile){
+        font-size: 9px;
+        line-height: 12px;
+    }
+    /* identical to box height, or 143% */
+    
+    
+    color: #75758A;
+        }
+    }

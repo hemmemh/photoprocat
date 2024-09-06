@@ -1,0 +1,29 @@
+@import "../../../../../../app/styles/style.scss"; 
+.tags-product {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: rem(23);
+    row-gap: rem(14);
+    
+        &__tag {
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            
+            color: #75758A;
+            &_big {
+                font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+    
+    
+    color: #000000;
+    
+            }
+        }
+    }

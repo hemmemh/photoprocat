@@ -1,0 +1,207 @@
+@import "../../../../app/styles/style.scss";
+
+.orders-user {
+    margin-bottom: rem(30);
+    &.active{
+        display: inherit;
+    }
+    display: none;
+    &__top {
+
+    }
+
+    &__order {
+    }
+}
+
+.top-orders {
+    display: grid;
+    width: 100%;
+    grid-template-columns:  minmax(160px,160px)  minmax(190px,190px) minmax(50px,285px) minmax(50px,285px)  minmax(100px,140px)   minmax(50px,1fr);
+    @media (max-width:$mobile){
+        grid-template-columns:  minmax(80px,80px)  minmax(120px,120px) minmax(35px,285px) minmax(25px,285px)   minmax(30px,140px)   minmax(0,0);   
+    }
+    padding: 17px 0 9px 0;
+    border-bottom: 1px solid  #EFEFEF;
+    &__item {
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+
+color: #75758A; 
+    }
+}
+.order {
+    
+    &__top {
+        display: grid;
+        grid-template-columns:  minmax(160px,160px)  minmax(190px,190px) minmax(50px,285px) minmax(50px,285px)  minmax(100px,140px)   minmax(50px,1fr);
+        @media (max-width:$mobile){
+            grid-template-columns:  minmax(80px,80px)  minmax(120px,120px) minmax(35px,285px) minmax(25px,285px)  minmax(30px,140px)   minmax(0,0);   
+        }
+        padding: 16px 0;
+        align-items: center;
+    }
+    &__product-cover{
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15  );
+        margin: 3px;
+        
+    }
+    &__number {
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+@media (max-width:$mobile){
+    font-size: 10px;
+    line-height: 12px; 
+}
+color: #000000;
+    }
+
+    &__date {
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+@media (max-width:$mobile){
+    font-size: 10px;
+    line-height: 12px; 
+}
+
+color: #000000;
+    }
+
+    &__price {
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+@media (max-width:$mobile){
+    font-size: 9px;
+    line-height: 12px;    
+}
+color: #60B021;
+    }
+
+    &__button {
+    }
+
+    &__arrow {
+        justify-self: flex-end;
+        @media (max-width:$mobileSmall){
+             display: none; 
+        }
+    }
+
+    &__product {
+    }
+}
+
+.user-orders {
+}
+
+.product-order {
+    display: grid;
+    grid-template-columns: minmax(350px,350px)  minmax(50px,285px) minmax(50px,285px)  minmax(100px,140px)   minmax(50px,1fr);
+    @media (max-width:$mobile){
+        grid-template-columns: minmax(200px,200px)  minmax(35px,285px) minmax(25px,285px)  minmax(30px,140px)   minmax(0,0);
+    }
+    padding: 20px 0;
+    align-items: center;
+    
+    :nth-child(1){
+        display: flex;
+        gap: rem(36);
+        @media (max-width:$mobile){
+            gap: rem(10);
+        }
+      
+    }
+    &:not(:last-child) {
+        border-bottom: 1px solid  #EFEFEF;
+    }
+        &__item {
+         
+        }
+        &__image-cover{
+            width: 60px;
+            margin-left: rem(20);
+            @media (max-width:$mobile){
+                width: 40px;
+                margin-left: 3px;
+            }
+        }
+        &__image {
+    
+            position: relative;
+            padding: 0  0 calc(40/60 * 100% ) 0;
+           
+            width: 100%;
+           
+            img{
+                position: absolute;width: 100%;top: 0;left: 0;height: 100%;
+            }
+        }
+    
+        &__info {
+        }
+    
+        &__name {
+            font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+    
+    @media (max-width:$mobile){
+        font-size: 10px;
+        line-height: 12px; 
+    }
+    color: #000000;
+        }
+    
+        &__brand {
+            @media (max-width:$mobile){
+                font-size: 10px;
+                line-height: 12px; 
+            }
+            font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #75758A;
+        }
+    
+        &__count {
+            font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #60B021;
+    
+        }
+    
+        &__price {
+            font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    @media (max-width:$mobile){
+        font-size: 10px;
+        line-height: 12px;    
+    }
+    color: #000000;
+        }
+    }

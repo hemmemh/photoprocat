@@ -1,0 +1,58 @@
+@import "../../../app/styles/style.scss" ;
+
+.workHome {
+    position: relative;
+    max-width: $maxWidth+px;
+
+}
+        .map {
+            position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+            z-index: -1;
+           @media (max-width:$pc){
+              display: none;
+           }
+            img{
+                position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+                object-fit: cover;
+            }
+        }
+
+    
+        .body {
+    padding: rem(100) rem(0);
+    @media (max-width:$mobile){
+        padding: rem(20) rem(0);
+    }
+    display: flex;
+    flex-direction: column;
+    @media (max-width:$pc){
+      
+     }
+        }
+    
+        .title {
+            font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: rem(17);
+        }
+    
+        .items {
+            display: flex;
+            gap: rem(30);
+            @media (max-width:$tablet){
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            @media (max-width:$mobileSmall){
+                grid-template-columns: 1fr;
+            }
+        }
+    
+        .item {
+        }

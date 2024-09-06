@@ -1,0 +1,39 @@
+@import "../../../../app/styles/style.scss";
+.swiperCompare2 {
+    
+    .Fold__body{
+        overflow: visible;
+    }
+    &__item {
+    }
+}
+.item-swiperCompare2 {
+    width: rem(150);
+    @media (max-width:583px){
+     width: auto;
+    }
+    &__item {
+        white-space: nowrap;
+        padding: 14px 0;
+       @media (max-width:583px){
+        padding: 45px 0 14px 0;
+        text-align: center;
+        color: #000;
+       }
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+
+
+position: relative;
+&::before{
+    content:'';
+    position: absolute;width: 180%;height: 0.5px;top: 0;left: 0;
+    background: #EFEFEF;
+ 
+}
+color: #75758A;
+    }
+}

@@ -1,0 +1,42 @@
+@import "../../../app/styles/style.scss";
+.Fold {
+    &.product{
+       
+        pointer-events: none;
+        position: absolute;
+        &.active{
+          
+        pointer-events: inherit;
+        position: inherit;
+        }
+        .Fold__body{
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            
+            color: #2e2e30;
+            
+        }
+    }
+    &__body {
+       
+        transition:  0.3s ease 0s;
+     
+    }
+
+    &__item {
+        &:not(:last-child) {
+          
+        }
+    }
+
+    &__buttonCover {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__button {
+    }
+}

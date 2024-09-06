@@ -1,0 +1,29 @@
+.right-news {
+    @media (max-width:$mobile){
+        display: none; 
+   }
+    
+    margin-bottom: rem(60);
+    .slideHome__body{
+        position: static;
+    }
+    &__title {
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height, or 125% */
+
+text-align: right;
+
+color: #000000;
+margin-bottom: rem(26);
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: rem(30);
+    }
+}

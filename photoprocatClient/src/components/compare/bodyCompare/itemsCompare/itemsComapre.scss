@@ -1,0 +1,95 @@
+@import "../../../../app/styles/style.scss";
+.items-compare {
+    display: flex;
+    gap: rem(24);
+    border-top: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
+    padding: 14px 0;
+    align-items: center;
+    position: relative;
+    &__cover{
+        padding: 5px;
+        cursor: pointer;
+    }
+    &__delete{
+        display: none;
+        cursor: pointer;
+              transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                color: #4F9C2C;
+                transition: all 0.3s ease 0s;
+            }
+        }
+            @media (max-width:583px){
+                display: flex;
+            }
+    }
+        &__action{
+         cursor: pointer;
+    display: none;
+            @media (max-width:583px){
+                display: flex;
+                &.active{
+                   span,&::before,&::after{
+                    transition: all 0.3s ease 0s;
+                   border-color: #89e1ff;
+                    
+                   }
+                   
+                }
+            }
+           
+            gap: rem(1.6);
+           
+            span{
+                width: rem(4.5);
+                height: rem(4.5);
+                border: 1px solid #000;
+                border-radius: 50%;
+                transition: all 0.3s ease 0s;
+               
+            }
+            &::before,&::after{
+                content:'';
+                width: rem(4.5);
+                height: rem(4.5);
+                border: 1px solid #000;
+                border-radius: 50%;
+                transition: all 0.3s ease 0s;
+            }
+        }
+        &__body{
+            display: flex;
+            gap: rem(20);
+            @media (max-width:583px){
+                 position: absolute;top: 115%;left: 5px;
+                 flex-direction: column;
+                 padding: 14px;
+               border-radius: 13%;
+                 border: 1px solid rgba($color: #6d6c6c, $alpha: 0.7); 
+                 background: #fff;
+                 z-index: 10000;
+                 transform: scale(0,0);
+                 transform-origin: top left;
+                 transition: all 0.3s ease 0s;
+                 &.active{
+                    transition: all 0.3s ease 0s;
+                    transform: scale(1,1);
+                 }
+    
+            }
+        }
+        &__item {
+            font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    cursor: pointer;
+    color: #75758A;
+    &.active{
+        color: #4F9C2C;
+    }
+        }
+    }

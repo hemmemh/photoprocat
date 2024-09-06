@@ -1,0 +1,41 @@
+@import "../../../app/styles/style.scss";
+.spoiler {
+    position: relative;
+   
+  
+  &__cover {
+      position: absolute;
+      width: 100%;
+      overflow: hidden;
+      pointer-events: none;
+  
+  }
+  &__header{
+      position: relative;
+      z-index: 3;
+  }
+  &__body {
+      z-index: 2;
+      position: relative;
+      transition: transform 0.3s ease 0s;
+      transform: translate(0,-100%);
+      box-sizing: border-box;
+      background: #fff;
+  
+  }
+  &.active{
+      .spoiler__body{
+          z-index: 4;
+         transform: translate(0,0);
+     }
+     .spoiler__cover{
+        pointer-events: visible;
+     }
+     .spoiler__header{
+      z-index: 5;
+     }
+  }
+}
+
+    
+

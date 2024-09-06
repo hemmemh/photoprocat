@@ -1,0 +1,101 @@
+
+@import "../../../../app/styles/style.scss";
+.adminModal{
+    padding: rem(30) rem(50);
+    &__input {
+        margin-bottom: rem(30);
+    }
+
+    &__informationsS {
+        margin-bottom: rem(30);
+        display: inline-flex;
+        gap: rem(20);
+        flex-direction: column;
+    }
+
+    &__informationItems {
+        display: flex;
+        gap: rem(30);
+        margin-bottom: rem(30);
+        align-items: center;
+        @media (max-width:$mobile){
+             flex-direction: column; 
+        }
+    }
+
+    &__informationSend {
+        margin-bottom: rem(30);
+    }
+}
+
+
+.information {
+
+display: inline-flex;
+gap: rem(30);
+justify-content: space-between;
+font-size: 16px;
+   
+@media (max-width:$mobile){
+    font-size: 200px;
+}
+    
+
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+line-height: 18px;
+}
+
+
+.buttonCart {
+    @media (max-width:$mobileSmall){
+         font-size: 12px; 
+    }
+align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(205, 204, 204, 0.4);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: em(42);
+  padding: 0 em(20);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  &::before{
+    margin-right: rem(5);
+  }
+  &:hover,
+   &:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+&:hover {
+    transform: translateY(-1px);
+  }
+  
+&.active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+  }
+}
+
+

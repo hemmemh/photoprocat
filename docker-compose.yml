@@ -1,0 +1,24 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  back:
+    build: photoprocatServer/.
+    ports:
+      - "5200:5200"
+    depends_on:
+      - mongo    
+
+  front:
+    build: 
+      context: photoprocatClient/.
+    labels:
+      SERVICE_CHECK_INTERVAL: 10s
+    ports:
+      - "3000:80"
+    depends_on:
+      - back
+
+

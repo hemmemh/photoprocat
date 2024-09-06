@@ -1,0 +1,51 @@
+@import "../../../app/styles/style.scss";
+.mainCatalog {
+  
+    display: flex;
+    gap: rem(50);
+      &__count {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  margin-bottom: rem(26);
+  z-index: 27 ;
+  position: relative;
+  span{
+      color: #60B021;
+  }
+      }
+  
+      &__left {
+          flex:  1 1 auto;
+      }
+  
+      &__sort {
+          
+      }
+
+      &__grid {
+          position: relative;
+          .mainCatalog__gridEnd{
+              position: absolute;width: 100%;bottom: 0;left: 0;height: 10px;
+          }
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: rem(30);
+          @media (max-width:$mobile){
+              grid-template-columns: 1fr 1fr;
+          }
+      }
+  
+      &__item {
+      }
+  
+      &__right {
+      }
+      &__toggleButtonGroup{
+  
+      }
+   
+  }

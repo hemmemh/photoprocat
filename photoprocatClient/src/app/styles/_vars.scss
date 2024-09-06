@@ -1,0 +1,25 @@
+//===================================================================
+$fontFamily: "";
+$fontSize: rem(14); // где 14(px) - размер шрифта по умолчанию из макета
+//===================================================================
+
+$mainColor: #000; // Цвет шрифта по умолчанию
+$hoverColor:hsl(125, 72%, 41%);
+
+
+
+$minWidth: 320;
+
+$maxWidth: 1380;
+
+$maxWidthContainer: 1115;
+
+$containerPadding: 30;
+
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+
+$pc: em($containerWidth); 
+$tablet: em(991.98); 
+$mobile: em(767.98); 
+$mobileSmall: em(479.98); 

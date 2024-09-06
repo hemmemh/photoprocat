@@ -1,0 +1,117 @@
+
+.slidesHome{
+  
+    position: relative;
+    overflow: visible;
+    &__sliderCover{
+        position: relative;
+    }
+    &__navigation{
+        @media (max-width:$mobile){
+            display: none;
+      }
+        position: absolute;top: 50%;left:-20px;
+        display: flex;
+        width: calc(100% + 40px);
+        justify-content: space-between;
+        transform: translate(0,-50%);
+        z-index: 1;
+        @media (max-width:1200px){
+            left:0;
+            width: 100%;
+            transform: translate(0,0);
+        }
+    }
+    &__prevButton{
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        width: rem(40);
+        height: rem(40);
+        transform: rotate(90deg);
+        z-index: 3000;
+        &::before{
+            color: $mainColor;
+            @extend %ic;
+		display: block;
+            content: "\e900";
+            
+        }
+        &::after{
+            content:'';
+            
+        }
+    }
+    &__nextButton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        background: #fff;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        width: rem(40);
+        height: rem(40);
+        transform: rotate(-90deg) ;
+        &::before{
+            color: $mainColor;
+            @extend %ic;
+		display: block;
+            content: "\e900";
+            
+        }
+        &::after{
+            content:'';
+            
+        }
+    }
+}
+.HomeSlider{
+
+}
+.slider-brand-catalog {
+
+    &__navigation {
+        @media (max-width:$mobile){
+            display: none;
+      }
+        position: absolute;top: 50%;left:-30px;
+        display: flex;
+        width: calc(100% + 60px);
+        justify-content: space-between;
+        transform: translate(0,-50%);
+        z-index: 1;
+        @media (max-width:1200px){
+            left:0;
+            width: 100%;
+            transform: translate(0,0);
+        }
+    }
+
+    &__prevButton {
+        cursor: pointer;
+        transform: rotate(90deg);
+        z-index: 1;
+        &::before{
+            font-size: rem(18);
+            
+        }
+    }
+
+    &__nextButton {
+        cursor: pointer;
+        z-index: 1;
+        transform: rotate(-90deg);
+        &::before{
+            font-size: rem(18);
+            
+        }
+    }
+}
+.homeSpinner{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

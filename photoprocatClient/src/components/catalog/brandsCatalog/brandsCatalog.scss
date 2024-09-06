@@ -1,0 +1,144 @@
+@import "../../../app/styles/style.scss";
+.brandsCatalog {
+
+    @include adaptiveValue("margin-bottom", 45, 30);
+        &__title {
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 18px;
+            text-align: right;
+            color: #000000;
+            margin-bottom: rem(26); 
+        }
+    
+        &__slider {
+        }
+    }
+
+
+    .slider-brand-catalog {
+        position: relative;      
+         &__spoiler{
+            opacity: 0;
+            pointer-events: none;
+            height: 0; 
+            @media (max-width:$mobile){
+                 opacity: 1;
+                 pointer-events: inherit;
+                 height: auto; 
+            }
+        }
+
+        &__sliderCover{
+        @media (max-width:$mobile){
+             display: none;
+        }
+        }
+         
+        }
+
+        .item-slider-brand-catalog {
+            cursor: pointer;
+         padding: 3px;
+         
+             &__boxshadow{
+                 transition: all 0.3s ease 0s;
+                 box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+                 position: relative;
+                 @media (any-hover: hover){
+                     &:hover{
+                         transition: all 0.3s ease 0s;
+                         box-shadow: 5px 5px 5px rgba(#8EE902, 0.3);
+                     }
+                 }
+             }
+             &__cover {
+                 padding: 0 0 100% 0;
+                 
+             }
+             &__absolute{
+                 position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+             }
+             &__image {
+                 //position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+                 width: 50%;
+                 height: 50%;
+                 position: relative;
+                 img{
+                     object-fit: cover;
+                     position: absolute;width: 100%;top: 0;left: 0;
+                 }
+             }
+           &.active{
+             .item-slider-brand-catalog__check{
+                 transition: all 0.3s ease 0s;
+                 background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
+                
+             }
+             .item-slider-brand-catalog__boxshadow{
+                 box-shadow: 5px 0px 5px rgba(#8EE902, 0.3);
+             }
+           }
+             &__check {
+                 transition: all 0.3s ease 0s;
+                 position: absolute;bottom: rem(20);right: rem(20);
+                 background: #C9C9C9;
+                 border-radius: 50%;
+                 width: rem(20);
+                 height: rem(20);
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 &::before{
+                     color: #fff;
+                     font-size: rem(13);
+                     
+                 }
+             }
+         }
+         
+.mobile-item-slider-brand-catalog {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: rem(5) rem(10);
+background: #fff;
+
+&__cover{
+    border: 1px solid #dfdfdf;
+}
+&.active{
+    .mobile-item-slider-brand-catalog__check{
+        background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
+    }
+}
+    &__image {
+        width: 70px;
+        height: 30px;
+        position: relative;
+        img{
+            object-fit: contain;
+            position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+        }
+    }
+
+    &__check {
+        background: #C9C9C9;
+        border-radius: 50%;
+        width: rem(20);
+        height: rem(20);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &::before{
+            color: #fff;
+            font-size: rem(13);
+            
+        }
+    }
+}

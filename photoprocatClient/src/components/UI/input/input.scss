@@ -1,0 +1,142 @@
+@import "../../../app/styles/style.scss";
+.Input{
+    &__placeholder{
+
+    }
+    &.g{
+        .Input__text{
+            display: none;
+        }
+    }
+    &.origin{
+        transition: all 0.3s ease 0s;
+        background: #F5F5F5;
+        border: 1px solid #E3E3E3;
+        padding: rem(41) 0 rem(17) rem(20);
+        @media (max-width:$mobile){
+             padding-top: 20px; 
+        }
+        position: relative;
+        &.g{
+            .Input__text{
+                display: none;
+            }
+        }
+        &.j{
+            padding: rem(21) 0 rem(17) rem(20);
+        }
+        &.active{
+            border: 1px solid #acfd55;  
+        }
+        input{
+            background: none;
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 16px;
+ 
+        
+        color: #000000;
+        }
+        .Input__placeholder{
+            transition: all 0.1s ease 0s;
+            pointer-events: none;
+            position: absolute;top: rem(41);left: rem(20);
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #75758A;
+            @media (max-width:$mobile){
+                 top:0;
+                 transform: translate(0,-50%);
+                 background: #F5F5F5;
+                 border-radius: 5px;
+                 padding: 3px 5px;
+                 border: 1px solid #E3E3E3;
+                
+
+            }
+            &.active{
+                top: rem(18);left: rem(20);
+                color: #85b354;
+                @media (max-width:$mobile){
+                    top:0;
+                    transform: translate(0,-50%);
+   
+               }
+            }
+        }
+    }
+    &.registration{
+    
+        background: #FFFFFF;
+border: 1px solid #E3E3E3;
+padding: rem(41) 0 rem(20) rem(17);
+
+position: relative;
+@media (max-width:$mobile){
+    padding: rem(20) 0 rem(20) rem(17);  
+
+  
+}
+
+&.active{
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #8EE901, #4F9C2C);
+}
+&.act{
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #e90101, #942222);
+}
+.Input__placeholder{
+    transition: all 0.3s ease 0s;
+    position: absolute;top: rem(41);left:rem(17);
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #75758A;
+    @media (max-width:$mobile){
+         top: -10px; 
+         background: #fff;
+         padding:0px 5px;
+    }
+    &.active{
+        top: rem(20);
+        transition: all 0.3s ease 0s;
+        @media (max-width:$mobile){
+            top: -10px; 
+            background: #fff;
+            padding:0px 5px;
+       }
+    }
+}
+
+.Input__text{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+
+
+color: #000000;
+}
+&.gv{
+    padding: rem(20) 0 rem(10) rem(10); 
+    @media (max-width:$mobile){
+        padding: rem(20) 0 rem(10) rem(10); 
+    }
+    .Input__placeholder{
+        position: absolute;top: rem(18);left:rem(17);
+        &.active{
+            top: rem(0);
+        }
+    }
+}
+    }
+}

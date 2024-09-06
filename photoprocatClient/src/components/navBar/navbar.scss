@@ -1,0 +1,879 @@
+@import "../../app/styles/style.scss";
+
+
+
+
+.Navbar {
+    transition: all 0.3s ease 0s;
+    position: fixed;top: 0;width: 100%;left:0;
+    &__loader{
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease 0s;
+        &.active{
+            transition: all 0.3s ease 0s;
+               opacity: 1;
+               pointer-events: visible;
+        }
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        @media (max-width:$mobile){
+            font-size: 11px;
+            padding: 10px 10px;
+        }
+        line-height: 18px;
+        text-transform: uppercase;
+        color: #ffffff;
+        position: absolute;top: 130%;left: 50%;
+        background: #4F9C2C;
+    padding: 20px 20px;
+    transform: translate(-50%,0);
+    border-radius: 30px;
+    }
+  &__cover{
+    max-width:$maxWidth + px ;
+	margin: 0 auto;
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+        background: #fff;
+        z-index: 12;
+        border-bottom: 2px solid #EFEFEF;
+      }
+  }
+    z-index: 100;
+  &__cont{
+        margin-left: auto;
+        margin-right: 0;
+        max-width: 1260px;
+        padding: 0;
+    
+  }
+  
+   
+&.active{
+    transition: all 0.3s ease 0s;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+background: #fff; 
+
+&__navigation {
+}
+
+    &__body {
+      
+        padding-left: 15px;
+        position: relative;
+        height: rem(75);
+        @media (max-width:$mobile){
+            height: rem(44);
+            padding-right: 15px;
+        }
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    &__menu {
+        z-index: 13;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+        margin-right: rem(20);
+        @media (max-width:$mobile){
+            order:4;
+            margin: 0;
+       }
+    }
+    &__logo {
+        z-index: 20;
+        margin-right: rem(30);
+        @media (max-width:$mobile){
+            order: 2;
+            position: absolute;;top: 50%;left: 50%;
+            transform: translate(-50%,-35%);
+            display: flex;
+            justify-content: center;
+       }
+        flex: 1 1 auto;
+    }
+    &__image{
+        cursor: pointer;
+      
+        max-width:rem(151);
+        @media (max-width:$mobile){
+            max-width:rem(45);
+        }
+        position: relative;
+        img{
+          width: 100%;
+        }
+    }
+   
+}
+.Navbar {
+
+    
+}
+.navigationNavbar {
+display: flex;
+flex: 1 1 auto;
+z-index: 13;
+margin-right: em(30);
+@media (max-width: em(1180)){
+      display: none;
+}
+    &__item {
+        
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                color: #4F9C2C;
+                transition: all 0.3s ease 0s;
+            }
+        }
+        &:not(:last-child) {
+            margin-right: rem(24);
+        }
+        white-space: nowrap;
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 18px;
+text-transform: uppercase;
+color: #000000;
+    }
+}
+
+.catalogNavbar {
+    display: flex;
+    flex-direction: row;
+    
+    &__left{
+        padding: rem(26) rem(0);
+        @media (max-width:$mobileSmall){
+            padding: rem(10) rem(0);  
+        }
+    }
+    &__right {
+        background: #fff;
+        padding-top:rem(16);
+        padding-bottom:rem(26);
+        @media (min-width: em(1180)){
+           
+            display: none;
+            
+             border-left: 2px solid #E3E3E3;
+
+      }
+       
+    }
+
+
+
+  position: absolute;top: 80%;left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease 0s;
+
+  background: #FFFFFF;
+ 
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 14;
+  @media (max-width:$mobile){
+    position: fixed;width: 100%;height: 100%;top: 0;left: 0; 
+    z-index: 9;
+    overflow: auto;
+    box-shadow: none;
+    flex-direction: column;
+    padding-top: rem(40);
+}
+  &.active{
+    
+    opacity: 1;
+    pointer-events: inherit;
+  }
+    &__name {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 18px;
+        color: #000000;
+        padding: rem(0) rem(30);
+        margin-bottom: rem(18);
+        span{
+            color: #60B021;
+            margin-right: rem(8);
+        }
+    }
+
+    &__items {
+       
+    }
+
+    &__item {
+        white-space: nowrap;
+        cursor: pointer;
+        font-family: 'Ubuntu';
+        padding: rem(7) rem(30);
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 18px;
+color: #000000;
+transition: all 0.3s ease 0s;
+&:not(:last-child) {
+    margin-bottom: rem(13.5);
+}
+@media (any-hover: hover){
+    &:hover{
+        transition: all 0.3s ease 0s;
+        background: #F5F5F5;
+        color: #60B021;
+    }
+}
+&_two{
+    color: #75758A;
+
+    white-space: nowrap;
+    cursor: pointer;
+    font-family: 'Ubuntu';
+    padding: rem(7) rem(30);
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 18px;
+
+transition: all 0.3s ease 0s;
+&:not(:last-child) {
+margin-bottom: rem(13.5);
+}
+:first-child{
+    margin-bottom: 0;
+}
+@media (any-hover: hover){
+&:hover{
+    transition: all 0.3s ease 0s;
+    background: #F5F5F5;
+    color: #60B021;
+}
+}
+}
+    }
+}
+.searchBlock {
+    @media (max-width:$mobile){
+          display: none;
+    }
+    position: absolute;width: 100%;height: rem(75);top: rem(74);left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s ease 0s;
+   &.active{
+    transition: all 0.3s ease 0s;
+    pointer-events: inherit;
+    opacity: 1;
+   }
+    background: #F7F7F7;
+    justify-content: space-between;
+    &__container{
+        height: 100%;
+    }
+    &__body {
+        display: flex;
+        align-items: center;
+       
+        height: 100%;
+        &:last-child{
+            
+        }
+    }
+
+    &__text {
+      padding-right: 15px;
+      flex: 1 1 auto;
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+color: #000000;
+background: none;
+&::placeholder{
+    color: #000000;
+}
+    }
+}
+
+.searchBlockMobile {
+    position: absolute;width: 100%;height: rem(44);top: rem(50);left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s ease 0s;
+   &.active{
+    transition: all 0.3s ease 0s;
+    pointer-events: inherit;
+    opacity: 1;
+   }
+		&__container {
+		}
+
+		&__body {
+            display: flex;
+            align-items: center;
+            gap: rem(10);
+            justify-content: space-between;
+		}
+
+		&__search {
+            flex:  1 1 auto;
+            display: flex;
+            padding: 0 20px;
+            align-items: center;
+            background: #F5F5F5;
+            border: 1px solid #E3E3E3;
+            box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15);
+            border-radius: 100px;
+            height: rem(40);
+          
+		}
+
+		&__text {
+            flex: 1 1 auto;
+            background: none;
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            color: #75758A;
+            padding-right: 10px;
+		}
+
+		&__icon {
+            cursor: pointer;
+		}
+
+		&__exit {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #000;
+            position: relative;
+            position: relative;
+            &::before,&::after{
+                content:'';
+                width: 1px;
+                height: 14px;
+                position: absolute;;top: 50%;left: 50%;
+                background: #fff;
+            }
+            &::after{
+                transform:translate(-50%,-50%) rotate(45deg);
+               
+                
+            }
+            &::before{
+                transform:  translate(-50%,-50%)  rotate(-45deg);
+               
+            }
+		}
+}
+
+.menu {
+
+    &__shedule {
+        white-space: nowrap;
+        position: relative;
+        z-index: 13;
+        @media (max-width:$mobile){
+            display: none;
+       }
+       margin-right: rem(15);
+    }
+
+    &__sheduleText {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 26px;
+        color: #75758A;
+    }
+    &__sheduleTel {
+        display: block;
+        margin-top: rem(5);
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 15px;
+        color: #000000;
+    }
+
+    &__actions {
+       display: flex;
+     
+     
+       @include adaptiveValue("margin-right",42,20 );
+       @media (max-width:$mobile){
+        margin: 0;
+        gap: rem(5);
+     }
+    }
+
+    &__right {
+    }
+}
+.actionsMenu {
+    height: 100%;
+    z-index: 13;
+ @media (max-width:$mobile){
+      order: 1;
+      flex: 1 1 auto;
+      gap: rem(20);
+ }  
+ 
+ &__span{
+    
+     &.active{
+
+        animation:spananim 0.3s linear alternate ;
+        @keyframes spananim {
+            0% {
+                transform: translate(0,0);
+            }
+            50%{
+                transform: translate(0,-5px);
+            }
+            100% {
+                transform: translate(0,0);
+            }
+        }
+    }
+  
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 15px;
+    color: #262525;
+    position: absolute;right: 5px;bottom: 10px;
+    width: rem(20);
+    height: rem(20);
+    background: rgba(96, 176, 33,1);
+    opacity: 0.8;
+    border-radius: 50%;
+    @media (max-width:$mobile){
+        right: -15px;bottom: -5px;
+        width: rem(18);
+        height: rem(18);
+        font-size: 10px;
+    }
+}
+    &__action {
+        position: relative;
+      
+        position: relative;
+        z-index: 11;
+        &::after{
+           
+            transition: all 0.3s ease 0s;
+            content:'';
+            position: absolute;width: 100%;height: 3px;top: 90%;left: 0;
+            background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
+            opacity: 0;
+           
+        }
+        @media (any-hover: hover){
+            &:hover{
+                &::after{
+                    opacity: 1;
+                    transition: all 0.3s ease 0s;
+                }
+                &::before{
+                   color: #4F9C2C;
+                    
+                }
+       
+            }
+        }
+        display: flex;
+        align-items:center;
+        padding: 0 15px;
+        @media (max-width:$mobile){
+            padding: 0;
+        }
+        cursor: pointer;
+        height: 100%;
+        font-size: rem(20);
+        @media (max-width:$mobile){
+            font-size: rem(16);
+        }
+        @media (any-hover: hover){
+            &:hover{
+                
+            }
+        }
+    }
+}
+
+.rightMenu {
+    z-index: 13;
+    display: flex;
+    @media (max-width:$mobile){
+        order:3;
+        gap: rem(20);
+        margin-right: rem(20);
+   }
+    &__action {
+        position: relative;
+    &.active{
+&::before{
+    transition: all 0.3s ease 0s;
+    color: #4F9C2C;
+    
+}
+    }
+        &::after{
+            margin: 0 2px;
+            transition: all 0.3s ease 0s;
+            content:'';
+            position: absolute;width:calc(100% - 4px) ;height: 3px;top: 90%;left: 0;
+            background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
+            opacity: 0;
+           
+        }
+        @media (any-hover: hover){
+            &:hover{
+                &::after{
+                    opacity: 1;
+                    transition: all 0.3s ease 0s;
+                }
+                &::before{
+                   color: #4F9C2C;
+                    
+                }
+       
+            }
+        }
+        cursor: pointer;
+        border-left: 1px solid #EFEFEF;
+        padding: rem(27);
+        font-size: rem(20);
+        @media (max-width:$mobile){
+            font-size: rem(16); 
+            padding: rem(0);
+            border: none;
+        }
+    }
+}
+
+.icon-menu {
+    pointer-events: none;
+    width: rem(20);
+    height: rem(15);
+    @media (max-width:$mobile){
+         width: rem(16); 
+         height: rem(12);
+         top: 1px;
+    }
+    position: relative;
+    background: none;
+   
+    @media (any-hover:hover) {
+        &:hover{
+            span,&::before,&::after{
+                transition: all 0.3s ease 0s;
+                background: #000000;
+            }
+           
+        }
+    }
+   
+    span{
+        transition: all 0.3s ease 0s;
+    width: rem(20);
+    height: rem(1);
+    @media (max-width:$mobile){
+        width: rem(16); 
+        height: rem(1); 
+    }
+    background: #000000;
+    position: absolute;
+    top: calc(50% - 0.5px);
+    left: 0;
+   
+    animation:icon-menu 0.3s  linear  both 0.1s ; 
+    @keyframes icon-menu {
+        0% {
+            left: -50%;
+            opacity: 0;
+        }
+        100% {
+            left: 0;
+            opacity: 1;
+        }
+    }
+    }
+    &::before,&::after{
+        transition: all 0.3s ease-out 0s;
+        content:'';
+        height: rem(1);
+        background: #000000;
+        position: absolute;
+        left: 0;
+      
+        
+    }
+    &::before{
+        content:'';
+        top: rem(0.2);
+        width: rem(20);
+        @media (max-width:$mobile){
+            width: rem(16); 
+            height: rem(1);  
+        }
+        left: 0;
+        opacity: 0;
+        animation:icon-menu2 0.3s  linear forwards ; 
+        @keyframes icon-menu2 {
+            0% {
+                left: -50%;
+                opacity: 0;
+            }
+            100% {
+                left: 0;
+                opacity: 1;
+            }
+        }
+    }
+    &::after{
+        content:'';
+        bottom: 0;
+        width: rem(20);
+        @media (max-width:$mobile){
+            width: rem(16); 
+            height: rem(1);   
+        }
+        left: 0;
+        opacity: 0;
+        animation:icon-menu3 0.3s  linear forwards 0.3s; 
+        @keyframes icon-menu3 {
+            0% {
+                left: -50%;
+                opacity: 0;
+            }
+            100% {
+                left: 0;
+                opacity: 1;
+            }
+        }
+    }
+    &.add{
+     
+            span,&::before,&::after{
+                background: #000000;
+            }
+            @media (any-hover:hover) {
+                &:hover{
+                    span,&::before,&::after{
+                        transition: all 0.3s ease 0s;
+                        background: #000000;
+                    }
+                   
+                }
+            }
+        
+        
+    }
+    &.active  {
+        span{
+            transition: all 0.3s ease 0s;
+            opacity: 0 !important;
+        }
+        &::before{
+            transition: all 0.3s ease-out 0s;
+        
+            content:'';
+            top: calc(50% - 1px);
+            transform: rotate(45deg);
+            
+        }
+        &::after{
+            transition: all 0.3s ease-out 0s;
+            content:'';
+            width: 20px;
+            @media (max-width:$mobile){
+                width: 16px  
+            }
+            top: calc(50% - 1px);
+            transform:  rotate(-45deg);
+
+
+            
+            
+        }
+    }
+}
+
+
+
+.Navbar {
+
+    &__login {
+    }
+}
+
+.login-modal {
+    &__inputs{
+        display: flex;
+        flex-direction: column;
+        gap: rem(15);
+    }
+    &__error{
+position: absolute;width: 100%;top: 103%;left: 0;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 22px;
+padding: 10px 20px;
+background: #fff;
+border: 4px solid transparent;
+border-radius: rem(16);
+
+&::before{
+    content:'';
+    border-radius: rem(16);
+    position: absolute;
+    top: -5px; bottom: -5px;
+    left: -5px; right: -5px;
+    background: linear-gradient(to left, #e90101, #942222);
+    z-index: -1;
+}
+
+    }
+    &__body {
+        padding: rem(46) rem(30) rem(30) rem(30);
+        background: #FFFFFF;
+        display: none;
+        &.active{
+            display: block;
+        }
+         .modal &{
+            box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.25);
+            border-radius: 15px;
+         }
+    }
+
+    &__title {
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 22px;
+margin-bottom: rem(23);
+text-align: center;
+
+color: #000000;
+
+    }
+
+    &__google {
+    }
+
+    &__pass {
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 24px;
+/* identical to box height, or 171% */
+
+text-decoration-line: underline;
+
+color: #60B021;
+margin-bottom: rem(10);
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        gap: rem(20);
+        align-items: center;
+    }
+}
+.g {
+}
+.reg-modal {
+}
+.passwordModal{
+    display: none;
+    &.active{
+        display: block;
+    }
+}
+
+.newPasswordModal{
+    display: none;
+    &.active{
+        display: block;
+    }
+}
+
+.passwordModal {
+    padding: rem(20);
+    width: 400px;
+		&__title {
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+            margin-bottom: rem(23);
+            text-align: center;
+            
+            color: #000000;
+		}
+        &__input{
+            margin-bottom: rem(20);
+        }
+}
+.newPasswordModal{
+    padding: rem(20);
+    width: 500px;
+    &__title{
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: rem(23);
+        text-align: center;
+        
+        color: #000000;
+    }
+    &__inputs{
+      display: flex;
+      flex-direction: column;
+      gap: rem(20);
+      margin-bottom: rem(30);
+    }
+    &__button{
+        display: flex;
+        justify-content: center;
+    }
+}

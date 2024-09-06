@@ -1,0 +1,109 @@
+@import "../../app/styles/style.scss";
+.News {
+margin-top: rem(123);
+@media (max-width:$mobile){
+    margin-top: rem(60);
+}
+   
+    &__button{
+        margin-bottom: rem(30);
+    }
+    &__title {
+        display: flex;
+        flex-direction: column;
+        span{
+            background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+@include adaptiveValue("font-size",30 , 15);
+@include adaptiveValue("line-height",34 , 17);
+/* identical to box height */
+
+text-transform: uppercase;
+        }
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 34px;
+
+@include adaptiveValue("font-size",30 , 15);
+@include adaptiveValue("line-height",34 , 17);
+text-transform: uppercase;
+
+color: #000000;
+
+@include adaptiveValue("margin-bottom", 30, 15);
+    }
+
+    &__body {
+        width: 100% ;
+        display: flex;
+        @include adaptiveValue("gap", 141, 50);
+    }
+
+ 
+}
+
+.buttonCart {
+    @media (max-width:$mobileSmall){
+         font-size: 12px; 
+    }
+align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(205, 204, 204, 0.4);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: em(42);
+  padding: 0 em(20);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  &::before{
+    margin-right: rem(5);
+  }
+  &:hover,
+   &:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+&:hover {
+    transform: translateY(-1px);
+  }
+  
+&.active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+
