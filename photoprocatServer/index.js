@@ -30,7 +30,7 @@ const start = async ()  =>{
             useUnifiedTopology: true
         })
 
-        app.listen(PORT,'0.0.0.0',()=>console.log(`подключен к порту ${PORT}`))
+        app.listen(PORT,()=>console.log(`подключен к порту ${PORT}`))
     } catch (error) {
         console.log(error);
     }
