@@ -8,6 +8,7 @@ router.get('/getAll',productControllers.getAll)
 router.post('/getOne',productControllers.getOne)
 router.post('/change',productControllers.change)
 router.post('/getByPurchase',productControllers.getByPurchase)
+router.post('/createMany',productControllers.createMany)
 
 
 module.exports = router

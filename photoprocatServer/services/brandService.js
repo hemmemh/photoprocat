@@ -3,6 +3,7 @@ const uuid = require('uuid')
 const path = require('path')
 const fs = require('fs')
 const ApiError = require("../Errors/ApiError")
+const { brandData } = require("../data/exapleData")
 class brandServices{
     async createBrand(name,image){
         try {
@@ -36,5 +37,19 @@ class brandServices{
         }
         
     }
+
+      async createMany(){
+        try {
+          const data = brandData
+          for (const brand of data){
+            const response = new Brand({name:brand.name,image:brand.image})
+            await response.save()
+          }
+          const allBrands =  await this.getAll()
+          return allBrands
+        } catch (error) {
+          throw ApiError.BadRequest('недостаточно данных')
+        }
+      }
 }
 module.exports =new brandServices()

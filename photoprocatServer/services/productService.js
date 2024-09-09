@@ -7,6 +7,9 @@ const fs = require('fs')
 const Type = require("../models/Type")
 const typeService = require("./typeService")
 const ApiError = require("../Errors/ApiError")
+const { productsData } = require("../data/exapleData")
+const brandService = require("./brandService")
+const { getRandomElement } = require("../helpers/productsHelpers")
 class productServices{
 
 
@@ -17,9 +20,7 @@ class productServices{
             let typeInformations = JSON.parse(information) 
             console.log(type);
             JSON.parse(type.informations).forEach((el)=>{
-                console.log(el);
                 typeInformations = typeInformations.filter(fill=>{
-                    console.log(Object.keys(fill)[0],Object.keys(el)[0],'55h');
                    return  Object.keys(fill)[0] !== Object.keys(el)[0]
                 })
             })
@@ -164,6 +165,33 @@ class productServices{
             throw ApiError.internal('')
         }
         
+    }
+
+    async createMany(){
+       try {
+        const products = productsData
+        const brands = await brandService.getAll()
+        for (const product of products){
+            const {name, price, description, information, typeName, imagesPath} = product
+            const date = Date.now()
+            const type = await typeService.getOneByName(typeName)
+            const brand = getRandomElement(brands)
+            const response = new Product({name,description,price,type:type.id,brand:brand.id,images:JSON.stringify(imagesPath),date})
+            await response.save()
+            let arr = []
+            for (const e of JSON.parse(information)) {
+                const info = new Information({name:Object.entries(e)[0][0],description:Object.entries(e)[0][1]})
+                await info.save()
+                arr.push(info._id)
+            }
+
+            response.information = arr
+            await response.save()
+        }
+       } catch (error) {
+        throw ApiError.BadRequestData()
+       }
+
     }
 
 }

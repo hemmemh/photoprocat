@@ -30,5 +30,14 @@ async getOne(req,res,next){
     }
 
 }
+
+async createMany(req,res,next){
+    try {
+        const response =await typeServices.createMany()
+        return res.json(response)
+    } catch (error) {
+        next(error)
+    }
+}
 }
 module.exports = new typeControllers()

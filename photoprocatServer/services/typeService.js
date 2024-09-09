@@ -3,6 +3,7 @@ const uuid = require('uuid')
 const path = require('path')
 const fs = require('fs')
 const ApiError = require("../Errors/ApiError")
+const { typeData } = require("../data/exapleData")
 class typeServices{
 
  
@@ -33,5 +34,29 @@ class typeServices{
         }
         
     }
+
+    async getOneByName(name){
+        try {
+        const response =await Type.findOne({name})
+        return response
+        } catch (error) {
+            throw ApiError.internal('')
+        }
+        
+    }
+
+    async createMany(){
+        try {
+          const data = typeData
+          for (const type of data){
+            const response = new Type({name:type.name,informations:type.informations})
+            await response.save()
+          }
+          const allTypes =  await this.getAll()
+          return allTypes
+        } catch (error) {
+          throw ApiError.BadRequest('недостаточно данных')
+        }
+      }
 }
 module.exports =new typeServices()
