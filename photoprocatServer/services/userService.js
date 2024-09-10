@@ -9,6 +9,7 @@ const bccrypt = require("bcrypt")
 const tokenServices = require("../services/tokenService")
 const mailServices = require("../services/mailServices")
 const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, API_URL } = require('../utils/config');
+const { usersData } = require("../data/exapleData")
 class userServices{
     async registration(mail,password){
         try {
@@ -182,6 +183,22 @@ class userServices{
     
         } catch (e) {
             console.log(e);
+        }
+      }
+
+      async getAll(){
+        try {
+          const response =await User.find({})
+          return response
+      } catch (e) {
+        throw ApiError.internal('нет поьзователей')
+      }
+      }
+
+      async createMany(){
+        const users = usersData
+        for(const user of users){
+          await this.registration(user.mail, user.password)
         }
       }
 }

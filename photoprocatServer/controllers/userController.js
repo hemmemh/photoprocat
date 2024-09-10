@@ -117,5 +117,15 @@ async change(req,res,next){
     }
 
 }
+
+async createMany(req,res,next){
+    try {
+        const response =await userServices.createMany()
+        return res.json(response)
+    } catch (error) {
+        next(error)
+    }
+
+}
 }
 module.exports = new userControllers()

@@ -12,4 +12,5 @@ router.get('/:activationLink',userControllers.activate)
 router.post('/forgetPassword',userControllers.forgetPassword)
 router.post('/forgetPassword2',userControllers.forgetPassword2)
 router.post('/change',userControllers.change)
+router.post('/createMany',userControllers.createMany)
 module.exports = router

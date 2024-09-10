@@ -7,9 +7,11 @@ const fs = require('fs')
 const Type = require("../models/Type")
 const typeService = require("./typeService")
 const ApiError = require("../Errors/ApiError")
-const { productsData } = require("../data/exapleData")
+const { productsData, ratingData } = require("../data/exapleData")
 const brandService = require("./brandService")
 const { getRandomElement } = require("../helpers/productsHelpers")
+const userService = require("./userService")
+const ratingService = require("./ratingService")
 class productServices{
 
 
@@ -171,6 +173,8 @@ class productServices{
        try {
         const products = productsData
         const brands = await brandService.getAll()
+        const users = await userService.getAll()
+        const rates = ratingData
         for (const product of products){
             const {name, price, description, information, typeName, imagesPath} = product
             const date = Date.now()
@@ -184,11 +188,20 @@ class productServices{
                 await info.save()
                 arr.push(info._id)
             }
+     
+
 
             response.information = arr
             await response.save()
+            for (const user of users){
+                const rateData = getRandomElement(rates)
+                 await ratingService.createRating(user.id,rateData.rate,response.id,rateData.name, rateData.sername, rateData.text)
+
+            }
         }
        } catch (error) {
+        console.log('err', error);
+        
         throw ApiError.BadRequestData()
        }
 
