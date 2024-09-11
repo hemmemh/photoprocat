@@ -14,12 +14,12 @@ import Button from '../../../UI/button/Button'
 export  const Login = () => {
     const [mail, setmail] = useState<string>('')
     const [password, setpassword] = useState<string>('')
-    const navigate = useNavigate()
+
     const [code, setcode] = useState<string>('')
     const {loginModal,modalStage} = useAppSelector((state)=>state.reducer.navbar)
     const {setModalStage} = navbarSlice.actions
     const dispatch = useAppDispatch()
-    const {validationEmail,validationPassword,changePassword,onSetMail,onLogin} = useValidation({setmail,setpassword,mail,password})
+    const {validationEmail,validationPassword,changePassword,onSetMail,onLogin, onRegistration} = useValidation({setmail,setpassword,mail,password})
     useEffect(() => {
         if (loginModal === false) {
             dispatch(setModalStage(0))
@@ -46,7 +46,7 @@ export  const Login = () => {
 
         <div className="login-modal__buttons">
             <Button onClick={onLogin} className='login-modal g'>Войти</Button>
-            <Button onClick={()=>navigate(REGISTRATION_ROUTE)} className='reg-modal g' >Регистрация</Button>
+            <Button onClick={onRegistration} className='reg-modal g' >Регистрация</Button>
         </div>
     </div>
   )

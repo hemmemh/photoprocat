@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../../../../../hooks/reduxHooks"
 import { buy } from "../../../../../../store2/actions/BasketActions"
-import Button from "../../../../../UI/button/Button"
 import Button2 from "../../../../../UI/button2/Button2"
 import cls from './bottomItems.module.scss'
 

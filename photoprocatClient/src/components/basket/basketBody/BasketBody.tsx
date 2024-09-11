@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import TopicBasket from './topicBasket/TopicBasket'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
 import { putBasket } from '../../../store2/actions/BasketActions'

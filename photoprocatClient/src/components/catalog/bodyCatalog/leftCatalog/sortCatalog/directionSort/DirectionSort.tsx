@@ -1,6 +1,4 @@
-import { useState } from "react"
 import { catalogSlice } from "../../../../../../store2/reducers/CatalogSlice"
-
 import { useAppDispatch, useAppSelector } from "../../../../../../hooks/reduxHooks"
 import cls from './DirectionSort.module.scss'
 import Radio from "../../../../../UI/radio/Radio"
@@ -8,10 +6,11 @@ import Button2 from "../../../../../UI/button2/Button2"
 
 const items = [{direct:1,class:''},{direct:-1,class:'_direct'}]
 const DirectionSort = () => {
-    const [toggle, settoggle] = useState(false)
     const dispatch = useAppDispatch()
     const {setSortNumber} = catalogSlice.actions
     const {sortNumber} = useAppSelector((state)=>state.reducer.catalog)
+
+    
   return (
     <div className={cls.directSort}>   
     {items.map((el:any)=>

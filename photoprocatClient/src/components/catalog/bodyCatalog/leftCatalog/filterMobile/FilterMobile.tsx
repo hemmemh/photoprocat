@@ -16,14 +16,8 @@ import Button2 from '../../../../UI/button2/Button2'
 
 export const FilterMobile = () => {
     const [VisibleAccordionFiltr, setVisibleAccordionFiltr] = useState(false)
-    const {typeInformation,informations,informationValues,sliderMouseOn,priceRange,minMaxPrice} = useAppSelector((state)=>state.reducer.catalog)
-    const dispatch = useAppDispatch()
-    const {setInformationValues,setsliderMouseOn,setPriceRange} = catalogSlice.actions
+    const {typeInformation,informations} = useAppSelector((state)=>state.reducer.catalog)
 
-    const changeVal = (val:any,type:any,pos:any)=>{
-      //setsliderMouseOn({...sliderMouseOn,[type]:sliderMouseOn[type].map((e:any,i:any)=>i === pos ? val : e )})
-
-  }
 
   return (
     <div className={cls.filterAccordion}>

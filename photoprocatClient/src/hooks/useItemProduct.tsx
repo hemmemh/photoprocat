@@ -92,9 +92,9 @@ const addToCompare = ()=>{
     const element = document.querySelector('.Navbar__loader')
   if (!user.id) {
     if (!element?.classList.contains('active')) {
-        element?.classList.add('active')
+      element?.classList.add('active')
       setTimeout(() => {
-        element?.classList.remove('active')
+          element?.classList.remove('active')
       }, 1000);
     }
     return
@@ -141,14 +141,12 @@ const addToLoves = ()=>{
     const element = document.querySelector('.Navbar__loader')
   if (!user.id) {
 
-          setloaders({...loaders,compare:false})
     if (!element?.classList.contains('active')) {
-        element?.classList.add('active')
+      element?.classList.add('active')
       setTimeout(() => {
-        element?.classList.remove('active')
+          element?.classList.remove('active')
       }, 1000);
     }
-   
     return
   }
 

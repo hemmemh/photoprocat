@@ -1,4 +1,3 @@
-import React from 'react'
 import ItemsBasket from './itemsBasket/ItemsBasket'
 
 const TopicBasket = () => {

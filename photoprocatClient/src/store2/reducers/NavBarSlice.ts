@@ -30,7 +30,7 @@ const initialState:initialState = {
     menuIconRef:null,
     search:false,
     filter:'',
-    filterCatalog:'',
+    filterCatalog:"",
     loginModal:false,
     loader:false,
     passSucc:false,

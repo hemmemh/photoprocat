@@ -1,7 +1,7 @@
 import { $host } from "."
 
 export const getAllproduct = async(typeId:any=null,page:any=null,limit:any=null,search:any=null,checkedBrands:any=null,sortNumber:any=null,minPrice:any=null,maxPrice:any=null,sort:any=null,informations:any=null,typeInformation:any=null)=>{
-   console.log(typeId,'qqqqqqqq');
+   console.log(typeId,page, 'yy');
     const {data} = await $host.get('product/getAll',{params:{
         typeId,page,limit,search,checkedBrands,sortNumber,minPrice,maxPrice,sort,informations,typeInformation
         

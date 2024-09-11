@@ -1,19 +1,13 @@
-import { useState } from 'react'
-
 import { catalogSlice } from '../../../../../../store2/reducers/CatalogSlice'
 import { useAppDispatch, useAppSelector } from '../../../../../../hooks/reduxHooks'
-import Toggle from '../../../../../UI/toggle/Toggle'
 import ProductSpoiler from '../../../../../UI/productSpoiler/ProductSpoiler'
-import Button from '../../../../../UI/button/Button'
 import Radio from '../../../../../UI/radio/Radio'
 import Button2 from '../../../../../UI/button2/Button2'
-import cls from './optionsSort.module.scss'
 
 
 const sorts = [{'purchaseNumber':'По популярности'},{'price':'По цене'},{'rating':'По рейтингу'},{'date':'По дате'}]
 
 const OptionsSort = () => {
-    const [toggle, settoggle] = useState(false)
     const dispatch = useAppDispatch()
     const {setSort} = catalogSlice.actions
     const {sort} = useAppSelector((state)=>state.reducer.catalog)

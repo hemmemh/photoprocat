@@ -20,7 +20,7 @@ type initialState = {
     gridLoader:boolean,
     sortNumber:number,
     sort:string,
-    type:string,
+    type:IType | null,
     brandsLoad:boolean,
     brands:IBrand[],
     checkedBrands:any[],
@@ -54,6 +54,8 @@ const initialState:initialState = {
         count:0,
         responce:[],
         responceAll:[],
+        responseForInformations:[],
+        type:null
     },
     basket:[],
     loves:[],
@@ -62,7 +64,7 @@ const initialState:initialState = {
     sortNumber:1,
     sort:'date',
     priceValue:[10,20],
-    type:'',
+    type:null,
     brandsLoad:false,
     brands:[],
     checkedBrands:[],
@@ -125,7 +127,7 @@ export const catalogSlice = createSlice({
         setPriceValue(state,action:PayloadAction<number | number[]>){
             state.priceValue = action.payload
         },
-        setType(state,action:PayloadAction<string>){
+        setType(state,action:PayloadAction<IType>){
             state.type = action.payload
         },
         setBrandsLoad(state,action:PayloadAction<boolean>){

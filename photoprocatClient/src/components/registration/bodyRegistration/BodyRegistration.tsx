@@ -30,7 +30,7 @@ const BodyRegistration = () => {
 
   return (
     <div className="Registration__body">
-    <Input value={secondName} change={setSecondName} inputClass='registration' placeholder='Фамилия *'/>
+    <Input value={secondName} change={(e:string)=>dispatch(setSecondName(e))} inputClass='registration' placeholder='Фамилия *'/>
     <Input value={name} change={(e:string)=>dispatch(setName(e))} inputClass='registration' placeholder='Имя *'/>
     <Input value={mail} change={(e:string)=>dispatch(onSetMail(e)) } inputClass={validationEmail ?'registration' : 'registration act'} placeholder='E-mail *'/>
     <Input value={dayjs(data)} change={(e:Dayjs)=>dispatch(setData(e.toString()))} inputClass='registration g'  lock={true}  placeholder='Дата рождения'>

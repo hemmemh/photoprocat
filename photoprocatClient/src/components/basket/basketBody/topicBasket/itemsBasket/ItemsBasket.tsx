@@ -1,4 +1,3 @@
-import React from 'react'
 import BodyItems from './bodyItems/BodyItems'
 import BottomItems from './bottomItems/BottomItems'
 import TopItems from './topItems/TopItems'

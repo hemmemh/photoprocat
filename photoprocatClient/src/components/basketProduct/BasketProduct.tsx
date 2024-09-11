@@ -1,7 +1,5 @@
 import React,{FC,useState,useEffect, useContext} from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
-import { navbarSlice } from '../../store2/reducers/NavBarSlice'
-import { basketSlice } from '../../store2/reducers/BasketSlice'
 import { changeAm, remove } from '../../store2/actions/BasketActions'
 import { API_URL } from '../../utils/config'
 import Amount from '../UI/amount/Amount'
@@ -18,17 +16,13 @@ interface button{
 const BasketProduct:FC<button>  = ({e,products,basketId}) => {
     const [amount, setamount] = useState(0)
     const {sumPrice} = useAppSelector(state=>state.reducer.basket)
-    const {setSumPrice} = basketSlice.actions
     const dispatch = useAppDispatch()
 
 
 
     useEffect(() => {
       setamount(e.count)
-      console.log(e.product.price,sumPrice);
-      
-   
-      
+
     }, [])
 
     const setAmount = (e:any,el:any)=>{

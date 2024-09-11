@@ -4,6 +4,8 @@ import { Login } from '../store2/actions/NavBarActions'
 
 import { navbarSlice } from '../store2/reducers/NavBarSlice'
 import { useAppDispatch, useAppSelector } from './reduxHooks'
+import { useNavigate } from 'react-router-dom'
+import { REGISTRATION_ROUTE } from '../app/config/routs'
 
 type useValidationType = {
     setmail:React.Dispatch<React.SetStateAction<string>>
@@ -16,8 +18,9 @@ const useValidation = ({setmail,setpassword,mail,password}:useValidationType) =>
     const [validationEmail, setvalidationEmail] = useState<boolean>(true)
     const [validationPassword, setvalidationPassword] = useState<boolean>(true)
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const {validationError,validationErrorText} = useAppSelector((state)=>state.reducer.navbar)
-    const {setValidationErrorText,setValidationError} = navbarSlice.actions
+    const {setValidationErrorText,setValidationError, setLoginModal} = navbarSlice.actions
 
     
     const onSetMail = (e:any)=>{
@@ -52,8 +55,12 @@ const useValidation = ({setmail,setpassword,mail,password}:useValidationType) =>
         }
       
     }
+    const onRegistration = ()=>{
+       dispatch(setLoginModal(false))
+       navigate(REGISTRATION_ROUTE)
+    }
 
-return {validationEmail,validationPassword,onSetMail,changePassword,onLogin,validationError,validationErrorText}
+return {validationEmail,validationPassword,onSetMail,changePassword,onLogin,onRegistration,validationError,validationErrorText}
 }
 
 export default useValidation

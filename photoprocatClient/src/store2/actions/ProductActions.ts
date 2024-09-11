@@ -12,13 +12,14 @@ import { AppDispatch, store } from "../store";
 import { adminSlice } from "../reducers/AdminSlice";
 import { HOME_ROUTE } from "../../app/config/routs";
 import { log } from "console";
+import { IProducts } from "../../utils/interfaces";
 
 
 
-export const getAllInfo = (typeId:any)=> async (dispatch:AppDispatch)=>
+export const getAllInfo = (action:any[])=> async (dispatch:AppDispatch)=>
 {
   const currentState = store.getState();
-const {priceValue,checkedBrands,products,sort,sortNumber,typeInformation,informationValues,page,limit,priceRange,minMaxPrice,user} = currentState.reducer.catalog
+const {checkedBrands,products,limit,user,type} = currentState.reducer.catalog
 const {setBrands,setBrandsLoad,setCheckedBrands,setProducts,setProductsLoad,setBasket,setCompare,setLoves,setTypeInformation,setInformations,setInformationValues,setsliderMouseOn,setPage,setPriceRange,setMinMaxPrice,setType,setGridLoader,setPriceValue} = catalogSlice.actions
   try {
     let typeInformationConst = {}
@@ -27,22 +28,23 @@ const {setBrands,setBrandsLoad,setCheckedBrands,setProducts,setProductsLoad,setB
     let slideMouseOneConst:any = {}
   
    
+ 
+    getAllproduct(...action).then(data=>{
     
-    getAllproduct(typeId,page,limit,null,null,null,null,null,null,null,null).then(data=>{
-    
+
+      
     
        dispatch(setProducts({...data}))
-       dispatch(setType(data.responce[0].type.name))
-       console.log(products,);
+       dispatch(setType(data.type))
        let price:any = []
-       data.responceAll.forEach((el:any)=>price.push(Number(el.price)))
+       data.responseForInformations.forEach((el:any)=>price.push(Number(el.price)))
        price = price.sort((a:any,b:any)=>a-b)
        dispatch(setMinMaxPrice([price[0],price[price.length-1]]))
        dispatch(setPriceRange([price[0],price[price.length-1]]))
        dispatch(setPriceValue([price[0],price[price.length-1]]))
-       
-       
-       for (const it of JSON.parse(data.responce[0].type.informations)) {
+       dispatch(setPage(action[1]))
+
+       for (const it of JSON.parse(data.responseForInformations[0].type.informations)) {
         console.log(it,'ss');
         
         let val:any = 'неважно'
@@ -56,7 +58,9 @@ const {setBrands,setBrandsLoad,setCheckedBrands,setProducts,setProductsLoad,setB
         informationValuesConst = {...informationValuesConst,[Object.entries(it)[0][0]]:val}
        }
   
-        for (const it of data.responceAll) {
+        for (const it of data.responseForInformations) {
+          console.log('ity', it.information);
+          
             informationsConst = [...informationsConst,...it.information]
         
        }
@@ -91,32 +95,49 @@ const {setBrands,setBrandsLoad,setCheckedBrands,setProducts,setProductsLoad,setB
        })
   
        dispatch(setsliderMouseOn(slideMouseOneConst))
-       dispatch(setInformationValues(informationValuesConst))
+       console.log('obj',informationValuesConst, action[9], Object.keys(JSON.parse(action[9])));
+       const newInformationValuesConst = Object.keys(JSON.parse(action[9]))
+       if (newInformationValuesConst.length !== 0) {
+        dispatch(setInformationValues(JSON.parse(action[9])))
+       }else{
+        dispatch(setInformationValues(informationValuesConst))
+       }
+
        dispatch(setTypeInformation(typeInformationConst))
        dispatch( setProductsLoad(true))
      
     })
-    getBasket({id:user.id}).then(data=>{
-        console.log(data.basketItems,'sse');
+
+    if (user.id !== '') {
+      getBasket({id:user.id}).then(data=>{
         dispatch(setBasket(data?.basketItems))     
+    })
+    getCompare({id:user.compare}).then(data=>{
+      dispatch(setCompare(data?.compareItems))
   })
+
+  const loves = await getLoves({id:user.loves})
+  dispatch(setLoves(loves?.lovesItems))
+  dispatch( setProductsLoad(true))
+    }
+ 
+
+
     getAllBrands().then(data=>{
         dispatch(setBrands(data))
         dispatch(setBrandsLoad(true))
+    })
+
+    
+    const newCheckedBrands = JSON.parse(action[4])
+    if (newCheckedBrands.length !== 0) {
+      dispatch(setCheckedBrands(newCheckedBrands))
   
-        
-    })
-    getCompare({id:user.compare}).then(data=>{
-        dispatch(setCompare(data?.compareItems))
-        
-   
-    })
-    const loves = await getLoves({id:user.loves})
-        dispatch(setLoves(loves?.lovesItems))
-        dispatch( setProductsLoad(true))
+    }else{
+      dispatch(setCheckedBrands(checkedBrands))
+    }
      
-     
-    dispatch(setCheckedBrands(checkedBrands))
+ 
     console.log(products);
   } catch (error) {
     console.log(error);
@@ -126,14 +147,107 @@ const {setBrands,setBrandsLoad,setCheckedBrands,setProducts,setProductsLoad,setB
 export const getProducts = (action:any[])=>async (dispatch:AppDispatch) => {
   try {
     const currentState = store.getState();
+    console.log('action', action);
+    
 
+const {checkedBrands,products,limit,user,type} = currentState.reducer.catalog
 const {setBrands,setBrandsLoad,setCheckedBrands,setProducts,setProductsLoad,setBasket,setCompare,setLoves,setTypeInformation,setInformations,setInformationValues,setsliderMouseOn,setPage,setPriceRange,setMinMaxPrice,setType,setGridLoader,setPriceValue} = catalogSlice.actions
 dispatch(setProductsLoad(true))
+dispatch(setPage(action[1]))
 getAllproduct(...action).then(data=>{
-    dispatch(setPage(1))
-    dispatch( setProducts({...data}))
+   console.log('%%%yGG', type?._id, data.type._id);
+   
+  if(type?._id !== data.type._id){
+    let price:any = []
+    let typeInformationConst = {}
+    let informationValuesConst = {}
+    let informationsConst:any = []
+    let slideMouseOneConst:any = {}
+  
+       data.responseForInformations.forEach((el:any)=>price.push(Number(el.price)))
+       price = price.sort((a:any,b:any)=>a-b)
+       dispatch(setMinMaxPrice([price[0],price[price.length-1]]))
+       dispatch(setPriceRange([price[0],price[price.length-1]]))
+       dispatch(setPriceValue([price[0],price[price.length-1]]))
+
+       for (const it of JSON.parse(data.responseForInformations[0].type.informations)) {
+        console.log(it,'ss');
+        
+        let val:any = 'неважно'
+        if (Object.entries(it)[0][1] == 'check') {
+            val = []
+        }else if(Object.entries(it)[0][1] == 'slider'){
+            val = [0,0]
+            slideMouseOneConst = {...slideMouseOneConst,[Object.entries(it)[0][0]]:[0,0]}
+        }
+        typeInformationConst = {...typeInformationConst,[Object.entries(it)[0][0]]:Object.entries(it)[0][1]}
+        informationValuesConst = {...informationValuesConst,[Object.entries(it)[0][0]]:val}
+       }
+  
+        for (const it of data.responseForInformations) {
+          console.log('ity', it.information);
+          
+            informationsConst = [...informationsConst,...it.information]
+        
+       }
+   
+       dispatch(setInformations(informationsConst))
+       
+       Object.entries(typeInformationConst).map((el:any)=>{
+        const type = el[1]
+        const typeName = el[0]
+        let arr:any = []
+        arr = [...informationsConst.filter((fil:any)=>fil.name == typeName).map((ee:any)=>ee.description)]
+        arr = arr.filter((fil:any,pos:any)=> arr.indexOf(fil) === pos)
+  
+         
+        if (type == 'slider') {
+            if(arr.length ===  1){
+                informationValuesConst = {...informationValuesConst,[typeName]:[0,Number(arr.sort((a:any,b:any)=>b-a)[0]) ]}
+                slideMouseOneConst = {...slideMouseOneConst, [typeName]:[0,Number(arr.sort((a:any,b:any)=>b-a)[0]) ]}
+            }else{
+                informationValuesConst = {...informationValuesConst,[typeName]:[Number(arr.sort((a:any,b:any)=>a-b)[0]) ,Number(arr.sort((a:any,b:any)=>b-a)[0]) ]}
+                slideMouseOneConst = {...slideMouseOneConst, [typeName]:[Number(arr.sort((a:any,b:any)=>a-b)[0]) ,Number(arr.sort((a:any,b:any)=>b-a)[0]) ]}
+            }
+          
+        }else if (type == 'check'){
+        informationValuesConst = {...informationValuesConst,[typeName]:[...arr]}
+        }else{
+            arr.unshift('неважно')
+            console.log(arr,'********');
+            
+            informationValuesConst = {...informationValuesConst,[typeName]:arr[0]} 
+        }
+       })
+  
+       dispatch(setsliderMouseOn(slideMouseOneConst))
+       console.log('obj',informationValuesConst, action[9], Object.keys(JSON.parse(action[9])));
+       const newInformationValuesConst = Object.keys(JSON.parse(action[9]))
+       if (newInformationValuesConst.length !== 0) {
+        dispatch(setInformationValues(JSON.parse(action[9])))
+       }else{
+        dispatch(setInformationValues(informationValuesConst))
+       }
+
+       dispatch(setTypeInformation(typeInformationConst))
+       dispatch( setProductsLoad(true))
+     
+    }
+  
+   dispatch( setProducts({...data}))
+   dispatch( setType(data.type))
    dispatch(setProductsLoad(true))
 })
+  } catch (error) {
+    
+  }
+
+}
+
+export const setPage = (page:number)=>async (dispatch:AppDispatch) => {
+  try {  
+const {setPage} = catalogSlice.actions
+     dispatch(setPage(page))
   } catch (error) {
     
   }
@@ -147,9 +261,9 @@ export const updateProducts = (action:any[])=>async (dispatch:AppDispatch) => {
     const {setProducts,setPage,setGridLoader,} = catalogSlice.actions
     dispatch(setGridLoader(true))
     getAllproduct(...action).then(data=>{
-  
-        dispatch(setPage(page+1))
-        dispatch( setProducts({count:products.count,responce:[...products.responce,...data.responce],responceAll:products.responceAll}))
+
+        dispatch(setPage(+action[1]))
+        dispatch( setProducts({count:products.count,responce:[...data.responce],responceAll:products.responceAll, responseForInformations:[...data.responseForInformations],type:data.type}))
         dispatch(setGridLoader(false))
    })
   } catch (error) {
@@ -172,7 +286,88 @@ export const chooseBrand = (e:any)=>async (dispatch:AppDispatch) => {
 }
 
 
+export const changeInformations = (data:IProducts, action:any[])=> async (dispatch:AppDispatch)=>{
+  try {
+    let price:any = []
+    let typeInformationConst = {}
+    let informationValuesConst = {}
+    let informationsConst:any = []
+    let slideMouseOneConst:any = {}
+    const currentState = store.getState();
+    const {checkedBrands,products,limit,user,type} = currentState.reducer.catalog
+    const {setBrands,setBrandsLoad,setCheckedBrands,setProducts,setProductsLoad,setBasket,setCompare,setLoves,setTypeInformation,setInformations,setInformationValues,setsliderMouseOn,setPage,setPriceRange,setMinMaxPrice,setType,setGridLoader,setPriceValue} = catalogSlice.actions
+       data.responseForInformations.forEach((el:any)=>price.push(Number(el.price)))
+       price = price.sort((a:any,b:any)=>a-b)
+       dispatch(setMinMaxPrice([price[0],price[price.length-1]]))
+       dispatch(setPriceRange([price[0],price[price.length-1]]))
+       dispatch(setPriceValue([price[0],price[price.length-1]]))
 
+       for (const it of JSON.parse(data.responseForInformations[0].type.informations)) {
+        console.log(it,'ss');
+        
+        let val:any = 'неважно'
+        if (Object.entries(it)[0][1] == 'check') {
+            val = []
+        }else if(Object.entries(it)[0][1] == 'slider'){
+            val = [0,0]
+            slideMouseOneConst = {...slideMouseOneConst,[Object.entries(it)[0][0]]:[0,0]}
+        }
+        typeInformationConst = {...typeInformationConst,[Object.entries(it)[0][0]]:Object.entries(it)[0][1]}
+        informationValuesConst = {...informationValuesConst,[Object.entries(it)[0][0]]:val}
+       }
+  
+        for (const it of data.responseForInformations) {
+          console.log('ity', it.information);
+          
+            informationsConst = [...informationsConst,...it.information]
+        
+       }
+   
+       dispatch(setInformations(informationsConst))
+       
+       Object.entries(typeInformationConst).map((el:any)=>{
+        const type = el[1]
+        const typeName = el[0]
+        let arr:any = []
+        arr = [...informationsConst.filter((fil:any)=>fil.name == typeName).map((ee:any)=>ee.description)]
+        arr = arr.filter((fil:any,pos:any)=> arr.indexOf(fil) === pos)
+  
+         
+        if (type == 'slider') {
+            if(arr.length ===  1){
+                informationValuesConst = {...informationValuesConst,[typeName]:[0,Number(arr.sort((a:any,b:any)=>b-a)[0]) ]}
+                slideMouseOneConst = {...slideMouseOneConst, [typeName]:[0,Number(arr.sort((a:any,b:any)=>b-a)[0]) ]}
+            }else{
+                informationValuesConst = {...informationValuesConst,[typeName]:[Number(arr.sort((a:any,b:any)=>a-b)[0]) ,Number(arr.sort((a:any,b:any)=>b-a)[0]) ]}
+                slideMouseOneConst = {...slideMouseOneConst, [typeName]:[Number(arr.sort((a:any,b:any)=>a-b)[0]) ,Number(arr.sort((a:any,b:any)=>b-a)[0]) ]}
+            }
+          
+        }else if (type == 'check'){
+        informationValuesConst = {...informationValuesConst,[typeName]:[...arr]}
+        }else{
+            arr.unshift('неважно')
+            console.log(arr,'********');
+            
+            informationValuesConst = {...informationValuesConst,[typeName]:arr[0]} 
+        }
+       })
+  
+       dispatch(setsliderMouseOn(slideMouseOneConst))
+       console.log('obj',informationValuesConst, action[9], Object.keys(JSON.parse(action[9])));
+       const newInformationValuesConst = Object.keys(JSON.parse(action[9]))
+       if (newInformationValuesConst.length !== 0) {
+        dispatch(setInformationValues(JSON.parse(action[9])))
+       }else{
+        dispatch(setInformationValues(informationValuesConst))
+       }
+
+       dispatch(setTypeInformation(typeInformationConst))
+       dispatch( setProductsLoad(true))
+  } catch (error) {
+    console.log('err', error);
+    
+  }
+}
 
 export const getProduct = (id:string | undefined)=>async (dispatch:AppDispatch) => {
   const currentState = store.getState();

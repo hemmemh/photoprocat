@@ -6,11 +6,14 @@ import CheckBoxGroup from "../../../../checkBoxGroup/CheckBoxGroup"
 import MyNumber from "../../../../UI/myNumber/MyNumber"
 
 
-
 export const FiltrsCatalog = () => {
     const {typeInformation,informations,informationValues,sliderMouseOn} = useAppSelector((state)=>state.reducer.catalog)
     const dispatch = useAppDispatch()
     const {setInformationValues,setsliderMouseOn} = catalogSlice.actions
+
+
+     
+        
 
     const changeVal = (val:number,type:string,pos:number)=>{
       const value = [...sliderMouseOn[type]]
@@ -20,7 +23,12 @@ export const FiltrsCatalog = () => {
     
       dispatch(setsliderMouseOn({...sliderMouseOn,[type]:value}))
       dispatch(setInformationValues({...informationValues,[type]:value}))
-  }
+    }
+    
+    const onChangeCommitted = (value: number | number[], typeName:string)=>{
+      dispatch(setInformationValues({...informationValues,[typeName]:value}))
+    }
+
 
   return (
      <>
@@ -35,7 +43,7 @@ export const FiltrsCatalog = () => {
 
    if (type == 'radio') {
       return(
-        <div key={`${Math.random()}`} className="GroupCover">
+        <div key={typeName} className="GroupCover">
           <div className="GroupCover__name">{typeName}</div>
           <RadioGroup typeName={typeName} arr={arr}/>
         </div>
@@ -49,7 +57,7 @@ export const FiltrsCatalog = () => {
    }
    if (type == 'check') {
     return (
-      <div key={`${Math.random()}`} className="GroupCover">
+      <div key={typeName} className="GroupCover">
       <div className="GroupCover__name">{typeName}</div>
       <CheckBoxGroup  typeName={typeName} arr={arr}/>
       
@@ -64,16 +72,15 @@ export const FiltrsCatalog = () => {
        if (arr.length === 1 ) {
          arr = [0,arr[0]]
        }
-        return  <>
-        <div key={`${Math.random()}`} className="right-main-catalog__slider  slider-right-main-catalog ">
+        return <div key={typeName} className="GroupCover" >
+        <div className="right-main-catalog__slider  slider-right-main-catalog ">
         <div className='GroupCover__name'>{typeName}</div>
         <div className="right-main-catalog__slider slider-right-main-catalog">
         <Slider 
                valueLabelDisplay="auto"
-                key={typeName}
                 value={sliderMouseOn[typeName]}
                 onChange={(event: Event, value: number | number[], activeThumb: number)=>dispatch(setsliderMouseOn({...sliderMouseOn,[typeName]:value}))}
-                onChangeCommitted={(event: Event | React.SyntheticEvent<Element, Event>, value: number | number[])=>dispatch(setInformationValues({...informationValues,[typeName]:value}))}
+                onChangeCommitted={(event: Event | React.SyntheticEvent<Element, Event>, value: number | number[])=>onChangeCommitted(value,typeName)}
                 min={Number(arr.sort((a:any,b:any)=>a-b)[0])}
                 max={Number(arr.sort((a:any,b:any)=>b-a)[0])}
         />
@@ -99,7 +106,9 @@ export const FiltrsCatalog = () => {
         </div>
         </div>
         </div>
-        </>
+        </div>
+      
+        
 }
   
 })}

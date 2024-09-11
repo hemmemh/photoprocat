@@ -40,6 +40,8 @@ export interface IProduct{
   export interface IProducts {
     count?:number
     responce:Array<IProduct>
+    responseForInformations:Array<IProduct>
+    type:IType | null
     responceAll:Array<IProduct>
   }
 

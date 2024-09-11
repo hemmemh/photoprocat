@@ -20,14 +20,31 @@
   
       &__left {
           flex:  1 1 auto;
+          display: flex;
+          flex-direction: column;
       }
   
       &__sort {
           
       }
 
+
+      &__gridCover{
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        gap: 1rem;
+      }
+
+      &__pagination{
+        display: flex;
+        justify-content: center;
+      }
+
+
       &__grid {
           position: relative;
+          flex: 1 1 auto;
           .mainCatalog__gridEnd{
               position: absolute;width: 100%;bottom: 0;left: 0;height: 10px;
           }
