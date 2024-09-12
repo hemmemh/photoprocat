@@ -83,12 +83,25 @@ export interface IProduct{
     _id:string
   }
   
+  export interface ICompare{
+    compareItems:ICompareItem[]
+    user:string
+    _id:string
+  }
+
+
   export interface ICompareItem{
     compare:string
     product:IProduct
     _id:string
   }
   
+  export interface ILoves{
+    lovesItems:ILovesItem[]
+    user:string
+    _id:string
+  }
+
   export interface ILovesItem{
     loves:string
     product:IProduct

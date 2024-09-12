@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
 import './itemsComapre.scss'
 const ItemsCompare = () => {
     
-    const {activeType,compareTypes} = useAppSelector(state=>state.reducer.compare)
-    const {compare} = useAppSelector(state=>state.reducer.catalog)
+    const {activeType,compareTypes, compare} = useAppSelector(state=>state.reducer.compare)
+
     const dispatch = useAppDispatch()
     const actionRef = useRef<HTMLDivElement>(null)
     const actionRef2 = useRef<HTMLDivElement>(null)
@@ -26,7 +26,7 @@ const ItemsCompare = () => {
         <div onClick={()=>dispatch(removeByType())} className="items-compare__delete _icon-delete"></div>
         
         <div ref={actionRef} className={itemsView ? "items-compare__body active" : "items-compare__body"}>
-            {compareTypes.map((el:any)=><div key={el} onClick={()=>dispatch(changeActiveType(el))} className={activeType === el ? "items-compare__item active" : "items-compare__item"}>{el} ({compare.filter((ell:any)=>ell.product.type.name === el).length})</div>)}
+            {compareTypes.map((el:any)=><div key={el} onClick={()=>dispatch(changeActiveType(el))} className={activeType === el ? "items-compare__item active" : "items-compare__item"}>{el} ({compare?.compareItems.filter((ell:any)=>ell.product.type.name === el).length ?? 0})</div>)}
         </div>
         
      

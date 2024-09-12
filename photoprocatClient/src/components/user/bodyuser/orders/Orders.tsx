@@ -3,13 +3,13 @@ import AccordionUser from '../../../UI/accordionUser/AccordionUser'
 import AccordionUserItem from '../../../UI/accordionUser/AccordionUserItem'
 import Button from '../../../UI/button/Button'
 import { API_URL } from '../../../../utils/config'
-import { repeat } from '../../../../store2/actions/UserActions'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
 import './orders.scss'
 import { IOrderItem, IOrdersItemProduct } from '../../../../utils/interfaces'
+import { repeat } from '../../../../store2/actions/BasketActions'
 const Orders = () => {
-    const {toggle} = useAppSelector((state)=>state.reducer.user)
-    const {orders,user} = useAppSelector((state)=>state.reducer.catalog)
+    const {toggle, user} = useAppSelector((state)=>state.reducer.user)
+    const {orders} = useAppSelector((state)=>state.reducer.catalog)
     const dispatch = useAppDispatch()
 
 

@@ -5,10 +5,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
 import "swiper/css/navigation";
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { putProducts } from '../model/HomeActions';
 import SpinnerBody from '../../UI/spinnerBody/SpinnerBody';
 import cls from './slidesHome.module.scss'
 import ProductItem from '../../productItem/ProductItem';
+import { putProductsInSlides } from '../../../store2/actions/CatalogActions';
 
 const navigation ={
   prevEl: '.slidesHome__prevButton',
@@ -34,11 +34,14 @@ export const SlidesHome = () => {
 
       const [loader, setloader] = useState<boolean>(false)
       const dispatch = useAppDispatch()
-      const {compare,loves,basket,products} = useAppSelector(state=>state.reducer.catalog)
+      const {products} = useAppSelector(state=>state.reducer.catalog)
+      const {basket} = useAppSelector(state=>state.reducer.basket)
+      const {loves} = useAppSelector(state=>state.reducer.love)
+      const {compare} = useAppSelector(state=>state.reducer.compare)
 
 
       useEffect(() => {
-        dispatch(putProducts()).then(()=>{
+        dispatch(putProductsInSlides()).then(()=>{
           setloader(true)
         })
       }, [])
@@ -67,12 +70,9 @@ export const SlidesHome = () => {
      <ProductItem 
           key={ell._id} 
           data={ell} 
-          basket={basket} 
-          loves={loves} 
-          compare={compare} 
-          inCompare = {compare?.find((el:any)=>el.product?._id == ell._id) ? true : false} 
-          inBasket = {basket?.find((el:any)=>el.product?._id == ell._id)  ? true : false} 
-          inLoves = {loves?.find((el:any)=>el.product?._id == ell._id)  ? true : false}/>
+          inCompare = {compare?.compareItems?.find((el:any)=>el.product?._id == ell._id) ? true : false} 
+          inBasket = {basket?.basketItems?.find((el:any)=>el.product?._id == ell._id)  ? true : false} 
+          inLoves = {loves?.lovesItems?.find((el:any)=>el.product?._id == ell._id)  ? true : false}/>
 </SwiperSlide>
 )}
 

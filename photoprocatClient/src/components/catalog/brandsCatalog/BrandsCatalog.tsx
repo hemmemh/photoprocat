@@ -2,12 +2,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
-import { chooseBrand } from '../../../store2/actions/ProductActions'
 import { API_URL } from '../../../utils/config'
 import ProductSpoiler from '../../UI/productSpoiler/ProductSpoiler'
 import './brandsCatalog.scss'
 import Button2 from '../../UI/button2/Button2'
 import { memo } from 'react';
+import { chooseBrand } from '../../../store2/actions/CatalogActions'
 
 
 

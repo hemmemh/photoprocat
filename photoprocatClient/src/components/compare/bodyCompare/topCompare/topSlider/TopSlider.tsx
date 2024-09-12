@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Controller } from 'swiper'
 import { compareSlice } from '../../../../../store2/reducers/CompareSlice'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { API_URL } from '../../../../../utils/config'
-import { removeItem } from '../../../../../store2/actions/CompareActions'
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/reduxHooks'
 import './topSlider.scss'
 import { ICompareItem } from '../../../../../utils/interfaces'
+import { removeItemFromCompare } from '../../../../../https/compareApi'
+import { removeFromCompare } from '../../../../../store2/actions/CompareActions'
 
 
 const breakpoints ={
@@ -29,10 +30,16 @@ const breakpoints ={
   
   }
 const TopSlider = ({setFirstSwiper,secondSwiper}:{setFirstSwiper:(a:any)=>void,secondSwiper:any}) => {
-    const {activeType} = useAppSelector(state=>state.reducer.compare)
-    const {user,compare} = useAppSelector(state=>state.reducer.catalog)
+    const {activeType, compare} = useAppSelector(state=>state.reducer.compare)
+
+
 
     const dispatch = useAppDispatch()
+    useEffect(() => {
+       console.log('compare', compare);
+       
+    }, [])
+    
 
   return (
     <div className="main-compare__top-slider">
@@ -48,7 +55,7 @@ onSwiper={(e)=>setFirstSwiper(e)}
 controller={{ control: secondSwiper }}
 breakpoints={breakpoints}   
 >
-{compare.map((el:ICompareItem)=>{
+{compare?.compareItems.map((el:ICompareItem)=>{
 if(el.product.type.name === activeType){
     return ( <SwiperSlide key={el._id}>
         <div className="swiperCompare__item item-swiperCompare">
@@ -57,7 +64,7 @@ if(el.product.type.name === activeType){
                  <img src={`${API_URL}/${el.product.name}/${JSON.parse(el.product.images)[0]}`} alt=""/>
                  </div>
              </div>
-             <div onClick={()=>dispatch(removeItem(el.product._id,user.compare))} className="item-swiperCompare__delete"></div>
+             <div onClick={()=>dispatch(removeFromCompare(el.product._id))} className="item-swiperCompare__delete"></div>
              <div className="item-swiperCompare__name">{el.product.name}</div>
              <div className="item-swiperCompare__brand">{el.product.brand.name}</div>
         </div>

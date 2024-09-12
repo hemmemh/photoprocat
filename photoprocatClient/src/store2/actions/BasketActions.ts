@@ -1,76 +1,42 @@
 
-import { addOrder, changeAmount, getBasket, removeAll, removeItemFromBasket } from "../../https/basketApi";
+import { addItemToBasket, addOrder, changeAmount, getBasket, removeAll, removeItemFromBasket } from "../../https/basketApi";
 import { change} from "../../https/productApi";
 
-import { HOME_ROUTE } from "../../app/config/routs";
+import { BASKET_ROUTE, HOME_ROUTE } from "../../app/config/routs";
 import { basketSlice } from "../reducers/BasketSlice";
 
 import { navbarSlice } from "../reducers/NavBarSlice";
 
 import { AppDispatch, store } from "../store";
-import { catalogSlice } from "../reducers/CatalogSlice";
+import { productSlice } from "../reducers/ProductSlice";
+import { IBasketItem, IProduct } from "../../utils/interfaces";
 
-
-
-
-export const putBasket = ()=>async (dispatch:AppDispatch) => {
-  const currentState = store.getState();
-  const {user} = currentState.reducer.catalog
-  const {setProducts,setBasket,setLoad} = basketSlice.actions
-  try {
-    dispatch(setLoad(true))
-    const data = await getBasket({id:user.id})
-    dispatch(setBasket(data))
-    let arr:any = []
-
-    for (const it of data.basketItems) {
-    arr = [...arr, {[it.product._id]:it.count}]
-    }
-    
-    dispatch(setProducts(arr))
-  
-  } catch (error) {
-    console.log(error);
-  } finally{
-    dispatch(setLoad(false))
-  }
-
-}
 
 
 export const buy = ()=>async (dispatch:AppDispatch) => {
   const currentState = store.getState();
-  const {user} = currentState.reducer.catalog
-  const {sumPrice,products} = currentState.reducer.basket
-  const {setProducts} = navbarSlice.actions
+  const {user} = currentState.reducer.user
+  const {setBasketItems} = basketSlice.actions
+  const {sumPrice, basket} = currentState.reducer.basket
+ 
   try {
-    dispatch(setProducts(0))
-    getBasket({id:user.id}).then(data=>{
-        let arr:any = []
-        for (const it of data.basketItems) {
-            arr = [...arr, {[it.product._id]:it.count}]
-        }
-  
-  addOrder({ordersId:user.orders,price:sumPrice,products:JSON.stringify(arr)}).then(data=>{
-    console.log(data);
-    
-  })
-    }).then(data=>{
-        for (const it of products) {
-            change({id:Object.keys(it)[0],purchase:1}).then(data=>{
-                console.log(data,'---------------');
-                
-            })
-        }
-    }).then(()=>{
-  
-        removeAll({id:user.basket}).then(data=>{
-            console.log(data,'7777');
-            
-        })
-        window.location.replace(HOME_ROUTE)
-        //window.location.reload();
-    })
+    if(!basket) return
+
+    let arr:any = []
+    for (const it of basket.basketItems) {
+        arr = [...arr, {[it.product._id]:it.count}]
+    }
+
+    await addOrder({ordersId:user.orders,price:sumPrice,products:JSON.stringify(arr)})
+
+    for (const it of basket.basketItems) {
+      await change({id:it.product._id ,purchase:1})
+    }
+
+    removeAll({id:user.basket})
+    dispatch(setBasketItems([]))
+    window.location.replace(HOME_ROUTE)
+ 
   } catch (error) {
     console.log(error);
   }
@@ -79,14 +45,33 @@ export const buy = ()=>async (dispatch:AppDispatch) => {
 
 export const changeAm = (e:any,el:any,amount:any)=>async (dispatch:AppDispatch) => {
   const currentState = store.getState();
-  const {sumPrice,} = currentState.reducer.basket
+  const {sumPrice} = currentState.reducer.basket
   const {setSumPrice} = basketSlice.actions
   try {
-    dispatch(setSumPrice(sumPrice - (amount * e.product.price) +(el * e.product.price)))
-    changeAmount({id:e._id,count:el}).then(data=>{
-        console.log(data);
-        
-    })
+    const price =  sumPrice - (amount * e.product.price) +(el * e.product.price)
+    dispatch(setSumPrice(price))
+    await changeAmount({id:e._id,count:el})
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+
+export const repeat = (products:any)=>async (dispatch:AppDispatch) => {
+  const currentState = store.getState();
+  const {user} = currentState.reducer.user
+  const {setBasketItems} = basketSlice.actions
+  try {
+    const newProducts:IBasketItem[] = []
+
+    await  removeAll({id:user.basket})
+    for  (const it of products) {
+      const item = await addItemToBasket({basketId:user.basket,product:it.product._id,count:it.amount})
+      newProducts.push(item)
+    }
+    dispatch(setBasketItems(newProducts))
+    window.location.replace(BASKET_ROUTE)
+
   } catch (error) {
     console.log(error);
   }
@@ -94,28 +79,63 @@ export const changeAm = (e:any,el:any,amount:any)=>async (dispatch:AppDispatch) 
 }
 
 
-export const remove = (e:any,amount:any,basketId:any)=>async (dispatch:AppDispatch) => {
-  const currentState = store.getState();
-  const {sumPrice,} = currentState.reducer.basket
-  const navbar = currentState.reducer.navbar
-  const {basket} = currentState.reducer.basket
-  const {setSumPrice,setBasket} = basketSlice.actions
 
-  const navbarSl = navbarSlice.actions
+export const addToBasketAction = (id:string | undefined)=>async (dispatch:AppDispatch) => {
+  const currentState = store.getState();
+  const {loaders} = currentState.reducer.product
+  const {user} = currentState.reducer.user
+  const {basket} = currentState.reducer.basket
+  const {setLoaders,setInBasket} = productSlice.actions
+  const {setBasket, setBasketItems} = basketSlice.actions
 
   try {
-    dispatch(setBasket({...basket, basketItems:basket.basketItems.filter((fil:any)=>fil._id !== e._id)}))
-    dispatch(setSumPrice(sumPrice - (e.product.price * amount)))
-    dispatch(navbarSl.setProducts(navbar.products - 1))
-  removeItemFromBasket({id:e.product._id,basketId}).then(data=>{
-    console.log(data);
-  })
+    console.log('****');
+    
+    if (!user.id || !basket) return
+   
+    
+    dispatch(setLoaders({...loaders,basket:false}) )
+    const data = await addItemToBasket({basketId:user.basket,product:id,count:1})
+    console.log('bakset', data, basket);
+    const newBasketItems = [...basket.basketItems]
+    newBasketItems.push(data)
+    dispatch(setInBasket(true))
+    dispatch(setBasketItems(newBasketItems))
+    dispatch(setLoaders({...loaders,basket:true}) )
   } catch (error) {
     console.log(error);
   }
 
 }
 
+export const removeFromBasket = (id:string | undefined)=>async (dispatch:AppDispatch) => {
+  const currentState = store.getState();
+  const {loaders} = currentState.reducer.product
+  const {user} = currentState.reducer.user
+  const {basket,sumPrice} = currentState.reducer.basket
+  const {setLoaders,setInBasket} = productSlice.actions
+  const {setBasket,setBasketItems, setSumPrice} = basketSlice.actions
+
+  try {
+    if (!user.id || !basket) return
+    dispatch(setLoaders({...loaders,basket:false}) )
+   
+    const item = basket.basketItems.find((el:any)=>el.product._id === id)
+    if (!item) return
+    const removedItem = await removeItemFromBasket({id:item._id,basketId:user.basket})
+    dispatch(setSumPrice(sumPrice - (removedItem.product.price * removedItem.count)))
+    const newBasketItems = basket.basketItems.filter(el=>el._id !== item._id)
+   
+    
+    dispatch(setBasketItems(newBasketItems))
+    dispatch(setInBasket(false))
+    dispatch(setLoaders({...loaders,basket:true}) )
+      
+  } catch (error) {
+    console.log(error);
+  }
+
+}
 
 
 

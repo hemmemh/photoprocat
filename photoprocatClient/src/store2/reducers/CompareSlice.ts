@@ -1,7 +1,7 @@
 
 import { createSlice,PayloadAction } from '@reduxjs/toolkit'
 import type { Swiper as afea }  from 'swiper';
-import { IInformation } from '../../utils/interfaces';
+import { ICompare, ICompareItem, IInformation } from '../../utils/interfaces';
 
 
 type initialState = {
@@ -13,6 +13,7 @@ type initialState = {
     compareTypes:string[]
     informations:IInformation[]
     load:boolean
+    compare:ICompare | null
 }
 
 const initialState:initialState = {
@@ -23,7 +24,8 @@ fold:false,
 activeTypeLoad:false,
 compareTypes:[],
 informations:[],
-load:true
+load:false,
+compare:null
 }
 
 export const compareSlice = createSlice({
@@ -53,7 +55,15 @@ export const compareSlice = createSlice({
         }, 
         setLoad(state,action:PayloadAction<boolean>){
             state.load = action.payload
-        }, 
+        },
+        setCompare(state,action:PayloadAction<ICompare>){
+            state.compare = action.payload
+        },  
+        setCompareItems(state,action:PayloadAction<ICompareItem[]>){
+            if (state.compare) {
+                state.compare.compareItems= action.payload
+            }
+        },
 
     }
 

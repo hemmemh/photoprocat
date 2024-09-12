@@ -8,15 +8,15 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
 import './compare.scss'
 import SpinnerBody from '../UI/spinnerBody/SpinnerBody'
 const MainCompare = () => {
-    const {compare} = useAppSelector(state=>state.reducer.catalog)
-    const {activeType,load} = useAppSelector(state=>state.reducer.compare)
+
+    const {activeType,load, compare} = useAppSelector(state=>state.reducer.compare)
     const {setActiveTypeLoad} = compareSlice.actions
     const dispatch = useAppDispatch()
     const [loadCompare,setloadCompare] = useState<boolean>(false)
 
 
     useEffect(() => {
-       dispatch(putCompare())
+       dispatch(putCompare)
     }, [])
 
 
@@ -39,7 +39,7 @@ const MainCompare = () => {
           <Navigation>Главная / Сравнить товары</Navigation>
       {load ?
       <SpinnerBody/>:
-       compare && compare.length !== 0 ?
+       compare && compare.compareItems.length !== 0 ?
       <BodyCompare/>
       :
       <div className='Compare__none _icon-compare'>Не выбраны товары</div>

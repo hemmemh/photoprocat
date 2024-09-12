@@ -9,8 +9,8 @@ import './bottomCompare.scss'
 import { ICompareItem, IInformation } from '../../../../utils/interfaces'
 const BottomCompare = ({setSecondSwiper,firstSwiper}:{setSecondSwiper:(a:any)=>void,firstSwiper:any}) => {
 
-    const {compare} = useAppSelector(state=>state.reducer.catalog)
-    const {activeType,fold,informations} = useAppSelector(state=>state.reducer.compare)
+
+    const {activeType,fold,informations, compare} = useAppSelector(state=>state.reducer.compare)
     const {setFold} = compareSlice.actions
     const dispatch = useAppDispatch()
   return (
@@ -49,7 +49,7 @@ breakpoints={{
 
 }} 
 >
-   {compare.map((el:ICompareItem)=>{
+   {compare?.compareItems.map((el:ICompareItem)=>{
            if(el.product.type.name === activeType){
             return(
                 <SwiperSlide key={el._id}>

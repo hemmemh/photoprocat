@@ -6,12 +6,13 @@ import BasketProduct from "../../../../../basketProduct/BasketProduct"
 
 
 const BodyItems = () => {
-    const {user} = useAppSelector(state=>state.reducer.catalog)
+    const {user} = useAppSelector(state=>state.reducer.user)
     const {basket} = useAppSelector(state=>state.reducer.basket)
     const {setSumPrice} = basketSlice.actions
     const dispatch = useAppDispatch()
     useEffect(() => {
-      const sum = basket.basketItems.reduce((prev,current)=>current?.product?.price * current.count + prev,0)
+
+      const sum = basket?.basketItems.reduce((prev,current)=>current?.product?.price * current.count + prev,0) ?? 0
       dispatch(setSumPrice(sum))
 
     }, [])
@@ -20,7 +21,7 @@ const BodyItems = () => {
   return (
     <div className="items-basket__body">
     {
-      basket.basketItems.map((e:any)=>
+      basket?.basketItems.map((e:any)=>
         <BasketProduct 
         key={e._id} 
         e={e} 

@@ -4,8 +4,8 @@ import './styles/style.scss'
 import { useState,useEffect} from 'react'
 
 
-import { refreshUser } from "../store2/actions/ProductActions";
 import { useAppDispatch } from "../hooks/reduxHooks";
+import { refreshUser } from "../store2/actions/UserActions";
 
 
 function App() {

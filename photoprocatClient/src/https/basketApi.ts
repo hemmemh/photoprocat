@@ -1,6 +1,7 @@
 import axios from "axios"
 import { $authHost, $host } from "."
 import { API_URL } from "../utils/config"
+import { IBasket, IBasketItem } from "../utils/interfaces"
 
 export const getBasket= async(info:any)=>{
     const {data} = await $host.post('basket/getOne',info)
@@ -8,11 +9,11 @@ export const getBasket= async(info:any)=>{
 }
 
 export const addItemToBasket= async(info:any)=>{
-    const {data} = await $host.post('basket/add',info)
+    const {data} = await $host.post<IBasketItem>('basket/add',info)
     return data
 }
 export const removeItemFromBasket= async(info:any)=>{
-    const {data} = await $host.post('basket/remove',info)
+    const {data} = await $host.post<IBasketItem>('basket/remove',info)
     return data
 }
 

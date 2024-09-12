@@ -7,15 +7,13 @@ import dayjs, { Dayjs } from 'dayjs'
 
 type initialState = {
     load:boolean,
-    products:IProduct[],
     sumPrice:number,
-    basket:IBasket,
+    basket:IBasket | null,
   
 }
 
 const initialState:initialState = {
-    load:true,
-    products:[],
+    load:false,
     sumPrice:0,
     basket:{
         basketItems:[],
@@ -32,18 +30,21 @@ export const basketSlice = createSlice({
     reducers:{
         setLoad(state,action:PayloadAction<boolean>){
             state.load = action.payload
-        }, 
-        setProducts(state,action:PayloadAction<IProduct[]>){
-            state.products= action.payload
-        }, 
+        },
         setSumPrice(state,action:PayloadAction<number>){
             state.sumPrice= action.payload
         }, 
         setBasket(state,action:PayloadAction<IBasket>){
             state.basket= action.payload
         }, 
+        setBasketItems(state,action:PayloadAction<IBasketItem[]>){
+            if (state.basket) {
+                state.basket.basketItems= action.payload
+            }
+        },
 
     }
+
 
 })
 

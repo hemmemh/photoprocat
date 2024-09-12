@@ -1,9 +1,5 @@
 
 import { createSlice,PayloadAction } from '@reduxjs/toolkit'
-import {IProduct} from '../../utils/interfaces'
-import dayjs, { Dayjs } from 'dayjs'
-
-
 
 type initialState = {
 toggle:number
@@ -12,6 +8,18 @@ serName:string,
 data:string,
 tell:string
 loadData:boolean
+user:{id:string,
+    compare:string,
+    orders:string,
+    loves:string,
+    basket:string,
+    birthDate:string,
+    name:string,
+    sername:string,
+    tell:string,
+    email:string,
+},
+
 }
 
 const initialState:initialState = {
@@ -20,7 +28,19 @@ const initialState:initialState = {
 serName:'',
 data:'2022-04-17',
 tell:'',
-loadData:false
+loadData:false,
+user:{
+    id:'',
+    compare:'',
+    orders:'',
+    loves:'',
+    basket:'',
+    birthDate:'',
+    name:'',
+    sername:'',
+    tell:'',
+    email:'',
+},
 }
 
 export const userSlice = createSlice({
@@ -44,6 +64,9 @@ export const userSlice = createSlice({
         },
         setLoadData(state,action:PayloadAction<boolean>){
             state.loadData= action.payload
+        },
+        setUser(state,action:PayloadAction<any>){
+            state.user = action.payload
         },
 
 

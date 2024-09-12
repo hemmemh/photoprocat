@@ -9,7 +9,7 @@ import './user.scss'
 
 const MainUser = () => {
     const {setOrders} = catalogSlice.actions
-    const {user} = useAppSelector((state)=>state.reducer.catalog)
+    const {user} = useAppSelector((state)=>state.reducer.user)
     const dispatch = useAppDispatch()
 
     

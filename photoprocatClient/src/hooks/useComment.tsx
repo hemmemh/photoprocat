@@ -6,7 +6,7 @@ import { HOME_ROUTE } from '../app/config/routs'
 import { useAppSelector } from './reduxHooks'
 
 const useComment = () => {
-    const {user} = useAppSelector(state=>state.reducer.catalog)
+    const {user} = useAppSelector(state=>state.reducer.user)
     const {newsId} = useAppSelector(state=>state.reducer.news)
     const [name, setname] = useState<string>(user.name)
     const [sername, setsername] = useState<string>(user.sername)

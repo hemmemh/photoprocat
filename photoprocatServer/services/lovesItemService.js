@@ -7,11 +7,12 @@ class lovesItemServices{
         try {
             const loves =await Loves.findById(lovesId).populate('lovesItems')
             if(!loves.lovesItems.find(e=> e.product._id.toString() == product )){
-                const response = new LovesItem({loves:lovesId,product})
+            const response = new LovesItem({loves:lovesId,product})
             await response.save()
             loves.lovesItems.push(response._id)
             await loves.save()
-            return response
+            const item = await LovesItem.findOne({_id:response._id}).populate('product')
+            return  item
             }
             
         } catch (e) {

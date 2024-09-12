@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import TopicBasket from './topicBasket/TopicBasket'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
-import { putBasket } from '../../../store2/actions/BasketActions'
+
 import SpinnerBody from '../../UI/spinnerBody/SpinnerBody'
 
 
@@ -12,7 +12,7 @@ const dispatch = useAppDispatch()
 
 
     useEffect(() => {
-        dispatch(putBasket())
+        
 }, [])
 
 

@@ -4,6 +4,9 @@ import { navbarSlice } from '../store2/reducers/NavBarSlice'
 import { addItemToBasket, removeItemFromBasket } from '../https/basketApi'
 import { addItemToCompare, removeItemFromCompare } from '../https/compareApi'
 import { addProductInLoves, removeProductFromLoves } from '../https/lovesApi'
+import { addToCompareAction, removeFromCompare } from '../store2/actions/CompareActions'
+import { addToLovesAction, removeFromLoves } from '../store2/actions/LovesActions'
+import { addToBasketAction, removeFromBasket } from '../store2/actions/BasketActions'
 
 
 type itemProduct = {
@@ -19,7 +22,7 @@ const [inBasketSnippet, setinBasketSnippet] = useState(inBasket)
 const [inCompareSnippet, setinCompareSnippet] = useState(inCompare)
 const [inLovesSnippet, setinLovesSnippet] = useState(inLoves)
 const [loaders, setloaders] = useState({basket:true,compare:true,love:true})
-const {user} = useAppSelector(state=>state.reducer.catalog)
+const {user} = useAppSelector(state=>state.reducer.user)
 const {products,compare} = useAppSelector(state=>state.reducer.navbar)
 const navbar = navbarSlice.actions
 const dispatch = useAppDispatch()
@@ -40,7 +43,7 @@ const dispatch = useAppDispatch()
 
 
 
-  const addToBasket =  ()=>{
+  const addToBasket =  async ()=>{
     const item  = document.querySelector('.actionsMenu__span._product')
     const element = document.querySelector('.Navbar__loader')
     if (!user.id) {
@@ -54,31 +57,27 @@ const dispatch = useAppDispatch()
     }
     if (loaders.basket) {
       if (!inBasketSnippet) {
-        setloaders({...loaders,basket:false})
-          addItemToBasket({basketId:user.basket,product:data._id,count:1}).then(data=>{
-            item?.classList.add('active')
-            setTimeout(() => {
-              item?.classList.remove('active')
-            }, 300);
-            setinBasketSnippet(true)
-            dispatch(navbar.setProducts(products + 1))
+ 
+
+        item?.classList.add('active')
+        setTimeout(() => {
+          item?.classList.remove('active')
+        }, 300);
+
+         await dispatch(addToBasketAction(data._id))
+         setinBasketSnippet(true)
+
       
          
-          }).finally(()=>{
-            setloaders({...loaders,basket:true})
-          })
+         
       }else{
-        setloaders({...loaders,basket:false})
-        removeItemFromBasket({id:data._id,basketId:user.basket}).then(data=>{
-          item?.classList.add('active')
-          setTimeout(() => {
-            item?.classList.remove('active')
-          }, 300);
-            dispatch(navbar.setProducts(products - 1))
-            setinBasketSnippet(false)
-        }).finally(()=>{
-          setloaders({...loaders,basket:true})
-        })  
+        item?.classList.add('active')
+        setTimeout(() => {
+          item?.classList.remove('active')
+        }, 300);
+
+          await dispatch(removeFromBasket(data._id))
+          setinBasketSnippet(false)  
     }
     }
 
@@ -87,7 +86,7 @@ const dispatch = useAppDispatch()
 }
 
 
-const addToCompare = ()=>{
+const addToCompare = async ()=>{
   const item  = document.querySelector('._compare')
     const element = document.querySelector('.Navbar__loader')
   if (!user.id) {
@@ -103,33 +102,31 @@ const addToCompare = ()=>{
   if (loaders.compare) {
     if (!inCompareSnippet) {
       setloaders({...loaders,compare:false})
-        addItemToCompare({compareId:user.compare,product:data._id}).then(data=>{
-          setinCompareSnippet(true)
-          dispatch(navbar.setCompare(compare + 1))
-          item?.classList.add('active')
-          setTimeout(() => {
-            item?.classList.remove('active')
-          }, 300);
-      
-          setinCompareSnippet(true)
-        }).catch(e=>{
-          console.log(e);
-          
-        }).finally(()=>{
-          setloaders({...loaders,compare:true})
-        })
-    }else{
-      setloaders({...loaders,compare:false})
-      removeItemFromCompare({id:data._id,compareId:user.compare}).then(data=>{
-        dispatch(navbar.setCompare(compare - 1))
-        setinCompareSnippet(false)
+      await dispatch(addToCompareAction(data._id))
+   
+    
+        setinCompareSnippet(true)
+ 
         item?.classList.add('active')
         setTimeout(() => {
           item?.classList.remove('active')
         }, 300);
-      }).finally(()=>{
+    
         setloaders({...loaders,compare:true})
-      })
+    }else{
+      setloaders({...loaders,compare:false})
+
+      await dispatch(removeFromCompare(data._id))
+ 
+
+      setinCompareSnippet(false)
+
+      item?.classList.add('active')
+      setTimeout(() => {
+        item?.classList.remove('active')
+      }, 300);
+
+      setloaders({...loaders,compare:true})
   }
 
   }
@@ -137,7 +134,7 @@ const addToCompare = ()=>{
 
 }
 
-const addToLoves = ()=>{
+const addToLoves = async ()=>{
     const element = document.querySelector('.Navbar__loader')
   if (!user.id) {
 
@@ -153,25 +150,14 @@ const addToLoves = ()=>{
   if (loaders.love) {
     if (!inLovesSnippet) {
       setloaders({...loaders,love:false})
-    addProductInLoves({lovesId:user.loves,product:data._id}).then(data=>{
-    
+      await dispatch(addToLovesAction(data._id))
       setinLovesSnippet(true)
-        
-    }).catch(error=>{
-      console.log(error.response.data);
-      
-    }).finally(()=>{
       setloaders({...loaders,love:true})
-    })
   }else{
-    setloaders({...loaders,love:false})
-    removeProductFromLoves({id:data._id,lovesId:user.loves}).then(data=>{
-  
-        setinLovesSnippet(false)
-        
-    }).finally(()=>{
+      setloaders({...loaders,love:false})
+      dispatch(removeFromLoves(data._id))
+      setinLovesSnippet(false)
       setloaders({...loaders,love:true})
-    })
   }
   }
 

@@ -5,12 +5,13 @@ import {memo} from 'react'
 
 const ActionsNavBar = () => {
     const navigate = useNavigate()
-    const navbar = useAppSelector((state)=>state.reducer.navbar)
+    const compare = useAppSelector((state)=>state.reducer.compare.compare)
+    const basket = useAppSelector((state)=>state.reducer.basket.basket)
   return (
     <div className="menu__actions actionsMenu">
     <div onClick={()=>navigate(LOVES_ROUTE)} className="actionsMenu__action _icon-star"></div>
-    <div onClick={()=>navigate(COMPARE_ROUTE)} className="actionsMenu__action _icon-compare">{navbar.compare !== 0 && <span className='actionsMenu__span _compare'>{navbar.compare}</span> }</div>
-    <div onClick={()=>navigate(BASKET_ROUTE)} className="actionsMenu__action _icon-cart">{navbar.products !== 0 &&<span className='actionsMenu__span _product'>{navbar.products}</span>}</div>
+    <div onClick={()=>navigate(COMPARE_ROUTE)} className="actionsMenu__action _icon-compare">{compare?.compareItems.length !== 0 && <span className='actionsMenu__span _compare'>{compare?.compareItems.length}</span> }</div>
+    <div onClick={()=>navigate(BASKET_ROUTE)} className="actionsMenu__action _icon-cart">{basket?.basketItems.length !== 0 &&<span className='actionsMenu__span _product'>{basket?.basketItems.length}</span>}</div>
 </div>
   )
 }

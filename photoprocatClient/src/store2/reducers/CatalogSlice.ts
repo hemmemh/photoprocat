@@ -13,9 +13,6 @@ type initialState = {
     minMaxPrice:number[],
     productsLoad:boolean,
     products:IProducts,
-    basket:IBasketItem[],
-    loves:ILovesItem[],
-    compare:ICompareItem[],
     orders:IOrderItem[],
     gridLoader:boolean,
     sortNumber:number,
@@ -26,17 +23,7 @@ type initialState = {
     checkedBrands:any[],
     page:number,
     limit:number,
-    user:{id:string,
-        compare:string,
-        orders:string,
-        loves:string,
-        basket:string,
-        birthDate:string,
-        name:string,
-        sername:string,
-        tell:string,
-        email:string,
-    },
+
  
     types:IType[]
 
@@ -57,9 +44,6 @@ const initialState:initialState = {
         responseForInformations:[],
         type:null
     },
-    basket:[],
-    loves:[],
-    compare:[],
     gridLoader:false,
     sortNumber:1,
     sort:'date',
@@ -70,19 +54,6 @@ const initialState:initialState = {
     checkedBrands:[],
     page:1,
     limit:6,
-    user:{
-        id:'',
-        compare:'',
-        orders:'',
-        loves:'',
-        basket:'',
-        birthDate:'',
-        name:'',
-        sername:'',
-        tell:'',
-        email:'',
-    },
-  
     types:[],
     orders:[],
 
@@ -105,15 +76,6 @@ export const catalogSlice = createSlice({
         },
         setProductsLoad(state,action:PayloadAction<boolean>){
             state.productsLoad = action.payload
-        },
-        setBasket(state,action:PayloadAction<IBasketItem[]>){
-            state.basket = action.payload
-        },
-        setLoves(state,action:PayloadAction<ILovesItem[]>){
-            state.loves = action.payload
-        },
-        setCompare(state,action:PayloadAction<ICompareItem[]>){
-            state.compare = action.payload
         },
         setGridLoader(state,action:PayloadAction<boolean>){
             state.gridLoader = action.payload
@@ -153,9 +115,6 @@ export const catalogSlice = createSlice({
         },
         setMinMaxPrice(state,action:PayloadAction<number[]>){
             state.minMaxPrice = action.payload
-        },
-        setUser(state,action:PayloadAction<any>){
-            state.user = action.payload
         },
         setTypes(state,action:PayloadAction<IType[]>){
             state.types = action.payload

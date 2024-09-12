@@ -18,9 +18,6 @@ interface button{
  inBasket:any
  inCompare:any
  inLoves:any
- basket:any
- loves:any
- compare:any
  className?:string
 }
 

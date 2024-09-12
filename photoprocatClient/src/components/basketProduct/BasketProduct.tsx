@@ -1,6 +1,6 @@
 import React,{FC,useState,useEffect, useContext} from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
-import { changeAm, remove } from '../../store2/actions/BasketActions'
+import { changeAm, removeFromBasket} from '../../store2/actions/BasketActions'
 import { API_URL } from '../../utils/config'
 import Amount from '../UI/amount/Amount'
 
@@ -33,7 +33,7 @@ const BasketProduct:FC<button>  = ({e,products,basketId}) => {
 
 
     const onRemove = ()=>{
-         dispatch(remove(e,amount,basketId))
+         dispatch(removeFromBasket(e.product._id))
        
     }
 

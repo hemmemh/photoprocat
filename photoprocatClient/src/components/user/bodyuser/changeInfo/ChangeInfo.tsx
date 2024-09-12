@@ -13,7 +13,7 @@ import './changeInfo.scss'
 const ChangeInfo = () => {
     const {toggle,name,serName,tell,data} = useAppSelector((state)=>state.reducer.user)
     const {setSerName,setName,setData,setTell} = userSlice.actions
-    const {user} = useAppSelector((state)=>state.reducer.catalog)
+    const {user} = useAppSelector((state)=>state.reducer.user)
     const [mail, setmail] = useState<string>(user.email)
     const dispatch = useAppDispatch()
     const calendarRef = useRef<HTMLImageElement>(null)

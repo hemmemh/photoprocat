@@ -8,7 +8,7 @@ import { CATALOG_ROUTE, USER_ROUTE } from '../../../app/config/routs'
 export const RightMenu = () => {
     const navigate = useNavigate()
     const {search} = useAppSelector((state)=>state.reducer.navbar)
-    const {user} = useAppSelector((state)=>state.reducer.catalog)
+    const {user} = useAppSelector((state)=>state.reducer.user)
     const {setSearch,setLoginModal} = navbarSlice.actions
     const dispatch = useAppDispatch()
     const location = useLocation()

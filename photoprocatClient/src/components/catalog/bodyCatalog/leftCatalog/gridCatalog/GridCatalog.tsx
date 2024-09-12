@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 
 import { CircularProgress, Pagination, Skeleton } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/reduxHooks";
-import { getAllInfo, getProducts, setPage, updateProducts } from "../../../../../store2/actions/ProductActions";
 import ProductItem from "../../../../productItem/ProductItem";
+import { getAllInfo, getProducts } from "../../../../../store2/actions/CatalogActions";
 
 
 export const GridCatalog = () => {
@@ -14,7 +14,10 @@ export const GridCatalog = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-      const {priceValue,checkedBrands,sort,sortNumber,typeInformation,informationValues,limit,productsLoad,products,basket,loves,compare,gridLoader,page,type} = useAppSelector((state)=>state.reducer.catalog)
+      const {priceValue,checkedBrands,sort,sortNumber,typeInformation,informationValues,limit,productsLoad,products,gridLoader,page,type} = useAppSelector((state)=>state.reducer.catalog)
+      const {basket} = useAppSelector((state)=>state.reducer.basket)
+      const {loves} = useAppSelector((state)=>state.reducer.love)
+      const {compare} = useAppSelector((state)=>state.reducer.compare)
       const {filterCatalog} = useAppSelector((state)=>state.reducer.navbar)
       const dispatch = useAppDispatch()
       const [searchParams] = useSearchParams();
@@ -115,12 +118,9 @@ export const GridCatalog = () => {
         <ProductItem
             key={e._id}
             data={e}
-            basket={basket}
-            loves={loves}
-            compare={compare}
-            inCompare = {compare?.find((el:any)=>el.product?._id == e._id) ? true : false}
-            inBasket = {basket?.find((el:any)=>el.product?._id == e._id)  ? true : false}
-            inLoves = {loves?.find((el:any)=>el.product?._id == e._id)  ? true : false}
+            inCompare = {compare?.compareItems.find((el:any)=>el.product?._id == e._id) ? true : false}
+            inBasket = {basket?.basketItems.find((el:any)=>el.product?._id == e._id)  ? true : false}
+            inLoves = {loves?.lovesItems.find((el:any)=>el.product?._id == e._id)  ? true : false}
             className='catalogItem'
         />
             )}

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { EMAIL_REGEXP, PASSWORD_REGEX } from '../utils/config'
-import { Login } from '../store2/actions/NavBarActions'
+
 
 import { navbarSlice } from '../store2/reducers/NavBarSlice'
 import { useAppDispatch, useAppSelector } from './reduxHooks'
 import { useNavigate } from 'react-router-dom'
 import { REGISTRATION_ROUTE } from '../app/config/routs'
+import { Login } from '../store2/actions/UserActions'
 
 type useValidationType = {
     setmail:React.Dispatch<React.SetStateAction<string>>

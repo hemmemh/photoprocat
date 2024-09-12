@@ -46,20 +46,19 @@ try {
   if (validationEmail && validationPassword && mail !=='' && password !=='') {
     dispatch(setLoader(true))
     
-    registration({mail,password}).then(response=>{
-        const user = jwtDecode<any>(response.refreshToken)
-        changeUser({id:user.id,name,serName:secondName,birthDate:data,tell}).then(data=>{
-            dispatch(setSuccessfullReg(true))
-            console.log(data,'1111');
-        
-            setTimeout(() => {
-                dispatch(setSuccessfullReg(false))
-            }, 3000);
-        })
+   const response = await  registration({mail,password})
+   
+    const user = jwtDecode<any>(response.refreshToken)
+
+    await changeUser({id:user.id,name,serName:secondName,birthDate:data,tell})
+
+       dispatch(setSuccessfullReg(true))
     
-    }).finally(()=>{
+        setTimeout(() => {
+            dispatch(setSuccessfullReg(false))
+        }, 3000);
+        
         dispatch(setLoader(false))
-    })
 }else{
     alert('ошибка при регистрации')
 }

@@ -16,7 +16,9 @@ class compareItemServices{
     
                 compare.compareItems.push(response._id)
                 await compare.save()
-                return response
+
+                const item = await CompareItem.findOne({_id:response._id}).populate({path:'product',populate:[{path:"type"},{path:"brand"},{path:"information"}]})
+                return item
             }
          
         } catch (e) {
