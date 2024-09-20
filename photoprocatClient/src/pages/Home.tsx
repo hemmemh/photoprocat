@@ -1,16 +1,12 @@
-import Layout from "../app/Layout"
-import { MainHome } from "../components/home/MainHome"
-import { useRef } from 'react'
-import { useAppSelector } from "../hooks/reduxHooks"
+import Layout from '../app/Layout';
+import { MainHome } from '../components/home/MainHome';
 
- const Home = () => {
-
+const Home = () => {
   return (
-    <Layout >
+    <Layout>
       <MainHome />
     </Layout>
-  )
-}
+  );
+};
 
- 
-export default Home
+export default Home;

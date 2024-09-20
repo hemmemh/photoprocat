@@ -1,0 +1,69 @@
+@import '../../app/styles/style';
+
+.CheckBoxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: rem(15);
+}
+
+.AccordionUser__item {
+  .CheckBoxGroup {
+    padding: 15px 0;
+  }
+}
+
+.checkBoxFiltr {
+  display: flex;
+  gap: rem(14);
+  cursor: pointer;
+
+  &.active {
+    .CheckBox__check {
+      background: #4f9c2c;
+      transition: all 0.3s ease 0s;
+
+      &::before {
+        color: #fff;
+        font-size: 8px;
+
+        @extend %ic;
+
+        display: block;
+        content: '\e904';
+      }
+    }
+  }
+}
+
+.CheckBox__label {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  color: #000;
+  transition: all 0.3s ease 0s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #60b021;
+      transition: all 0.3s ease 0s;
+    }
+  }
+}
+
+.CheckBox__check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 15%);
+  transition: all 0.3s ease 0s;
+
+  &::before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

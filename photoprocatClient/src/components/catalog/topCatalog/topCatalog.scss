@@ -1,29 +1,29 @@
-@import "../../../app/styles/style.scss" ;
+@import '../../../app/styles/style';
+
 .top-catalog {
-    &__title {
-        position: relative;
-        z-index: 34;
-        font-family: 'Ubuntu';
-         font-style: normal;
-         font-weight: 700;
-         font-size: 30px;
-         line-height: 34px;
-         text-transform: uppercase;
-         color: #000000;
-         margin-bottom: rem(20); 
-         margin-top: rem(14);
-    }
-    
-    &__text {
-        position: relative;
-        z-index: 34;
-        font-family: 'Ubuntu';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 24px;  
-        color: #75758A;
-        max-width: rem(540);
-    
-    }
+  &__title {
+    position: relative;
+    z-index: 34;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 34px;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: rem(20);
+    margin-top: rem(14);
+  }
+
+  &__text {
+    position: relative;
+    z-index: 34;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #75758a;
+    max-width: rem(540);
+  }
 }

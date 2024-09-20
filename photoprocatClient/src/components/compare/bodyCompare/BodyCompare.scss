@@ -1,150 +1,39 @@
-@import "../../../app/styles/style.scss";
+@import '../../../app/styles/style';
+
 .main-compare {
+  min-width: 0;
+  width: 100%;
+}
 
-    min-width: 0px;
-    width: 100%;
-    &__top {
-        display: flex;
-        padding: 14px 0 14px 0;
-         width: 100%;
-        min-width: 0;
-        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
-        position: relative;
-        &::before{
-            content:'';
-            position: absolute;width: 6px;height: 100%;top: 0;right: -6px;
-            background: #fff;
-            z-index: 100;
-        }
-        &::after{
-            content:'';
-            position: absolute;width: 6px;height: 100%;top: 0;left: -6px;
-            background: #fff;
-            z-index: 100;
-            
-        }
-    }
+.title {
+  display: flex;
+  flex-direction: column;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
 
-    &__top-left {
-        margin-right: rem(105);
-        display: flex;
-        flex-direction: column;
-        @media (max-width:583px){
-              display: none;
-        }
-         
-    }
+  @include adaptiveValue(' margin-bottom', 43, 20);
 
- 
+  @media (width <= 583px) {
+    flex-direction: row;
+    gap: rem(5);
+    color: black;
+    justify-content: center;
+  }
 
-    &__item {
-        max-width: rem(80);
-        font-family: 'Ubuntu';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 20px;
-        color: #75758A;
-    }
+  @media (max-width: $mobile) {
+    font-size: 18px;
+    line-height: 30px;
+  }
 
-    &__top-slider {
-        flex: 1 1  auto;
-        min-width: 0;
-        
-       
-    }
-        &__left {
-          
-        }
-    
-        &__clear {
-            flex: 1 1 auto;
-            cursor: pointer;
-               transition: all 0.3s ease 0s;
-            @media (any-hover: hover){
-                &:hover{
-                    color: #4F9C2C;
-                    transition: all 0.3s ease 0s;
-                }
-            }
-            display: flex;
-            gap: rem(8);
-            font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: #000000;
-    &::before{
-       font-size: rem(16);
-        
-    }
-        }
-    
+  text-transform: uppercase;
+  background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+  background-clip: text;
+  color: transparent;
 
-    
-        &__right {
-          flex: 0 0 auto;
-        max-width: 100%;
-        }
-        &__button{
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: rem(80);
-        }
-        &__bottom {
-          display: flex;
-          min-width: 0;
-          margin-bottom: rem(30);
-          position: relative;
-          overflow: hidden;
-        }
-    
-        &__bottom-left {
-            overflow: visible;
-            flex: 0 0 em(201);
-            border-bottom: 1px solid #EFEFEF;
-            @media (max-width:583px){
-                position: absolute;
-                padding-right: 0;
-                left: 50%;
-                transform: translate(-50%,0);
-                text-align: center;
-         
-               
-            }
-            &__item{
-                @media (max-width:583px){
-                    padding: 0;
-                    border: none;
-                    height: 75px;
-                    display: flex;
-                   align-items: flex-start;
-                    justify-content: center;
-                    padding-top: 17px;
-                }
-                white-space: nowrap;
-                font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    padding: 14px 0;
-    color: #75758A;
-    position: relative;
-    overflow: visible;
-    &::before{
-        content:'';
-        position: absolute;width: 100vw;height: 0.5px;top: 0;left: 0;
-        background: #EFEFEF;
-        z-index: 200;
-    
-    }
-    
-    
-            }
-      
-        }
-    }
-
+  span {
+    color: $mainColor;
+  }
+}

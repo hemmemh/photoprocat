@@ -1,0 +1,126 @@
+@import '../../../../app/styles/style';
+
+.catalogNavbar {
+  display: flex;
+  flex-direction: row;
+
+  &__left {
+    padding: rem(26) rem(0);
+
+    @media (max-width: $mobileSmall) {
+      padding: rem(10) rem(0);
+    }
+  }
+
+  &__right {
+    background: #fff;
+    padding-top: rem(16);
+    padding-bottom: rem(26);
+
+    @media (min-width: em(1180)) {
+      display: none;
+      border-left: 2px solid #e3e3e3;
+    }
+  }
+
+  position: absolute;
+  top: 80%;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease 0s;
+  background: #fff;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 15%);
+  z-index: 14;
+
+  @media (max-width: $mobile) {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    overflow: auto;
+    box-shadow: none;
+    flex-direction: column;
+    padding-top: rem(40);
+  }
+
+  &.active {
+    opacity: 1;
+    pointer-events: inherit;
+  }
+
+  &__name {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    color: #000;
+    padding: rem(0) rem(30);
+    margin-bottom: rem(18);
+
+    span {
+      color: #60b021;
+      margin-right: rem(8);
+    }
+  }
+
+  &__items {
+  }
+
+  &__item {
+    white-space: nowrap;
+    cursor: pointer;
+    font-family: Ubuntu;
+    padding: rem(7) rem(30);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000;
+    transition: all 0.3s ease 0s;
+
+    &:not(:last-child) {
+      margin-bottom: rem(13.5);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        transition: all 0.3s ease 0s;
+        background: #f5f5f5;
+        color: #60b021;
+      }
+    }
+
+    &_two {
+      color: #75758a;
+      white-space: nowrap;
+      cursor: pointer;
+      font-family: Ubuntu;
+      padding: rem(7) rem(30);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      transition: all 0.3s ease 0s;
+
+      &:not(:last-child) {
+        margin-bottom: rem(13.5);
+      }
+
+      :first-child {
+        margin-bottom: 0;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          transition: all 0.3s ease 0s;
+          background: #f5f5f5;
+          color: #60b021;
+        }
+      }
+    }
+  }
+}

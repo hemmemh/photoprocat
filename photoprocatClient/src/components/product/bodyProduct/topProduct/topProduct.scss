@@ -1,116 +1,52 @@
-@import "../../../../app/styles/style.scss";
+@import '../../../../app/styles/style';
+
 .main-product {
-    display: flex;
-    gap: rem(50);
-    @media (max-width:$mobile){
-      gap: rem(20);
-    }
-    margin-bottom: rem(50);
-    @media (max-width:$mobile){
-        margin-bottom: rem(30);  
-    }
-    @media (max-width:$tablet){
-         flex-direction: column; 
-    }
-          &__actions{
-            display: flex;
-            align-items: center;
-            margin-bottom: rem(50);
-            gap: rem(30);
-            @media (max-width:$mobile){
-              margin-bottom: rem(20);
-            }
-          }
-          &__raiting{
-            margin-bottom: rem(30);
-          }
-        &__left {
-            flex: 0 0 rem(425);
-            width: rem(425);
-            @media (max-width:$tablet){
-                align-self: center;
-           }
-           @media (max-width:$mobileSmall){
-            width: 100%;
-           }
-        }
-    
-        &__gallery {
-          
-        }
-    
-        &__tags {
-        }
-    
-        &__right {
-            flex: 1 1 auto;
-        }
-    
-        &__brand {
-            font-family: 'Ubuntu';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 30px;
-            line-height: 34px;
-            @media (max-width:$mobile){
-                font-size: 18px;
-                line-height: 30px;
-            }
-            text-transform: uppercase;
-            background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
-    background-clip: text;
-    color: transparent;
-        }
-    
-        &__name {
-            font-family: 'Ubuntu';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 30px;
-            line-height: 34px;
-            text-transform: uppercase;
-            margin-bottom: rem(23);
-            color: #000000;
-            @media (max-width:$mobile){
-                font-size: 18px;
-                line-height: 20px;
-            }
-    
-        }
-    
-        &__description {
-        }
-        &__raiting{
-            margin-bottom: rem(20);
-        }
-    }
+  display: flex;
+  gap: rem(50);
 
+  @media (max-width: $mobile) {
+    gap: rem(20);
+  }
 
+  margin-bottom: rem(50);
 
+  @media (max-width: $mobile) {
+    margin-bottom: rem(30);
+  }
 
-
-
+  @media (max-width: $tablet) {
+    flex-direction: column;
+  }
+}
 
 .buttonCart {
-    .content{
-        display: flex;
-        align-items: center;
-        gap: em(5);
-    }
+  .content {
+    display: flex;
     align-items: center;
-    svg{
-        width: em(20);
-        height: em(20);
-    }
+    gap: em(5);
+  }
+
+  svg {
+    width: em(20);
+    height: em(20);
+  }
+
   align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(205, 204, 204, 0.4);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  color: rgba(0, 0, 0, 0.85);
+  background-color: #fff;
+  border: 1px solid rgb(205 204 204 / 40%);
+  border-radius: 0.25rem;
+  box-shadow: rgb(0 0 0 / 2%) 0 1px 3px 0;
+  color: rgb(0 0 0 / 85%);
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    system-ui,
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
@@ -122,32 +58,30 @@
   text-decoration: none;
   transition: all 250ms;
   user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
-  &::before{
+
+  &::before {
     margin-right: rem(5);
   }
-  &:hover,
-   &:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
-}
 
-&:hover {
+  &:hover,
+  &:focus {
+    border-color: rgb(0 0 0 / 15%);
+    box-shadow: rgb(0 0 0 / 10%) 0 4px 12px;
+    color: rgb(0 0 0 / 65%);
+  }
+
+  &:hover {
     transform: translateY(-1px);
   }
-  
-&.active {
-    background-color: #F0F0F1;
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-    color: rgba(0, 0, 0, 0.65);
+
+  &.active {
+    background-color: #f0f0f1;
+    border-color: rgb(0 0 0 / 15%);
+    box-shadow: rgb(0 0 0 / 6%) 0 2px 4px;
+    color: rgb(0 0 0 / 65%);
     transform: translateY(0);
   }
 }
-
-
-

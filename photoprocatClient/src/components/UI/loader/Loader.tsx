@@ -1,9 +1,14 @@
-import './loader.scss'
+import './loader.scss';
 
-const Loader = ({className=''}:{className?:string}) => {
+const Loader = ({ className = '' }: { className?: string }) => {
   return (
-    <div className={`lds-ring ${className}`}><div></div><div></div><div></div><div></div></div>
-  )
-}
+    <div className={`lds-ring ${className}`}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+};
 
-export default Loader
+export default Loader;

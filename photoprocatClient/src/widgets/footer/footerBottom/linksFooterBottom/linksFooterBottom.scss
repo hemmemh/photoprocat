@@ -1,0 +1,76 @@
+@import '../../../../app/styles/style';
+
+.links-bottom-footer {
+  display: flex;
+  flex: 0 1 570px;
+  gap: rem(85);
+
+  @media (max-width: $pc) {
+    justify-content: center;
+    flex: 1 1 33.333%;
+  }
+
+  @media (max-width: $mobile) {
+    justify-content: right;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $mobile) {
+      gap: rem(10);
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex: 1 1 auto;
+    gap: rem(10);
+  }
+
+  &__link {
+    max-width: rem(32);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__bottom {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #75758a;
+
+    @media (max-width: $mobileSmall) {
+      display: none;
+    }
+  }
+
+  &__right {
+    @media (max-width: $pc) {
+      display: none;
+    }
+  }
+
+  &__tel {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000;
+  }
+
+  &__adress {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000;
+  }
+}

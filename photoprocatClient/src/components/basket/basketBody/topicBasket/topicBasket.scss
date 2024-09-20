@@ -1,0 +1,21 @@
+@import '../../../../app/styles/style';
+
+.topic {
+}
+
+.title {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
+  text-transform: uppercase;
+  margin-bottom: rem(43);
+  color: #000;
+
+  @media (max-width: $mobile) {
+    margin-bottom: rem(10);
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

@@ -1,14 +1,21 @@
-import React from 'react'
-import LeftCompare from './leftCompare/LeftCompare'
-import TopSlider from './topSlider/TopSlider'
+import LeftCompare from './leftCompare/LeftCompare';
+import TopSlider from './topSlider/TopSlider';
+import './topCompare.scss';
+import Swiper from 'swiper';
 
-const TopCompare = ({setFirstSwiper,secondSwiper}:{setFirstSwiper:(a:any)=>void,secondSwiper:any}) => {
+const TopCompare = ({
+  setFirstSwiper,
+  secondSwiper,
+}: {
+  setFirstSwiper: (value: Swiper) => void;
+  secondSwiper: Swiper | null;
+}) => {
   return (
-    <div className="main-compare__top">
-        <LeftCompare/>
-        <TopSlider setFirstSwiper={setFirstSwiper} secondSwiper={secondSwiper}/>
-</div>
-  )
-}
+    <div className="top">
+      <LeftCompare />
+      <TopSlider setFirstSwiper={setFirstSwiper} secondSwiper={secondSwiper} />
+    </div>
+  );
+};
 
-export default TopCompare
+export default TopCompare;

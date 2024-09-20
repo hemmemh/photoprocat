@@ -1,0 +1,60 @@
+@import '../../../app/styles/style';
+
+.rightMenu {
+  z-index: 13;
+  display: flex;
+
+  @media (max-width: $mobile) {
+    order: 3;
+    gap: rem(20);
+    margin-right: rem(20);
+  }
+
+  &__action {
+    position: relative;
+
+    &.active {
+      &::before {
+        transition: all 0.3s ease 0s;
+        color: #4f9c2c;
+      }
+    }
+
+    &::after {
+      margin: 0 2px;
+      transition: all 0.3s ease 0s;
+      content: '';
+      position: absolute;
+      width: calc(100% - 4px);
+      height: 3px;
+      top: 90%;
+      left: 0;
+      background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+      opacity: 0;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        &::after {
+          opacity: 1;
+          transition: all 0.3s ease 0s;
+        }
+
+        &::before {
+          color: #4f9c2c;
+        }
+      }
+    }
+
+    cursor: pointer;
+    border-left: 1px solid #efefef;
+    padding: rem(27);
+    font-size: rem(20);
+
+    @media (max-width: $mobile) {
+      font-size: rem(16);
+      padding: rem(0);
+      border: none;
+    }
+  }
+}

@@ -1,139 +1,152 @@
-@import "../../../../app/styles/style.scss";
+@import '../../../../app/styles/style';
+
 .body-user {
-    margin-top: rem(30);
-&.active{
+  margin-top: rem(30);
+
+  &.active {
     display: grid;
-    
-}
+  }
 
-display:none;
-grid-template-columns: 1fr 1fr;
-margin-bottom: rem(40);
-@media (max-width:$mobile){
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: rem(40);
+
+  @media (max-width: $mobile) {
     grid-template-columns: 1fr;
-}
-    gap: rem(30);
-    &__calendar-icon{
-        position: absolute;
-        right: 20px;height: 100%;top:0;
-        display: flex;
-        align-items: center;
+  }
 
+  gap: rem(30);
+
+  &__calendar-icon {
+    position: absolute;
+    right: 20px;
+    height: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__calendar {
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    top: 100%;
+    transform: scale(0, 0);
+    transition: all 0.3s ease 0s;
+    transform-origin: top left;
+
+    &-icon {
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+
+      @media (any-hover: hover) {
+        &:hover {
+          transition: all 0.3s ease 0s;
+          transform: scale(1.1);
+        }
+      }
     }
-    &__calendar{
-        
-        position: absolute;
-        z-index: 1000;
-        left:0;
-        top:100%;
-        transform: scale(0,0);
-        transition: all 0.3s ease 0s;
-        transform-origin: top left;
-        &-icon{
-            transition: all 0.3s ease 0s;
-            cursor: pointer;
-            @media (any-hover: hover){
-                &:hover{
-                    transition: all 0.3s ease 0s;
-                    transform: scale(1.1);
-                }
-            }
-        }
-        &.active{
-            transform: scale(1,1);
-        }
-        .MuiDateCalendar-root{
-            background: #fff;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
-          
-          
-        }
-        .MuiPickersCalendarHeader-root{
-            position: relative;
-            padding-top: rem(16);
-            padding-left: 0;
-            padding-right: 0;
-            justify-content: center;
-            display: flex;
-        }
-        .MuiPickersCalendarHeader-labelContainer{
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%,0);
-            z-index: 1;
-            display: flex;
-            width: auto;
-            justify-content: center;
-            overflow: visible;
-        }
-        .MuiPickersArrowSwitcher-root{
-            position: absolute;
-            left:7%;
-            width:87%;
-            justify-content: space-between;
-        }
-        .MuiPickersCalendarHeader-label{
-            white-space: normal;
-         
-            margin: 0;
-        }
-        .qa7bje-MuiButtonBase-root-MuiPickersDay-root{
-            background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
-        }
-        .MuiButtonBase-root-MuiIconButton-root-MuiPickersCalendarHeader-switchViewButton{
-           
-           margin: 0;
-          
-        }
-        .MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon{
-            position: relative;
-            z-index: 1000;
-        }
-       
+
+    &.active {
+      transform: scale(1, 1);
     }
-    &__input {
-        background: #F5F5F5;
-        border: 1px solid #E3E3E3;
-        padding: rem(41) 0 rem(17) rem(20);
-        position: relative;
-        
+
+    .MuiDateCalendar-root {
+      background: #fff;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 15%);
     }
-input{
+
+    .MuiPickersCalendarHeader-root {
+      position: relative;
+      padding-top: rem(16);
+      padding-left: 0;
+      padding-right: 0;
+      justify-content: center;
+      display: flex;
+    }
+
+    .MuiPickersCalendarHeader-labelContainer {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 1;
+      display: flex;
+      width: auto;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .MuiPickersArrowSwitcher-root {
+      position: absolute;
+      left: 7%;
+      width: 87%;
+      justify-content: space-between;
+    }
+
+    .MuiPickersCalendarHeader-label {
+      white-space: normal;
+      margin: 0;
+    }
+
+    .qa7bje-MuiButtonBase-root-MuiPickersDay-root {
+      background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+    }
+
+    .MuiButtonBase-root-MuiIconButton-root-MuiPickersCalendarHeader-switchViewButton {
+      margin: 0;
+    }
+
+    .MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon {
+      position: relative;
+      z-index: 1000;
+    }
+  }
+
+  &__input {
+    background: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    padding: rem(41) 0 rem(17) rem(20);
+    position: relative;
+  }
+
+  input {
     background: none;
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 14px;
-line-height: 16px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000;
+  }
 
+  &__placeholder {
+    position: absolute;
+    top: rem(18);
+    left: rem(20);
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
 
-color: #000000;
+    /* identical to box height, or 143% */
+
+    color: #75758a;
+  }
 }
-    &__placeholder {
-       position: absolute;top: rem(18);left: rem(20);
-       font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 20px;
-/* identical to box height, or 143% */
 
+.MuiFormControl-root-MuiTextField-root {
+  .MuiFormLabel-root-MuiInputLabel-root {
+    display: none;
+  }
 
-color: #75758A;
-    }
-}
+  .MuiOutlinedInput-notchedOutline {
+    display: none;
+  }
 
-.MuiFormControl-root-MuiTextField-root{
-    .MuiFormLabel-root-MuiInputLabel-root{
-        display: none;
+  .MuiInputBase-root-MuiOutlinedInput-root {
+    input {
+      padding: 0;
     }
-    .MuiOutlinedInput-notchedOutline{
-        display: none;
-    }
-    .MuiInputBase-root-MuiOutlinedInput-root{
-        input{
-            padding: 0;
-        }
-       
-    }
+  }
 }

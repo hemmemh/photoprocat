@@ -1,0 +1,55 @@
+@import '../../../../app/styles/style';
+
+.leftTopFooter {
+  display: flex;
+  gap: rem(10);
+
+  @include adaptiveValue('margin-right', 82, 3);
+
+  @media (max-width: $tablet) {
+    flex: 1 1 auto;
+    margin-right: 0;
+  }
+
+  @media (max-width: $mobile) {
+    display: none;
+  }
+
+  &__icon {
+    width: rem(40);
+    height: rem(40);
+    border-radius: 50%;
+    border: 1px solid #8ee901;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      color: #8ee901;
+    }
+  }
+
+  &__texts {
+  }
+
+  &__topText {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+
+    /* or 125% */
+
+    color: #8ee901;
+  }
+
+  &__bottomText {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+  }
+}

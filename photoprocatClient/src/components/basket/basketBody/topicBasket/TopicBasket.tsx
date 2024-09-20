@@ -1,12 +1,13 @@
-import ItemsBasket from './itemsBasket/ItemsBasket'
+import ItemsBasket from './itemsBasket/ItemsBasket';
+import './topicBasket.scss';
 
 const TopicBasket = () => {
   return (
-    <div className="Basket__topic">
-        <div className="Basket__title">Корзина</div>
-        <ItemsBasket/>
+    <div className="topic">
+      <div className="title">Корзина</div>
+      <ItemsBasket />
     </div>
-  )
-}
+  );
+};
 
-export default TopicBasket
+export default TopicBasket;

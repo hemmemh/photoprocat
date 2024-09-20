@@ -1,0 +1,113 @@
+@import '../../../../app/styles/style';
+
+.actionsMenu {
+  height: 100%;
+  z-index: 13;
+  display: flex;
+
+  @include adaptiveValue('margin-right', 42, 20);
+
+  @media (max-width: $mobile) {
+    order: 1;
+    flex: 1 1 auto;
+    gap: rem(20);
+  }
+
+  &__span {
+    &.active {
+      animation: spananim 0.3s linear alternate;
+
+      @keyframes spananim {
+        0% {
+          transform: translate(0, 0);
+        }
+
+        50% {
+          transform: translate(0, -5px);
+        }
+
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 15px;
+    color: #262525;
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    width: rem(20);
+    height: rem(20);
+    background: rgb(96 176 33 / 100%);
+    opacity: 0.8;
+    border-radius: 50%;
+
+    @media (max-width: $mobile) {
+      right: -15px;
+      bottom: -5px;
+      width: rem(18);
+      height: rem(18);
+      font-size: 10px;
+    }
+  }
+
+  &__action {
+    position: relative;
+    z-index: 11;
+
+    &::after {
+      transition: all 0.3s ease 0s;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      top: 90%;
+      left: 0;
+      background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+      opacity: 0;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        &::after {
+          opacity: 1;
+          transition: all 0.3s ease 0s;
+        }
+
+        &::before {
+          color: #4f9c2c;
+        }
+      }
+    }
+
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+
+    @media (max-width: $mobile) {
+      padding: 0;
+    }
+
+    cursor: pointer;
+    height: 100%;
+    font-size: rem(20);
+
+    @media (max-width: $mobile) {
+      font-size: rem(16);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+      }
+    }
+  }
+}

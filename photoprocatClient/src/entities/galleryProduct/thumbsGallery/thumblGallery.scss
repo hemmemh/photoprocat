@@ -1,0 +1,44 @@
+@import '../../../app/styles/style';
+
+.thumpItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  border-image-source: linear-gradient(#efefef, #efefef);
+  border-image-slice: 1;
+  transition: border-image-source 0.1s ease 0s;
+  height: 100%;
+  position: relative;
+  width: rem(55);
+
+  img {
+    position: absolute;
+    width: calc(30 / 55 * 100%);
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.thumbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .swiper-slide-thumb-active {
+    .gallery-product__thumpItem {
+      transition: border-image-source 0.1s ease 0s;
+      border-width: 2px;
+      border-image-source: linear-gradient(
+        rgb(142 233 1),
+        rgb(79 156 44 / 100%)
+      );
+    }
+  }
+
+  .mySwiper {
+    height: rem(216);
+  }
+}

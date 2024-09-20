@@ -1,0 +1,14 @@
+@import '../../../../app/styles/style';
+
+.rightCenter {
+  @media (width <= 530px) {
+    display: none;
+  }
+
+  &__phone {
+    display: flex;
+    align-items: center;
+    color: #8ee901;
+    gap: rem(12);
+  }
+}

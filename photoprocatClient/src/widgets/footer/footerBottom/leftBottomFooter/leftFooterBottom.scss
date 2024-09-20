@@ -1,0 +1,54 @@
+@import '../../../../app/styles/style';
+
+.left-bottom-footer {
+  flex: 0 1 285px;
+
+  @media (max-width: $mobile) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: $pc) {
+    flex: 1 1 33.333%;
+  }
+
+  padding-right: rem(30);
+
+  &__title {
+    max-width: rem(151);
+
+    img {
+      width: 100%;
+    }
+
+    @media (max-width: $mobile) {
+      flex: 1 1 auto;
+    }
+
+    @media (max-width: $mobileSmall) {
+      display: none;
+    }
+  }
+
+  &__text {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__conf {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #75758a;
+  }
+}

@@ -1,18 +1,17 @@
-@import "../../../app/styles/style.scss" ;
-.mainCatalog {
+@import '../../../app/styles/style';
 
-      &__count {
-  font-family: 'Ubuntu';
+.count {
+  font-family: Ubuntu;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  color: #000000;
+  color: #000;
   margin-bottom: rem(26);
-  z-index: 2 ;
+  z-index: 2;
   position: relative;
-  span{
-      color: #60B021;
+
+  span {
+    color: #60b021;
   }
-      }
 }

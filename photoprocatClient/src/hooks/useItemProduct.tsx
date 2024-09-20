@@ -1,170 +1,186 @@
-import React, { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from './reduxHooks'
-import { navbarSlice } from '../store2/reducers/NavBarSlice'
-import { addItemToBasket, removeItemFromBasket } from '../https/basketApi'
-import { addItemToCompare, removeItemFromCompare } from '../https/compareApi'
-import { addProductInLoves, removeProductFromLoves } from '../https/lovesApi'
-import { addToCompareAction, removeFromCompare } from '../store2/actions/CompareActions'
-import { addToLovesAction, removeFromLoves } from '../store2/actions/LovesActions'
-import { addToBasketAction, removeFromBasket } from '../store2/actions/BasketActions'
-
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from './reduxHooks';
+import {
+  addToCompareAction,
+  removeFromCompare,
+} from '../store2/actions/CompareActions';
+import {
+  addToLovesAction,
+  removeFromLoves,
+} from '../store2/actions/LovesActions';
+import {
+  addToBasketAction,
+  removeFromBasket,
+} from '../store2/actions/BasketActions';
+import { IProduct } from '../https/productApi';
 
 type itemProduct = {
+  inBasket: boolean;
+  inCompare: boolean;
+  inLoves: boolean;
+  data: IProduct | null;
+};
 
-    inBasket:boolean
-    inCompare:boolean
-    inLoves:boolean
-    data:any
-}
-
-const useItemProduct = ({inBasket,inCompare,inLoves,data}:itemProduct) => {
-const [inBasketSnippet, setinBasketSnippet] = useState(inBasket)
-const [inCompareSnippet, setinCompareSnippet] = useState(inCompare)
-const [inLovesSnippet, setinLovesSnippet] = useState(inLoves)
-const [loaders, setloaders] = useState({basket:true,compare:true,love:true})
-const {user} = useAppSelector(state=>state.reducer.user)
-const {products,compare} = useAppSelector(state=>state.reducer.navbar)
-const navbar = navbarSlice.actions
-const dispatch = useAppDispatch()
+const useItemProduct = ({
+  inBasket,
+  inCompare,
+  inLoves,
+  data,
+}: itemProduct) => {
+  const [inBasketSnippet, setinBasketSnippet] = useState(inBasket);
+  const [inCompareSnippet, setinCompareSnippet] = useState(inCompare);
+  const [inLovesSnippet, setinLovesSnippet] = useState(inLoves);
+  const [loaders, setloaders] = useState({
+    basket: true,
+    compare: true,
+    love: true,
+  });
+  const { user } = useAppSelector((state) => state.reducer.user);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    setinBasketSnippet(inBasket)
-  }, [inBasket])
-
+    setinBasketSnippet(inBasket);
+  }, [inBasket]);
 
   useEffect(() => {
-    setinCompareSnippet(inCompare)
-  }, [inCompare])
+    setinCompareSnippet(inCompare);
+  }, [inCompare]);
 
-  
   useEffect(() => {
-    setinLovesSnippet(inLoves)
-  }, [inLoves])
+    setinLovesSnippet(inLoves);
+  }, [inLoves]);
 
-
-
-  const addToBasket =  async ()=>{
-    const item  = document.querySelector('.actionsMenu__span._product')
-    const element = document.querySelector('.Navbar__loader')
-    if (!user.id) {
+  const addToBasket = async () => {
+    if (!data) return;
+    const item = document.querySelector('.actionsMenu__span._product');
+    const element = document.querySelector('.Navbar__loader');
+    if (!user) {
       if (!element?.classList.contains('active')) {
-        element?.classList.add('active')
+        element?.classList.add('active');
         setTimeout(() => {
-            element?.classList.remove('active')
+          element?.classList.remove('active');
         }, 1000);
       }
-      return
+
+      return;
     }
+
     if (loaders.basket) {
       if (!inBasketSnippet) {
- 
-
-        item?.classList.add('active')
+        item?.classList.add('active');
         setTimeout(() => {
-          item?.classList.remove('active')
+          item?.classList.remove('active');
         }, 300);
 
-         await dispatch(addToBasketAction(data._id))
-         setinBasketSnippet(true)
-
-      
-         
-         
-      }else{
-        item?.classList.add('active')
+        await dispatch(addToBasketAction(data._id));
+        setinBasketSnippet(true);
+      } else {
+        item?.classList.add('active');
         setTimeout(() => {
-          item?.classList.remove('active')
+          item?.classList.remove('active');
         }, 300);
 
-          await dispatch(removeFromBasket(data._id))
-          setinBasketSnippet(false)  
+        await dispatch(removeFromBasket(data._id));
+        setinBasketSnippet(false);
+      }
     }
-    }
+  };
 
-  
-   
-}
-
-
-const addToCompare = async ()=>{
-  const item  = document.querySelector('._compare')
-    const element = document.querySelector('.Navbar__loader')
-  if (!user.id) {
-    if (!element?.classList.contains('active')) {
-      element?.classList.add('active')
-      setTimeout(() => {
-          element?.classList.remove('active')
-      }, 1000);
-    }
-    return
-  }
-
-  if (loaders.compare) {
-    if (!inCompareSnippet) {
-      setloaders({...loaders,compare:false})
-      await dispatch(addToCompareAction(data._id))
-   
-    
-        setinCompareSnippet(true)
- 
-        item?.classList.add('active')
+  const addToCompare = async () => {
+    if (!data) return;
+    const item = document.querySelector('._compare');
+    const element = document.querySelector('.Navbar__loader');
+    if (!user) {
+      if (!element?.classList.contains('active')) {
+        element?.classList.add('active');
         setTimeout(() => {
-          item?.classList.remove('active')
-        }, 300);
-    
-        setloaders({...loaders,compare:true})
-    }else{
-      setloaders({...loaders,compare:false})
+          element?.classList.remove('active');
+        }, 1000);
+      }
 
-      await dispatch(removeFromCompare(data._id))
- 
-
-      setinCompareSnippet(false)
-
-      item?.classList.add('active')
-      setTimeout(() => {
-        item?.classList.remove('active')
-      }, 300);
-
-      setloaders({...loaders,compare:true})
-  }
-
-  }
-
-
-}
-
-const addToLoves = async ()=>{
-    const element = document.querySelector('.Navbar__loader')
-  if (!user.id) {
-
-    if (!element?.classList.contains('active')) {
-      element?.classList.add('active')
-      setTimeout(() => {
-          element?.classList.remove('active')
-      }, 1000);
+      return;
     }
-    return
-  }
 
-  if (loaders.love) {
-    if (!inLovesSnippet) {
-      setloaders({...loaders,love:false})
-      await dispatch(addToLovesAction(data._id))
-      setinLovesSnippet(true)
-      setloaders({...loaders,love:true})
-  }else{
-      setloaders({...loaders,love:false})
-      dispatch(removeFromLoves(data._id))
-      setinLovesSnippet(false)
-      setloaders({...loaders,love:true})
-  }
-  }
+    if (loaders.compare) {
+      if (!inCompareSnippet) {
+        setloaders({ ...loaders, compare: false });
+        await dispatch(addToCompareAction(data._id));
 
-}
+        setinCompareSnippet(true);
 
+        item?.classList.add('active');
+        setTimeout(() => {
+          item?.classList.remove('active');
+        }, 300);
 
-  return {addToBasket,addToCompare,addToLoves,inBasketSnippet,inCompareSnippet,inLovesSnippet,loaders}
-}
+        setloaders({ ...loaders, compare: true });
+      } else {
+        setloaders({ ...loaders, compare: false });
 
-export default useItemProduct
+        await dispatch(removeFromCompare(data._id));
+
+        setinCompareSnippet(false);
+
+        item?.classList.add('active');
+        setTimeout(() => {
+          item?.classList.remove('active');
+        }, 300);
+
+        setloaders({ ...loaders, compare: true });
+      }
+    }
+  };
+
+  const addToLoves = async () => {
+    if (!data) return;
+    const item = document.querySelector('.actionsMenu__span._loves');
+    console.log('tt', item);
+
+    const element = document.querySelector('.Navbar__loader');
+    if (!user) {
+      if (!element?.classList.contains('active')) {
+        element?.classList.add('active');
+        setTimeout(() => {
+          element?.classList.remove('active');
+        }, 1000);
+      }
+
+      return;
+    }
+
+    if (loaders.love) {
+      if (!inLovesSnippet) {
+        item?.classList.add('active');
+        setTimeout(() => {
+          item?.classList.remove('active');
+        }, 300);
+        setloaders({ ...loaders, love: false });
+        await dispatch(addToLovesAction(data._id));
+        setinLovesSnippet(true);
+        setloaders({ ...loaders, love: true });
+      } else {
+        item?.classList.add('active');
+        setTimeout(() => {
+          item?.classList.remove('active');
+        }, 300);
+
+        setloaders({ ...loaders, love: false });
+        dispatch(removeFromLoves(data._id));
+        setinLovesSnippet(false);
+        setloaders({ ...loaders, love: true });
+      }
+    }
+  };
+
+  return {
+    addToBasket,
+    addToCompare,
+    addToLoves,
+    inBasketSnippet,
+    inCompareSnippet,
+    inLovesSnippet,
+    loaders,
+  };
+};
+
+export default useItemProduct;

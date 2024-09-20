@@ -1,0 +1,14 @@
+@import '../../../../../app/styles/style';
+
+.left {
+  flex: 0 0 rem(425);
+  width: rem(425);
+
+  @media (max-width: $tablet) {
+    align-self: center;
+  }
+
+  @media (max-width: $mobileSmall) {
+    width: 100%;
+  }
+}

@@ -1,0 +1,33 @@
+@import '../../../../app/styles/style';
+
+.shedule {
+  white-space: nowrap;
+  position: relative;
+  z-index: 13;
+
+  @media (max-width: $mobile) {
+    display: none;
+  }
+
+  margin-right: rem(15);
+}
+
+.sheduleText {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #75758a;
+}
+
+.sheduleTel {
+  display: block;
+  margin-top: rem(5);
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 15px;
+  color: #000;
+}

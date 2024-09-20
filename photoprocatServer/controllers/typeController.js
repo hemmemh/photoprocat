@@ -1,43 +1,40 @@
-const typeServices = require("../services/typeService")
+const typeServices = require('../services/typeService');
 
-class typeControllers{
-    async create(req,res,next){
-        try {
-            const {name,informations} = req.body
-            const response =await typeServices.createType(name,informations)
-            return res.json(response)
-        } catch (error) {
-            next(error)
-        }
-
-}
-async getAll(req,res,next){
+class typeControllers {
+  async create(req, res, next) {
     try {
-        const response =await typeServices.getAll()
-        return res.json(response)
+      const { name, informations } = req.body;
+      const response = await typeServices.createType(name, informations);
+      return res.json(response);
     } catch (error) {
-        next(error)
+      next(error);
     }
-
-}
-async getOne(req,res,next){
+  }
+  async getAll(req, res, next) {
     try {
-        const {id} = req.body
-        const response =await typeServices.getOne(id)
-        return res.json(response)
+      const response = await typeServices.getAll();
+      return res.json(response);
     } catch (error) {
-        next(error)
+      next(error);
     }
-
-}
-
-async createMany(req,res,next){
+  }
+  async getOne(req, res, next) {
     try {
-        const response =await typeServices.createMany()
-        return res.json(response)
+      const { id } = req.body;
+      const response = await typeServices.getOne(id);
+      return res.json(response);
     } catch (error) {
-        next(error)
+      next(error);
     }
+  }
+
+  async createMany(req, res, next) {
+    try {
+      const response = await typeServices.createMany();
+      return res.json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
-}
-module.exports = new typeControllers()
+module.exports = new typeControllers();

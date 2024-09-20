@@ -1,0 +1,174 @@
+@import '../../app/styles/style';
+
+.items-basket {
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  position: relative;
+
+  &__top {
+  }
+
+  &__body {
+    border-bottom: 1px solid #efefef;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: rem(74);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #efefef;
+    }
+  }
+
+  &__image-flex {
+    cursor: pointer;
+    flex: 0 0 rem(96);
+
+    @media (max-width: $mobile) {
+      flex: 0 0 rem(40);
+    }
+  }
+
+  &__image-cover {
+    width: rem(60);
+
+    @media (max-width: $mobile) {
+      width: rem(30);
+    }
+  }
+
+  &__image {
+    position: relative;
+    padding: 0 0 calc(42 / 60 * 100%);
+
+    img {
+      object-fit: contain;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 rem(285);
+
+    @media (width <= 497px) {
+      flex: 0 0 rem(112);
+    }
+  }
+
+  &__name {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+
+    @media (max-width: $mobile) {
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    color: #000;
+  }
+
+  &__brand {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+
+    @media (max-width: $mobile) {
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    color: #75758a;
+  }
+
+  &__price {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    flex: 0 1 rem(184);
+    color: #60b021;
+
+    @media (max-width: $mobile) {
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+
+  &__number {
+  }
+
+  &__amount {
+    flex: 0 1 rem(290);
+  }
+
+  &__total {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000;
+
+    @media (max-width: $mobile) {
+      font-size: 10px;
+      line-height: 12px;
+      flex: 0 0 rem(70);
+    }
+
+    flex: 1 0 rem(130);
+
+    @media (width <= 454px) {
+    }
+  }
+
+  &__delete {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    width: rem(40);
+    height: rem(40);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 15%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease 0s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        transition: all 0.3s ease 0s;
+        transform: translate(0, -50%) scale(1.1);
+      }
+    }
+
+    @media (max-width: $mobile) {
+      width: rem(20);
+      height: rem(20);
+
+      &::before {
+        transition: all 0.3s ease 0s;
+        font-size: 9px;
+      }
+    }
+  }
+
+  &__totalPrice {
+  }
+}

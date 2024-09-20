@@ -1,14 +1,15 @@
-import React from 'react'
-import GalleryProduct from './galleryProduct/GalleryProduct'
-import TagsProduct from './tagsProduct/TagsProduct'
+import React from 'react';
+import GalleryProduct from '../../../../../entities/galleryProduct/GalleryProduct';
+import TagsProduct from './tagsProduct/TagsProduct';
+import './leftProduct.scss';
 
 const LeftProduct = () => {
   return (
-    <div className="main-product__left">
-        <GalleryProduct/>
-        <TagsProduct/>
+    <div className="left">
+      <GalleryProduct />
+      <TagsProduct />
     </div>
-  )
-}
+  );
+};
 
-export default LeftProduct
+export default LeftProduct;

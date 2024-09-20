@@ -1,38 +1,90 @@
-import axios from "axios"
-import { $authHost, $host } from "."
-import { API_URL } from "../utils/config"
-import { IBasket, IBasketItem } from "../utils/interfaces"
+import { $host } from '.';
+import { IProduct } from './productApi';
 
-export const getBasket= async(info:any)=>{
-    const {data} = await $host.post('basket/getOne',info)
-    return data
-}
-
-export const addItemToBasket= async(info:any)=>{
-    const {data} = await $host.post<IBasketItem>('basket/add',info)
-    return data
-}
-export const removeItemFromBasket= async(info:any)=>{
-    const {data} = await $host.post<IBasketItem>('basket/remove',info)
-    return data
+export interface IBasket {
+  basketItems: Array<IBasketItem>;
+  user?: string;
+  _id?: string;
 }
 
-export const changeAmount= async(info:any)=>{
-    const {data} = await $host.post('basket/change',info)
-    return data
+export interface IBasketItem {
+  basket: string;
+  count: number;
+  product: IProduct;
+  _id: string;
 }
 
-export const addOrder= async(info:any)=>{
-    const {data} = await $host.post('order/add',info)
-    return data
+export interface IOrder {
+  ordersItems: Array<IOrderItem>;
+  user: string;
+  _id: string;
 }
 
- 
-export const removeAll= async(info:any)=>{
-    const {data} = await $host.post('basket/removeAll',info)
-    return data
+export interface IOrderItem {
+  date: string;
+  number: number;
+  orders: string;
+  ordersItemProduct: IOrdersItemProduct[];
+  price: number;
+  _id: string;
 }
-export const getOrder= async(info:any)=>{
-    const {data} = await $host.post('order/getAll',info)
-    return data
+
+export interface IOrdersItemProduct {
+  amount: number;
+  orderItem: string;
+  product: IProduct;
+  _id: string;
 }
+
+export const getBasket = async (info: { id: string }) => {
+  const { data } = await $host.post<IBasket>('basket/getOne', info);
+
+  return data;
+};
+
+export const addItemToBasket = async (info: {
+  basketId: string;
+  product: string;
+  count: number;
+}) => {
+  const { data } = await $host.post<IBasketItem>('basket/add', info);
+
+  return data;
+};
+
+export const removeItemFromBasket = async (info: {
+  id: string;
+  basketId: string;
+}) => {
+  const { data } = await $host.post<IBasketItem>('basket/remove', info);
+
+  return data;
+};
+
+export const changeAmount = async (info: { id: string; count: number }) => {
+  const { data } = await $host.post<IBasketItem>('basket/change', info);
+
+  return data;
+};
+
+export const addOrder = async (info: {
+  ordersId: string;
+  price: number;
+  products: string;
+}) => {
+  const { data } = await $host.post<IOrderItem>('order/add', info);
+
+  return data;
+};
+
+export const removeAll = async (info: { id: string }) => {
+  const { data } = await $host.post<IBasket>('basket/removeAll', info);
+
+  return data;
+};
+
+export const getOrder = async (info: { id: string }) => {
+  const { data } = await $host.post<IOrder>('order/getAll', info);
+
+  return data;
+};

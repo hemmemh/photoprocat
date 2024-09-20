@@ -1,0 +1,49 @@
+@import '../../app/styles/style';
+
+.Navbar {
+  transition: all 0.3s ease 0s;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  left: 0;
+  background: #fff;
+
+  &__loader {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease 0s;
+
+    &.active {
+      transition: all 0.3s ease 0s;
+      opacity: 1;
+      pointer-events: visible;
+    }
+
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+
+    @media (max-width: $mobile) {
+      font-size: 11px;
+      padding: 10px;
+    }
+
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    background: #4f9c2c;
+    padding: 20px;
+    transform: translate(-50%, 0);
+    border-radius: 30px;
+  }
+
+  &.active {
+    transition: all 0.3s ease 0s;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 30%);
+  }
+}

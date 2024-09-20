@@ -1,0 +1,33 @@
+@import '../../../../app/styles/style';
+
+.logoNavbar {
+  z-index: 20;
+  margin-right: rem(30);
+
+  @media (max-width: $mobile) {
+    order: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    display: flex;
+    justify-content: center;
+  }
+
+  flex: 1 1 auto;
+}
+
+.imageNavbar {
+  cursor: pointer;
+  max-width: rem(151);
+
+  @media (max-width: $mobile) {
+    max-width: rem(45);
+  }
+
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+}

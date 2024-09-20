@@ -1,168 +1,198 @@
-@import "../../../app/styles/style.scss";
+@import '../../../app/styles/style';
 
-.headerHome{
-    position: relative;
-    overflow: hidden;
+.headerHome {
+  position: relative;
+  overflow: hidden;
 }
-.image {  
+
+.image {
+  width: 100%;
+  padding: 0 0 calc(550 / 1380 * 100%);
+
+  @media (max-width: $mobileSmall) {
+    padding: 0 0 100%;
+  }
+
+  img {
+    object-fit: cover;
+    position: absolute;
     width: 100%;
-    padding: 0 0 calc(550/1380 * 100%) 0;
-    @media (max-width:$mobileSmall){
-        padding: 0 0  100% 0;   
-    }
-    img{
-        object-fit: cover;
-        position: absolute;width: 100%;height: 100%;
-        transform: scale(1.1);
-        
-    }
+    height: 100%;
+    transform: scale(1.1);
+  }
 }
 
 .container {
-  position: absolute;bottom: 0;right:0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   width: 100%;
   max-width: rem(1260);
   pointer-events: none;
   padding: 0;
   padding-bottom: rem(50);
-  
 }
 
+.span {
+  display: inline;
 
-.span{
-display: inline;
-
-@media (min-width:$mobile){
+  @media (min-width: $mobile) {
     display: none;
-      background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-}
-}
-
-
-.span2{
-@media (min-width:$mobile){
-    background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
-    -webkit-background-clip: text;
+    background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+  }
 }
 
+.span2 {
+  @media (min-width: $mobile) {
+    background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
 
 .texts {
-   
-    padding: 0 rem(15);
-    @media (max-width: rem(1275)){
-        padding: 0 rem(35);
-    }
-    @media (max-width:$mobileSmall){
-        padding: 0 rem(20);
-    }
-    //position: absolute;bottom:  50/550*100%;left: 0;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    @media (max-width:$mobile){
-          
-    }
-    &::before{
-        content:'';
+  padding: 0 rem(15);
 
-        @include adaptiveValue("width", 60, 3);
-        @include adaptiveValue("height", 60, 3);
-        @media (max-width:$mobile){
-             width: rem(30);
-             height: rem(30); 
-        }
-        border-radius: 50%;
-        background: linear-gradient(180deg, #8EE902 0%, #4F9C2C 100%);
-        position: absolute;top: 100%;left: rem(15);
-        opacity: 0;
-        @media (max-width: rem(1275)){
-            left: rem(35);
-        }
-        @media (max-width:$mobileSmall){
-            left: rem(20);
-        }
-        animation:text2 0.3s ease-in 0.9s forwards;
-        @keyframes text2 {
-            0% {
-                transform: translate(-90%,-50%);
-                opacity: 0;
-            }
-            100% {
-                transform: translate(-50%,-50%);
-                opacity: 1;
-            }
-        }
+  @media (width <= rem(1275)) {
+    padding: 0 rem(35);
+  }
+
+  @media (max-width: $mobileSmall) {
+    padding: 0 rem(20);
+  }
+
+  //position: absolute;bottom:  50/550*100%;left: 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+
+  @media (max-width: $mobile) {
+  }
+
+  &::before {
+    content: '';
+
+    @include adaptiveValue('width', 60, 3);
+    @include adaptiveValue('height', 60, 3);
+
+    @media (max-width: $mobile) {
+      width: rem(30);
+      height: rem(30);
     }
+
+    border-radius: 50%;
+    background: linear-gradient(180deg, #8ee902 0%, #4f9c2c 100%);
+    position: absolute;
+    top: 100%;
+    left: rem(15);
+    opacity: 0;
+
+    @media (width <= rem(1275)) {
+      left: rem(35);
+    }
+
+    @media (max-width: $mobileSmall) {
+      left: rem(20);
+    }
+
+    animation: text2 0.3s ease-in 0.9s forwards;
+
+    @keyframes text2 {
+      0% {
+        transform: translate(-90%, -50%);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .text {
-    &:nth-child(1){
-        z-index: 3;
-        @media (max-width:$mobile){
-            font-size: 16px;
-            line-height: 42px;
-        }
-        animation:text 0.3s  linear;
-        @keyframes text {
-            0% {
-                transform: translate(-30%,0);
-                opacity: 0;
-            }
-            100% {
-                transform: translate(0,0);
-                opacity: 1;
-            }
-        }
-     
+  &:nth-child(1) {
+    z-index: 3;
+
+    @media (max-width: $mobile) {
+      font-size: 16px;
+      line-height: 42px;
     }
-    &:nth-child(2){
-        z-index: 2;
-        @media (max-width:$mobile){
-             display: none; 
-        }
-        animation:text 0.3s  ease-in 0.3s backwards ; 
-        @keyframes text {
-            0% {
-                transform: translate(-30%,0);
-                opacity: 0;
-            }
-            100% {
-                transform: translate(0,0);
-                opacity: 1;
-            }
-        }
+
+    animation: text 0.3s linear;
+
+    @keyframes text {
+      0% {
+        transform: translate(-30%, 0);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
     }
-    &:nth-child(3){
-        z-index: 1;
-        @media (max-width:$mobile){
-            font-size: 16px;
-            line-height: 42px;
-        }
-        animation:text 0.3s  ease-out 0.6s backwards ; 
-        @keyframes text {
-            0% {
-                transform: translate(-30%,0);
-                opacity: 0;
-            }
-            100% {
-                transform: translate(0,0);
-                opacity: 1;
-            }
-        }
+  }
+
+  &:nth-child(2) {
+    z-index: 2;
+
+    @media (max-width: $mobile) {
+      display: none;
     }
-    background: #FFFFFF;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
-    font-family: 'Ubuntu';
-    font-weight: 700;
-    @include adaptiveValue("font-size", 30,8 );
-    @include adaptiveValue("line-height", 61,18 );
-    @include adaptiveValue("padding-left",16 ,4 );
-    @include adaptiveValue("padding-right",16 ,4 );
-    text-transform: uppercase;
-    color: #000000;
+
+    animation: text 0.3s ease-in 0.3s backwards;
+
+    @keyframes text {
+      0% {
+        transform: translate(-30%, 0);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+  }
+
+  &:nth-child(3) {
+    z-index: 1;
+
+    @media (max-width: $mobile) {
+      font-size: 16px;
+      line-height: 42px;
+    }
+
+    animation: text 0.3s ease-out 0.6s backwards;
+
+    @keyframes text {
+      0% {
+        transform: translate(-30%, 0);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+  }
+
+  background: #fff;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 15%);
+  font-family: Ubuntu;
+  font-weight: 700;
+
+  @include adaptiveValue('font-size', 30, 8);
+  @include adaptiveValue('line-height', 61, 18);
+  @include adaptiveValue('padding-left', 16, 4);
+  @include adaptiveValue('padding-right', 16, 4);
+
+  text-transform: uppercase;
+  color: #000;
 }

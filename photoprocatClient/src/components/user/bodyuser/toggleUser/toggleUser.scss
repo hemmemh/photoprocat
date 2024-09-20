@@ -1,61 +1,76 @@
-@import "../../../../app/styles/style.scss" ;
+@import '../../../../app/styles/style';
+
 .toggle-user {
+  position: relative;
 
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background: #e3e3e3;
+  }
+
+  display: flex;
+  justify-content: flex-end;
+
+  &__item {
+    height: 100%;
+    font-family: Ubuntu;
+    align-items: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #75758a;
+    padding: 14px 22px;
+    background: #f7f7f7;
+    border-right: 1px solid #e3e3e3;
     position: relative;
-    &::before{
-        content:'';
-        position: absolute;width: 100%;height: 1px;bottom: 0px;left: 0;
-        background: #E3E3E3;
-    }
-    
-display: flex;
-justify-content: flex-end;
-    &__item {
-         height: 100%;
-        font-family: 'Ubuntu';
-        align-items: center;
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 20px;
-text-align: center;
-color: #75758A;
-padding: 14px 22px;
-background: #F7F7F7;
-border-right:1px solid #E3E3E3;
-position: relative;
-@media (max-width:$mobile){
-    font-size: 12px;
-line-height: 14px;  
-}
-&::before{
-    content:'';
-    position: absolute;width: 100%;height: 2px;top: 0;left: 0;
-    display: block;
-    transform-origin: left;
-    background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
-    transition: all 0.3s ease 0s;
-    width: 0;
-}
-&::after{
-    content:'';
-    position: absolute;width: 100%;height: 1px;bottom: 0;left: 0;
-    background: #E3E3E3;
-}
-.MyRadio.active &{
-  
-    background: #FFFFFF;
-    color: #000000;
-    border-bottom:none;
-    &::before{
-        width: 100%;
-        
-    }
-    &::after{
-        background: #ffffff;
-        
-    }
-}
-    }
-}
 
+    @media (max-width: $mobile) {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 2px;
+      top: 0;
+      left: 0;
+      display: block;
+      transform-origin: left;
+      background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+      transition: all 0.3s ease 0s;
+      width: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background: #e3e3e3;
+    }
+
+    .MyRadio.active & {
+      background: #fff;
+      color: #000;
+      border-bottom: none;
+
+      &::before {
+        width: 100%;
+      }
+
+      &::after {
+        background: #fff;
+      }
+    }
+  }
+}

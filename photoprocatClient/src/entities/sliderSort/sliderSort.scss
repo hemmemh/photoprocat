@@ -1,0 +1,46 @@
+@import '../../app/styles/style';
+
+.slider-right-main-catalog {
+  &.price {
+    margin-top: 30px;
+  }
+
+  max-width: 300px;
+
+  &__name {
+    margin-bottom: rem(15);
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+
+    /* identical to box height, or 129% */
+
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .MuiSlider-root {
+    height: rem(4);
+  }
+
+  .MuiSlider-track {
+    background: #60b021;
+  }
+
+  .MuiSlider-rail {
+    background: #3c6a18;
+  }
+
+  .MuiSlider-thumb {
+    background: #60b021;
+    width: 20px;
+    height: 20px;
+  }
+
+  .MuiSlider-valueLabel {
+    background: #3c6a18;
+    color: #fff;
+  }
+}

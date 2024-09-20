@@ -1,0 +1,17 @@
+@import '../../../app/styles/style';
+
+.topFooter {
+  background: url('../../../images/footer/pattern.png');
+  background-repeat: repeat-x;
+
+  &__body {
+    width: 100%;
+    display: flex;
+    height: rem(74);
+    align-items: center;
+
+    @media (width <= 530px) {
+      justify-content: center;
+    }
+  }
+}

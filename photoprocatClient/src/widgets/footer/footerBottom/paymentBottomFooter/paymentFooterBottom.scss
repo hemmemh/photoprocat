@@ -1,0 +1,27 @@
+@import '../../../../app/styles/style';
+
+.payment-bottom-footer {
+  @media (max-width: $pc) {
+    justify-content: center;
+    flex: 1 1 33.333%;
+  }
+
+  @media (max-width: $mobile) {
+    display: none;
+  }
+
+  display: flex;
+  gap: rem(20);
+  align-items: flex-start;
+
+  :nth-child(n) {
+    margin-top: -4px;
+  }
+
+  :nth-child(3) {
+    padding-top: rem(16);
+  }
+
+  &__payment {
+  }
+}

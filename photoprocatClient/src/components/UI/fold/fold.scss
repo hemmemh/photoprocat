@@ -1,37 +1,40 @@
-@import "../../../app/styles/style.scss";
+@import '../../../app/styles/style';
+
 .Fold {
-    &.product{
-        display: none;
-        pointer-events: none;
-        position: absolute;
-        &.active{
-        display: block;
-        pointer-events: inherit;
-        position: inherit;
-        }
-        .Fold__body{
-           
-        }
-    }
-    &.origin{
-        .Fold__body{
-            overflow: visible;
-        }
-    }
-    &__body {
-        overflow: hidden;
-        transition: height 0.3s ease 0s;
+  &.product {
+    display: none;
+    pointer-events: none;
+    position: absolute;
+
+    &.active {
+      display: block;
+      pointer-events: inherit;
+      position: inherit;
     }
 
-    &__item {
-       
+    .Fold__body {
     }
+  }
 
-    &__buttonCover {
-        display: flex;
-        justify-content: center;
+  &.origin {
+    .Fold__body {
+      overflow: visible;
     }
+  }
 
-    &__button {
-    }
+  &__body {
+    overflow: hidden;
+    transition: height 0.3s ease 0s;
+  }
+
+  &__item {
+  }
+
+  &__buttonCover {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+  }
 }

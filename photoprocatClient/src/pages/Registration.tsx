@@ -1,13 +1,12 @@
-import Layout from '../app/Layout'
-import Mainregistration from '../components/registration/Mainregistration'
-
+import Layout from '../app/Layout';
+import Mainregistration from '../components/registration/Mainregistration';
 
 const Registration = () => {
   return (
     <Layout>
-        <Mainregistration/>
+      <Mainregistration />
     </Layout>
-  )
-}
+  );
+};
 
-export default Registration
+export default Registration;

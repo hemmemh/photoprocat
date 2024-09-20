@@ -1,37 +1,35 @@
-@import "../../../app/styles/style.scss" ;
+@import '../../../app/styles/style';
 
 .slidesHome {
-margin-bottom: rem(30);
+  margin-bottom: rem(30);
 }
 
-     .mobile{
-         display: none;
- 
-         @media (max-width:$mobile){
-              display: flex; 
-              flex-direction: column;
-              gap: rem(20);
-         }
-     }
- 
- 
-     .header {
-         @include adaptiveValue("margin-bottom",27 ,27 );
-         font-family: 'Ubuntu';
-         font-style: normal;
-         font-weight: 700;
-         font-size: 18px;
-         line-height: 20px;
-         text-align: center;
-         text-transform: uppercase;
-         
-         color: #000000;
-     }
- 
-     .sliderCover {
-        cursor: pointer;
-     }
- 
-     .slide {
-     }
- 
+.mobile {
+  display: none;
+
+  @media (max-width: $mobile) {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+  }
+}
+
+.header {
+  @include adaptiveValue('margin-bottom', 27, 27);
+
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.sliderCover {
+  cursor: pointer;
+}
+
+.slide {
+}

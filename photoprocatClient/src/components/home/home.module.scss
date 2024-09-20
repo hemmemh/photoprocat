@@ -1,9 +1,9 @@
-@import "../../app/styles/style.scss";
+@import '../../app/styles/style';
+
 .Home {
-margin-top: rem(75);
-@media (max-width:$mobile){
+  margin-top: rem(75);
+
+  @media (max-width: $mobile) {
     margin-top: rem(44);
+  }
 }
-
-}
-

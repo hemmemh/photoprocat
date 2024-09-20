@@ -1,0 +1,50 @@
+@import '../../../app/styles/style';
+
+.actionsGallery {
+  position: absolute;
+  top: 22px;
+  right: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: rem(17);
+}
+
+.actionGallery {
+  z-index: 30;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #4f9c2c;
+      transition: all 0.3s ease 0s;
+    }
+  }
+
+  path {
+    fill-rule: nonzero;
+    fill: $hoverColor;
+    opacity: 0.3;
+    transition: all 0.3s ease 0s;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      path {
+        opacity: 0.5;
+        transition: all 0.3s ease 0s;
+      }
+
+      transform: scale(1.1);
+      transition: all 0.3s ease 0s;
+    }
+  }
+
+  &.active {
+    path {
+      fill-rule: nonzero;
+      fill: $hoverColor;
+      opacity: 1;
+    }
+  }
+}

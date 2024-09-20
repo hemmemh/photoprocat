@@ -1,46 +1,54 @@
-@import "../../../app/styles/style.scss";
-.Navigation {
- 
-   z-index: 34;
-   position: relative;
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 16px;
+@import '../../../app/styles/style';
 
-color: #75758A;
-&.product{
+.Navigation {
+  z-index: 34;
+  position: relative;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #75758a;
+
+  &.product {
     margin-top: 0;
     margin-bottom: 20px;
-    &._d{
-        @media (min-width:$tablet){
-            display: none;
-        }
+
+    &._d {
+      @media (min-width: $tablet) {
+        display: none;
+      }
     }
-    &._d2{
-        @media (max-width:$tablet){
-            display: none;
-        }
+
+    &._d2 {
+      @media (max-width: $tablet) {
+        display: none;
+      }
     }
-}
-&.news{
+  }
+
+  &.news {
     margin-bottom: rem(14);
-}
-&.registration{
+  }
+
+  &.registration {
     margin-bottom: rem(14);
-}
-&.user{
+  }
+
+  &.user {
     margin-bottom: 14px;
-    @media (max-width:$mobile){
-        margin-bottom: 7px;
+
+    @media (max-width: $mobile) {
+      margin-bottom: 7px;
     }
-}
-&.basket{
+  }
+
+  &.basket {
     margin-bottom: rem(14);
-}
-&.origin{
+  }
+
+  &.origin {
     text-align: center;
     margin-bottom: 13px;
-}
+  }
 }

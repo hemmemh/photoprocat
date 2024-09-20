@@ -1,62 +1,33 @@
-@import "../../../../app/styles/style.scss";
-
+@import '../../../../app/styles/style';
 
 .right-main-catalog {
-    @media (max-width:$tablet){
-        display: none;
-    }
+  @media (max-width: $tablet) {
+    display: none;
+  }
+
   margin-top: rem(70);
-    &__ratio {
+
+  &__ratio {
+  }
+
+  &__name {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+
+    /* identical to box height, or 129% */
+
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  &__group {
+  }
+
+  &__groupItem {
+    &.Mui-selected {
     }
-  
-
-    &__name {
-        font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 14px;
-line-height: 18px;
-/* identical to box height, or 129% */
-
-text-transform: uppercase;
-
-color: #000000;
-
-    }
-
-    &__group {
-    }
-
-    &__groupItem {
-        &.Mui-selected{
-
-        }
-    }
+  }
 }
-
-
-
-
-
-
-
-
-.GroupCover{
-    margin-bottom: 28px;
-    &__name{
-        font-family: 'Ubuntu';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 18px;
-        text-transform: uppercase;
-        color: #000000;
-        margin-bottom: 14px;
-    }
-}
-
-
-
-
-    
-

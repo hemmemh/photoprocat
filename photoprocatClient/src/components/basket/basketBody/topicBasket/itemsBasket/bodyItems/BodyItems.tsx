@@ -1,35 +1,37 @@
-import { useAppDispatch, useAppSelector } from "../../../../../../hooks/reduxHooks"
-import { basketSlice } from "../../../../../../store2/reducers/BasketSlice"
-import {useEffect} from 'react'
-import BasketProduct from "../../../../../basketProduct/BasketProduct"
-
-
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../../../hooks/reduxHooks';
+import { basketSlice } from '../../../../../../store2/reducers/BasketSlice';
+import { useEffect } from 'react';
+import BasketProduct from '../../../../../../entities/basketProduct/BasketProduct';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import './bodyItems.scss';
+import { IBasketItem } from '../../../../../../https/basketApi';
 
 const BodyItems = () => {
-    const {user} = useAppSelector(state=>state.reducer.user)
-    const {basket} = useAppSelector(state=>state.reducer.basket)
-    const {setSumPrice} = basketSlice.actions
-    const dispatch = useAppDispatch()
-    useEffect(() => {
+  const { basket } = useAppSelector((state) => state.reducer.basket);
+  const { setSumPrice } = basketSlice.actions;
+  const dispatch = useAppDispatch();
 
-      const sum = basket?.basketItems.reduce((prev,current)=>current?.product?.price * current.count + prev,0) ?? 0
-      dispatch(setSumPrice(sum))
-
-    }, [])
-    
+  useEffect(() => {
+    const sum =
+      basket?.basketItems.reduce(
+        (prev, current) => current?.product?.price * current.count + prev,
+        0
+      ) ?? 0;
+    dispatch(setSumPrice(sum));
+  }, []);
 
   return (
-    <div className="items-basket__body">
-    {
-      basket?.basketItems.map((e:any)=>
-        <BasketProduct 
-        key={e._id} 
-        e={e} 
-        products={basket}
-        basketId={user.basket}/>
-      )}
-    </div>
-  )
-}
+    <TransitionGroup>
+      {basket?.basketItems.map((e: IBasketItem) => (
+        <CSSTransition key={e._id} timeout={500} classNames="basket">
+          <BasketProduct key={e._id} e={e} />
+        </CSSTransition>
+      ))}
+    </TransitionGroup>
+  );
+};
 
-export default BodyItems
+export default BodyItems;

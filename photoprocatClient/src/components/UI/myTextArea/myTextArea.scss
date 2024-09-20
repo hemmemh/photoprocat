@@ -1,70 +1,80 @@
-@import "../../../app/styles/style.scss" ;
+@import '../../../app/styles/style';
 
-.MyTextArea{
-    resize: none;
-    &.registration{
-    
-        background: #FFFFFF;
-    border: 1px solid #E3E3E3;
+.MyTextArea {
+  resize: none;
+
+  &.registration {
+    background: #fff;
+    border: 1px solid #e3e3e3;
     min-height: em(80);
-    padding: rem(10) ;  
+    padding: rem(10);
     position: relative;
-    
-    
-    &.active{
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to left, #8EE901, #4F9C2C);
+
+    &.active {
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to left, #8ee901, #4f9c2c);
     }
-    &.act{
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to left, #e90101, #942222);
+
+    &.act {
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to left, #e90101, #942222);
     }
-    .Input__placeholder{
-    transition: all 0.3s ease 0s;
-    position: absolute;top: rem(41);left:rem(17);
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #75758A;
-    @media (max-width:$mobile){
-         top: -10px; 
-         background: #fff;
-         padding:0px 5px;
-    }
-    &.active{
+
+    .Input__placeholder {
+      transition: all 0.3s ease 0s;
+      position: absolute;
+      top: rem(41);
+      left: rem(17);
+      font-family: Ubuntu;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #75758a;
+
+      @media (max-width: $mobile) {
+        top: -10px;
+        background: #fff;
+        padding: 0 5px;
+      }
+
+      &.active {
         top: rem(20);
         transition: all 0.3s ease 0s;
-        @media (max-width:$mobile){
-            top: -10px; 
-            background: #fff;
-            padding:0px 5px;
-       }
-    }
-    }
-    
-    .Input__text{
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    
-    
-    color: #000000;
-    }
-    &.gv{
-    padding: rem(20) 0 rem(10) rem(10); 
-    @media (max-width:$mobile){
-        padding: rem(20) 0 rem(10) rem(10); 
-    }
-    .Input__placeholder{
-        position: absolute;top: rem(18);left:rem(17);
-        &.active{
-            top: rem(0);
+
+        @media (max-width: $mobile) {
+          top: -10px;
+          background: #fff;
+          padding: 0 5px;
         }
+      }
     }
+
+    .Input__text {
+      font-family: Ubuntu;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 16px;
+      color: #000;
     }
+
+    &.gv {
+      padding: rem(20) 0 rem(10) rem(10);
+
+      @media (max-width: $mobile) {
+        padding: rem(20) 0 rem(10) rem(10);
+      }
+
+      .Input__placeholder {
+        position: absolute;
+        top: rem(18);
+        left: rem(17);
+
+        &.active {
+          top: rem(0);
+        }
+      }
     }
+  }
 }

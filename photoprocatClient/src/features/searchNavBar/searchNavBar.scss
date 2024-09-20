@@ -1,0 +1,54 @@
+@import '../../app/styles/style';
+
+.searchBlock {
+  @media (max-width: $mobile) {
+    display: none;
+  }
+
+  position: absolute;
+  width: 100%;
+  height: rem(75);
+  top: rem(74);
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease 0s;
+
+  &.active {
+    transition: all 0.3s ease 0s;
+    pointer-events: inherit;
+    opacity: 1;
+  }
+
+  background: #f7f7f7;
+  justify-content: space-between;
+
+  &__container {
+    height: 100%;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &:last-child {
+    }
+  }
+
+  &__text {
+    padding-right: 15px;
+    flex: 1 1 auto;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+    background: none;
+
+    &::placeholder {
+      color: #000;
+    }
+  }
+}

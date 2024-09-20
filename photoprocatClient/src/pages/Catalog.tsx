@@ -1,15 +1,14 @@
 import 'swiper/css';
-import "swiper/css/navigation";
+import 'swiper/css/navigation';
 import { MainCatalog } from '../components/catalog/MainCatalog';
 import Layout from '../app/Layout';
 
-
- const Catalog = () => {
+const Catalog = () => {
   return (
     <Layout>
-      <MainCatalog/>
+      <MainCatalog />
     </Layout>
-  )
-}
+  );
+};
 
-export default Catalog
+export default Catalog;

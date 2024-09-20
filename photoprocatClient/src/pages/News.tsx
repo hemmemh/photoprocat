@@ -1,12 +1,12 @@
-import Layout from '../app/Layout'
-import MainNews from '../components/news/MainNews'
+import Layout from '../app/Layout';
+import MainNews from '../components/news/MainNews';
 
 const News = () => {
   return (
     <Layout>
-        <MainNews/>
+      <MainNews />
     </Layout>
-  )
-}
+  );
+};
 
-export default News
+export default News;

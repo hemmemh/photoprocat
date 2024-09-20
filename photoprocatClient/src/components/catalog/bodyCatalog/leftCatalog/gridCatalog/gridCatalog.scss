@@ -1,0 +1,31 @@
+@import '../../../../../app/styles/style';
+
+.gridCover {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 1rem;
+}
+
+.grid {
+  position: relative;
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: rem(30);
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.gridLoader {
+  display: flex;
+  justify-content: center;
+  margin-top: rem(30);
+}

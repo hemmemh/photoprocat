@@ -1,80 +1,78 @@
-@import "../../app/styles/style.scss";
+@import '../../app/styles/style';
+
 .User {
-    .MuiFormLabel-root{
-        display: none;
-        border: none;
+  .MuiFormLabel-root {
+    display: none;
+    border: none;
+  }
+
+  .MuiFormControl-root {
+    border: none;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border: none;
+  }
+
+  .MuiInputBase-root {
+    border: none;
+
+    input {
+      padding: 0;
     }
-    .MuiFormControl-root{
-        border: none;
-       
+  }
+
+  margin-top: rem(131);
+
+  @media (max-width: $mobile) {
+    margin-top: rem(70);
+  }
+
+  &__container {
+  }
+
+  &__title {
+    @media (max-width: $mobile) {
+      margin-bottom: rem(30);
     }
-    .MuiOutlinedInput-notchedOutline{
-        border: none;
-      
+
+    span {
+      font-family: Ubuntu;
+      font-style: normal;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      @include adaptiveValue('font-size', 30, 15);
+      @include adaptiveValue('line-height', 34, 18);
     }
-    .MuiInputBase-root{
-        border: none;
-        input{
-            padding: 0;
-        }
-    }
-    
-margin-top: rem(131);
-@media (max-width:$mobile){
-    margin-top: rem(70);   
+
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+
+    @include adaptiveValue('font-size', 30, 15);
+    @include adaptiveValue('line-height', 34, 18);
+
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  &__main {
+  }
+
+  &__toggle {
+  }
+
+  &__body {
+  }
+
+  &__submit {
+    display: flex;
+    justify-content: center;
+
+    @include adaptiveValue('margin-bottom', 75, 30);
+  }
 }
-    &__container {
-    }
-
-    &__title {
-        @media (max-width:$mobile){
-             margin-bottom: rem(30); 
-        }
-        span{
-            font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-text-transform: uppercase;
-background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-@include adaptiveValue("font-size",30 , 15);
-@include adaptiveValue("line-height", 34, 18);
-        }
-        font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-@include adaptiveValue("font-size",30 , 15);
-@include adaptiveValue("line-height", 34, 18);
-text-transform: uppercase;
-color: #000000;
-    }
-
-    &__main {
-    }
-
-    &__toggle {
-    }
-
-    &__body {
-    }
-
-    &__submit {
-        display: flex;
-        justify-content: center;
-        @include adaptiveValue("margin-bottom", 75,30 );
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-

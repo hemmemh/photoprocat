@@ -1,22 +1,12 @@
-import Layout from "../app/Layout"
-import MainBasket from "../components/basket/MainBasket"
-
-
+import Layout from '../app/Layout';
+import MainBasket from '../components/basket/MainBasket';
 
 const Basket = () => {
-
   return (
-
     <Layout>
-        <MainBasket/>
+      <MainBasket />
     </Layout>
-  
+  );
+};
 
-    
-   
-
-   
-  )
-}
-
-export default Basket
+export default Basket;

@@ -1,39 +1,104 @@
-@import "../../../../app/styles/style.scss";
+@import '../../../../app/styles/style';
+
 .swiperCompare2 {
-    
-    .Fold__body{
-        overflow: visible;
-    }
-    &__item {
-    }
+  .Fold__body {
+    overflow: visible;
+  }
+
+  &__item {
+  }
 }
+
 .item-swiperCompare2 {
-    width: rem(150);
-    @media (max-width:583px){
-     width: auto;
+  width: rem(150);
+
+  @media (width <= 583px) {
+    width: auto;
+  }
+
+  &__item {
+    white-space: inherit;
+    padding: 14px 0;
+
+    @media (width <= 583px) {
+      padding: 45px 0 14px;
+      text-align: center;
+      color: #000;
     }
-    &__item {
-        white-space: nowrap;
-        padding: 14px 0;
-       @media (max-width:583px){
-        padding: 45px 0 14px 0;
-        text-align: center;
-        color: #000;
-       }
-        font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 16px;
 
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    position: relative;
 
-position: relative;
-&::before{
-    content:'';
-    position: absolute;width: 180%;height: 0.5px;top: 0;left: 0;
-    background: #EFEFEF;
- 
+    &::before {
+      content: '';
+      position: absolute;
+      width: 180%;
+      height: 0.5px;
+      top: 0;
+      left: 0;
+      background: #efefef;
+    }
+
+    color: #75758a;
+  }
 }
-color: #75758A;
+
+.bottom {
+  display: flex;
+  min-width: 0;
+  margin-bottom: rem(30);
+  position: relative;
+  overflow: hidden;
+}
+
+.bottom-left {
+  overflow: visible;
+  flex: 0 0 em(201);
+  border-bottom: 1px solid #efefef;
+
+  @media (width <= 583px) {
+    position: absolute;
+    padding-right: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+  }
+
+  &__item {
+    @media (width <= 583px) {
+      padding: 0;
+      border: none;
+      height: 75px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 17px;
     }
+
+    white-space: nowrap;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 14px 0;
+    color: #75758a;
+    position: relative;
+    overflow: visible;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100vw;
+      height: 0.5px;
+      top: 0;
+      left: 0;
+      background: #efefef;
+      z-index: 200;
+    }
+  }
 }

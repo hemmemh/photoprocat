@@ -1,0 +1,179 @@
+@import '../../../../app/styles/style';
+
+.menu {
+  z-index: 13;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: rem(20);
+
+  @media (max-width: $mobile) {
+    order: 4;
+    margin: 0;
+  }
+}
+
+.icon-menu {
+  pointer-events: none;
+  width: rem(20);
+  height: rem(15);
+
+  @media (max-width: $mobile) {
+    width: rem(16);
+    height: rem(12);
+    top: 1px;
+  }
+
+  position: relative;
+  background: none;
+
+  @media (any-hover: hover) {
+    &:hover {
+      span,
+      &::before,
+      &::after {
+        transition: all 0.3s ease 0s;
+        background: #000;
+      }
+    }
+  }
+
+  span {
+    transition: all 0.3s ease 0s;
+    width: rem(20);
+    height: rem(1);
+
+    @media (max-width: $mobile) {
+      width: rem(16);
+      height: rem(1);
+    }
+
+    background: #000;
+    position: absolute;
+    top: calc(50% - 0.5px);
+    left: 0;
+    animation: icon-menu 0.3s linear both 0.1s;
+
+    @keyframes icon-menu {
+      0% {
+        left: -50%;
+        opacity: 0;
+      }
+
+      100% {
+        left: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  &::before,
+  &::after {
+    transition: all 0.3s ease-out 0s;
+    content: '';
+    height: rem(1);
+    background: #000;
+    position: absolute;
+    left: 0;
+  }
+
+  &::before {
+    content: '';
+    top: rem(0.2);
+    width: rem(20);
+
+    @media (max-width: $mobile) {
+      width: rem(16);
+      height: rem(1);
+    }
+
+    left: 0;
+    opacity: 0;
+    animation: icon-menu2 0.3s linear forwards;
+
+    @keyframes icon-menu2 {
+      0% {
+        left: -50%;
+        opacity: 0;
+      }
+
+      100% {
+        left: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  &::after {
+    content: '';
+    bottom: 0;
+    width: rem(20);
+
+    @media (max-width: $mobile) {
+      width: rem(16);
+      height: rem(1);
+    }
+
+    left: 0;
+    opacity: 0;
+    animation: icon-menu3 0.3s linear forwards 0.3s;
+
+    @keyframes icon-menu3 {
+      0% {
+        left: -50%;
+        opacity: 0;
+      }
+
+      100% {
+        left: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.add {
+    span,
+    &::before,
+    &::after {
+      background: #000;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        span,
+        &::before,
+        &::after {
+          transition: all 0.3s ease 0s;
+          background: #000;
+        }
+      }
+    }
+  }
+
+  &.active {
+    span {
+      transition: all 0.3s ease 0s;
+      opacity: 0 !important;
+    }
+
+    &::before {
+      transition: all 0.3s ease-out 0s;
+      content: '';
+      top: calc(50% - 1px);
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transition: all 0.3s ease-out 0s;
+      content: '';
+      width: 20px;
+
+      @media (max-width: $mobile) {
+        width: 16px;
+      }
+
+      top: calc(50% - 1px);
+      transform: rotate(-45deg);
+    }
+  }
+}

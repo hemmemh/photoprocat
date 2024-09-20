@@ -1,23 +1,49 @@
-@import "../../app/styles/style.scss";
+@import '../../app/styles/style';
 
 .Loves {
-flex: 1 1 auto;
+  flex: 1 1 auto;
 
+  &__container {
+  }
 
-    &__container {
-    
+  &__body {
+    margin-top: rem(100);
+    margin-bottom: rem(100);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: rem(30);
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr 1fr;
     }
-    &__body{
-        margin-top: rem(100);
-        margin-bottom: rem(100);
-    }
-    &__grid {
-      
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: rem(30);
-        @media (max-width:$mobile){
-            grid-template-columns: 1fr 1fr;
-        }
-    }
+  }
+}
+
+.loves-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.loves-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 500ms,
+    transform 500ms;
+}
+
+.loves-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.loves-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 500ms,
+    transform 500ms;
 }

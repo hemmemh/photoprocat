@@ -1,103 +1,113 @@
-@import "../../../../../../app/styles/style.scss" ;
+@import '../../../../../../app/styles/style';
+
 .description-product {
-    &__button{
-        display: flex;
-        justify-content: center;
-    }
-    .MyRadio.active{
-        .description-product__toggleItem{
-            background: #ffffff;
-            border-bottom: none;
-            &::before{
-                transition: width 0.3s ease 0s;
-               width: 100%;
-             
-            }
-        }
-    }
-    &__foldText{
-       
-        &.active{
-            padding: 10px 5px;
-        }
-    }
-    &__toggleItem {
-     
-        position: relative;
-        z-index: 12;
-        display: flex;
-        align-items: center;
-        padding: 0 21px;
-        height: 50px;
-        background: #F7F7F7;
-        border: 1px solid #E3E3E3;
-        &::before{
-            content:'';
-            transition: width 0.3s ease 0s;
-            position: absolute;width: 0%;height: 2px;top: 0;left: 0;
-            background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
-        
-            
-        }
-       
-    }
-    &__body{
-        border-top: 1px solid #EFEFEF;
-        border-bottom: 1px solid #EFEFEF;
-        margin-top: -1px;
-        margin-bottom: 25px;
-        transition: all 0.3s ease 0s;
-    }
-    &__descriptions {
-        margin-top: -1px;
-        border-top: 1px solid #EFEFEF;
-        border-bottom: 1px solid #EFEFEF;
-        position: relative;
-     
-    }
-
-    &__description {
-        height: rem(44);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 16px;
-color: #75758A;
-span{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 16px;
-text-align: right;
-
-color: #000000;
-}
-    }
-}
-.product-toggle{
+  &__button {
     display: flex;
-}
-.ToggleItem{
-    transition: all 0.3s ease 0s;
+    justify-content: center;
+  }
+
+  .MyRadio.active {
+    .description-product__toggleItem {
+      background: #fff;
+      border-bottom: none;
+
+      &::before {
+        transition: width 0.3s ease 0s;
+        width: 100%;
+      }
+    }
+  }
+
+  &__foldText {
+    &.active {
+      padding: 10px 5px;
+    }
+  }
+
+  &__toggleItem {
     position: relative;
     z-index: 12;
     display: flex;
     align-items: center;
     padding: 0 21px;
     height: 50px;
-    background: #F7F7F7;
-    border: 1px solid #E3E3E3;
-    &::before{
-        content:'';
-        position: absolute;width: 100%;height: 2px;top: 0;left: 0;
-        background: linear-gradient(270deg, #8EE901 0%, #4F9C2C 99.06%);
-        opacity: 0;
-        
-    }
+    background: #f7f7f7;
+    border: 1px solid #e3e3e3;
 
+    &::before {
+      content: '';
+      transition: width 0.3s ease 0s;
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      top: 0;
+      left: 0;
+      background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+    }
+  }
+
+  &__body {
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    margin-top: -1px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease 0s;
+  }
+
+  &__descriptions {
+    margin-top: -1px;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    position: relative;
+  }
+
+  &__description {
+    height: rem(44);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #75758a;
+
+    span {
+      font-family: Ubuntu;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: right;
+      color: #000;
+    }
+  }
+}
+
+.product-toggle {
+  display: flex;
+}
+
+.ToggleItem {
+  transition: all 0.3s ease 0s;
+  position: relative;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  padding: 0 21px;
+  height: 50px;
+  background: #f7f7f7;
+  border: 1px solid #e3e3e3;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(270deg, #8ee901 0%, #4f9c2c 99.06%);
+    opacity: 0;
+  }
 }

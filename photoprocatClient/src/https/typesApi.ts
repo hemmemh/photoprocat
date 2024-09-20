@@ -1,12 +1,23 @@
-import { $host } from "."
+import { $host } from '.';
 
-export const getAllTypes= async()=>{
-    const {data} = await $host.post('type/getAll')
-    return data
+export interface IType {
+  name: string;
+  informations: string;
+  products: [];
+  _id: string;
 }
 
-export const createType= async(info:any)=>{
-    const {data} = await $host.post('type',info)
-    return data
-}
+export const getAllTypes = async () => {
+  const { data } = await $host.post<IType[]>('type/getAll');
 
+  return data;
+};
+
+export const createType = async (info: {
+  name: string;
+  informations: string;
+}) => {
+  const { data } = await $host.post<IType>('type', info);
+
+  return data;
+};

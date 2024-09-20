@@ -1,0 +1,38 @@
+@import '../../../app/styles/style';
+
+.body {
+  display: grid;
+  gap: rem(30);
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: rem(34);
+
+  @media (max-width: $mobile) {
+    margin-bottom: rem(15);
+    grid-template-columns: 1fr;
+  }
+}
+
+.calendar-icon {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.calendar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background: #fff;
+  transform: scale(0, 0);
+  transform-origin: top left;
+  transition: all 0.3s ease 0s;
+
+  &.active {
+    transition: all 0.3s ease 0s;
+    transform: scale(1, 1);
+  }
+}

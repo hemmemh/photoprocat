@@ -1,0 +1,40 @@
+@import '../../../app/styles/style';
+
+.coverNavBar {
+  max-width: $maxWidth + px;
+  margin: 0 auto;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 12;
+    border-bottom: 2px solid #efefef;
+  }
+}
+
+.contNavBar {
+  margin-left: auto;
+  margin-right: 0;
+  max-width: 1260px;
+  padding: 0;
+}
+
+.bodyNavBar {
+  padding-left: 15px;
+  height: rem(75);
+
+  @media (max-width: $mobile) {
+    height: rem(44);
+    padding-right: 15px;
+  }
+
+  display: flex;
+  align-items: center;
+  position: relative;
+}

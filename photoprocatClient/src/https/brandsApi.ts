@@ -1,12 +1,14 @@
-import { $host } from "."
+import { $host } from '.';
 
-export const getAllBrands= async()=>{
-    const {data} = await $host.post('brand/getAll')
-    return data
+export interface IBrand {
+  image?: string;
+  name?: string;
+  products?: [];
+  _id: string;
 }
 
+export const getAllBrands = async () => {
+  const { data } = await $host.post<IBrand[]>('brand/getAll');
 
-export const createBrand= async(info:any)=>{
-    const {data} = await $host.post('brand',info)
-    return data
-}
+  return data;
+};

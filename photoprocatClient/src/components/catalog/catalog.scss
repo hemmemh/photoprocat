@@ -1,31 +1,20 @@
-@import "../../app/styles/style.scss";
+@import '../../app/styles/style';
+
 .Catalog {
-    margin-bottom: rem(50);
-    margin-top: rem(114);
-@media (max-width:$tablet){
+  margin-bottom: rem(50);
+  margin-top: rem(114);
+
+  @media (max-width: $tablet) {
     margin-top: rem(80);
-}
-    &__gridLoader{
-        display: flex;
-        justify-content: center;
-        margin-top: rem(30);
+  }
+
+  &__container {
+    margin-bottom: rem(80);
+    margin-top: rem(90);
+
+    @media (max-width: $mobile) {
+      margin-bottom: rem(30);
+      margin-top: rem(0);
     }
-
-    &__container {
-        margin-bottom: rem(80);
-        margin-top: rem(90);
-        @media (max-width:$mobile){
-            margin-bottom: rem(30);
-            margin-top: rem(0);
-        }
-    }
-  
+  }
 }
-
-
-
-
-
-
-
-

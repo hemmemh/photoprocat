@@ -1,129 +1,118 @@
 $breakpoint: 7677.98px;
-@import "../../../app/styles/style.scss";
+
+@import '../../../app/styles/style';
+
 .AccordionUser {
   flex: 1 1 auto;
+  display: flex;
+
+  @media (max-width: $breakpoint) {
+    flex-direction: column;
+  }
+
+  &.origin {
+    .sliderAccordion {
+      max-width: inherit;
+      width: 100%;
+    }
+
+    .sliderAccordion__name {
+      display: none;
+    }
+
+    .AccordionUser__bodyCover {
+      &:not(:last-child) {
+      }
+    }
+
+    .AccordionUser__body {
+    }
+
+    .AccordionUser__bodytwo {
+      //padding-bottom: 10px;
+    }
+
+    .AccordionUser__item {
+      font-family: Raleway;
+      font-style: normal;
+      font-weight: 200;
+
+      @include adaptiveValue('font-size', 16, 14);
+      @include adaptiveValue('line-height', 19, 17);
+
+      color: #252525;
+      display: flex;
+      justify-content: center;
+
+      &:nth-child(n) {
+        padding: 15px 0;
+      }
+
+      &:not(:last-child) {
+      }
+    }
+
+    .AccordionUser__button {
+      //box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      font-family: Ubuntu;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 18px;
+      text-align: center;
+      background: #fff;
+    }
+  }
+
+  &.user {
+    .AccordionUser__bodyCover {
+      border-bottom: 1px solid #efefef;
+    }
+  }
+
+  &__bodyCover {
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
 
-    @media (max-width:$breakpoint){
-        flex-direction: column;
+    @media (max-width: $breakpoint) {
+      //align-items:flex-start;
+    }
+
+    flex: 1 1 auto;
   }
-  &.origin{
-   .sliderAccordion{
 
-  
-    max-width: inherit;
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
-   }
-   .sliderAccordion__name{
-    display: none;
-   }
-    .AccordionUser__bodyCover{
-        &:not(:last-child) {
+    transition: all 0.3s ease 0s;
 
-        }
- 
-    }
-    .AccordionUser__body{
- 
-    }
-    .AccordionUser__bodytwo{
-        //padding-bottom: 10px;  
-   
-    }
-    .AccordionUser__item{
-
-        font-family: 'Raleway';
-        font-style: normal;
-        font-weight: 200;
-        @include adaptiveValue("font-size", 16, 14);
-         @include adaptiveValue("line-height",19, 17);
-        color: #252525;
-        display: flex;
-        justify-content: center;
-        &:nth-child(n){
-          padding: 15px 0;
-        }
-         &:not(:last-child) {
-
-         }
-    }
-    .AccordionUser__button{
-     
-        //box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        font-family: 'Ubuntu';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 18px;
-        text-align: center;
-       
- 
-        background: #fff;
+    @media (min-width: $breakpoint) {
+      height: auto;
+      align-items: flex-start;
     }
   }
-  &.user{
-    .AccordionUser__bodyCover{
-    
-            border-bottom: 1px solid #EFEFEF;
-        
-    }
-   
+
+  &__bodytwo {
   }
-    &__bodyCover{
-       
-       
-       
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        @media (max-width:$breakpoint){
-            //align-items:flex-start;
-        }
-        
-        flex: 1 1 auto;
-    }
-    
-    &__body{
-        display: flex;
-        flex-direction: column;
-       align-items: flex-start;
-  
-        width: 100%;
-        transition: all 0.3s ease 0s;
-        @media (min-width: $breakpoint){
-            height: auto;
-            align-items: flex-start;
-          }
-      
-    }
-    &__bodytwo{
-       
-      }
-    &__item{
-     width: 100%;
-  
-       transition: all 0.3s ease 0s;
-     
-      
-        
+
+  &__item {
+    width: 100%;
+    transition: all 0.3s ease 0s;
+  }
+
+  &__button {
+    width: 100%;
+    cursor: pointer;
+
+    @media (min-width: $breakpoint) {
+      pointer-events: none;
+      cursor: inherit;
     }
 
-    &__button{
-       
-       width: 100%;
-        cursor: pointer;
-      
-        @media (min-width: $breakpoint){
-            pointer-events: none;
-            cursor: inherit;
-
-      }
-    
-        &.active{
-          
-           }
+    &.active {
     }
-   
- 
+  }
 }
-
