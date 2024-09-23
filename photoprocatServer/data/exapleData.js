@@ -1,4 +1,4 @@
-export const brandData = [
+ const brandData = [
   { name: 'Canon', image: '1.png' },
   { name: 'Nikon', image: '2.png' },
   { name: 'Sony', image: '3.png' },
@@ -6,7 +6,7 @@ export const brandData = [
   { name: 'Olympus', image: '5.png' },
 ];
 
-export const typeData = [
+ const typeData = [
   {
     name: 'Камера',
     informations:
@@ -29,7 +29,7 @@ export const typeData = [
   },
 ];
 
-export const productsData = [
+ const productsData = [
   {
     name: 'Sony A7 IV',
     description:
@@ -372,7 +372,7 @@ export const productsData = [
   },
 ];
 
-export const usersData = [
+ const usersData = [
   { mail: 'user1@mail.ru', password: 'pass1' },
   { mail: 'user2@mail.ru', password: 'pass2' },
   { mail: 'user3@mail.ru', password: 'pass3' },
@@ -385,7 +385,7 @@ export const usersData = [
   { mail: 'user10@mail.ru', password: 'pass10' },
 ];
 
-export const ratingData = [
+ const ratingData = [
   {
     name: 'Иван',
     sername: 'Иванов',
@@ -717,3 +717,11 @@ export const ratingData = [
     rate: 5,
   },
 ];
+
+module.exports = {
+  brandData,
+  typeData,
+  productsData,
+  usersData,
+  ratingData
+}

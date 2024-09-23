@@ -21,10 +21,6 @@ class userServices {
       const cryptPass = await bccrypt.hash(password, 4);
 
       const activationLink = Math.floor(1000 + Math.random() * 9000);
-      await mailServices.sendActivationMail(
-        mail,
-        `http://localhost:5000/api/user/${activationLink}`
-      );
       console.log('iiiii');
       const responce = new User({ mail, password: cryptPass, activationLink });
       await responce.save();
