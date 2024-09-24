@@ -6,12 +6,14 @@ import { putCompare, updateCompare } from '../../store2/actions/CompareActions';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import './compare.scss';
 import SpinnerBody from '../UI/spinnerBody/SpinnerBody';
+import { selectActiveType, selectCompare } from '../../store2/selectors/compareSelectors';
+import { selectLoadData } from '../../store2/selectors/userSelectors';
 
 const MainCompare = () => {
-  const { activeType, compare, compareTypes } = useAppSelector(
-    (state) => state.reducer.compare
-  );
-  const { loadData } = useAppSelector((state) => state.reducer.user);
+  const activeType = useAppSelector(selectActiveType);
+  const compare = useAppSelector(selectCompare);
+  const loadData = useAppSelector(selectLoadData);
+  
   const { setActiveTypeLoad } = compareSlice.actions;
   const dispatch = useAppDispatch();
 
@@ -34,7 +36,7 @@ const MainCompare = () => {
       <div className="Compare__container">
         <div className="Compare__body">
           <Navigation>Главная / Сравнить товары</Navigation>
-          {loadData && activeType && compareTypes.length === 0 ? (
+          {loadData  ? (
             <SpinnerBody />
           ) : compare && compare.compareItems.length !== 0 ? (
             <BodyCompare />

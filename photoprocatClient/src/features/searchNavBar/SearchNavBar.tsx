@@ -2,9 +2,13 @@ import { useAppSelector } from '../../hooks/reduxHooks';
 import useSearch from '../../hooks/useSearch';
 import Button from '../../components/UI/button/Button';
 import './searchNavBar.scss';
+import { memo } from 'react';
+import { selectFilter, selectSearch } from '../../store2/selectors/navBarSelectors';
 
-export const SearchNavBar = () => {
-  const { search, filter } = useAppSelector((state) => state.reducer.navbar);
+export const SearchNavBar = memo(() => {
+  const search = useAppSelector(selectSearch);
+  const filter = useAppSelector(selectFilter);
+  
   const { setfilterTimeOn } = useSearch();
 
   return (
@@ -29,4 +33,4 @@ export const SearchNavBar = () => {
       </div>
     </div>
   );
-};
+});

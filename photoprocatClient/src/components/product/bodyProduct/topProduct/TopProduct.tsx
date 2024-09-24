@@ -1,6 +1,6 @@
 import React from 'react';
-import LeftProduct from './leftProduct/LeftProduct';
-import RightProduct from './rightProduct/RightProduct';
+import LeftProduct from '../leftProduct/LeftProduct';
+import RightProduct from '../rightProduct/RightProduct';
 import './topProduct.scss';
 
 const TopProduct = () => {

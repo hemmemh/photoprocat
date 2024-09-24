@@ -1,4 +1,4 @@
-import { FC, useRef } from 'react';
+import { FC, memo, useRef } from 'react';
 import './button.scss';
 
 interface button {
@@ -62,4 +62,4 @@ const Button: FC<button> = ({
   );
 };
 
-export default Button;
+export default memo(Button);

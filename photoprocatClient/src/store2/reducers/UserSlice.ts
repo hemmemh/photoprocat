@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUser } from '../../https/userApi';
 
-type initialState = {
+export type userState = {
   toggle: number;
   name: string;
   serName: string;
@@ -11,7 +11,7 @@ type initialState = {
   user: IUser | null;
 };
 
-const initialState: initialState = {
+const initialState: userState = {
   toggle: 0,
   name: '',
   serName: '',

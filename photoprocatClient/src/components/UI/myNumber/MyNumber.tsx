@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import cls from './number.module.scss';
 
 type NumberType = {
@@ -56,4 +56,4 @@ const MyNumber = ({
   );
 };
 
-export default MyNumber;
+export default memo(MyNumber);

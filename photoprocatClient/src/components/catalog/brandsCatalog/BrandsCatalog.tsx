@@ -7,6 +7,7 @@ import './brandsCatalog.scss';
 import Button2 from '../../UI/button2/Button2';
 import { memo } from 'react';
 import { chooseBrand } from '../../../store2/actions/CatalogActions';
+import { selectBrands, selectBrandsLoad, selectCheckedBrands } from '../../../store2/selectors/catalogSelectors';
 
 const breakpoints = {
   991.98: {
@@ -21,9 +22,11 @@ const navigation = {
 };
 
 const BrandsCatalog = () => {
-  const { brandsLoad, brands, checkedBrands } = useAppSelector(
-    (state) => state.reducer.catalog
-  );
+
+  const brandsLoad = useAppSelector(selectBrandsLoad);
+const brands = useAppSelector(selectBrands);
+const checkedBrands = useAppSelector(selectCheckedBrands);
+
   const dispatch = useAppDispatch();
 
   return (

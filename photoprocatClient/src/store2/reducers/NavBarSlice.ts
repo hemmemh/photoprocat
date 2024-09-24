@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type initialState = {
-  basket: number;
-  loves: number;
-  compare: number;
-  products: number;
+export type navBarState = {
   menu: boolean;
   menuIconRef: HTMLElement | null;
   search: boolean;
@@ -17,11 +13,7 @@ type initialState = {
   validationErrorText: string[];
   modalStage: number;
 };
-const initialState: initialState = {
-  basket: 0,
-  loves: 0,
-  compare: 0,
-  products: 0,
+const initialState: navBarState = {
   menu: false,
   menuIconRef: null,
   search: false,
@@ -39,18 +31,6 @@ export const navbarSlice = createSlice({
   name: 'navbar',
   initialState,
   reducers: {
-    setBasket(state, action: PayloadAction<number>) {
-      state.basket = action.payload;
-    },
-    setLoves(state, action: PayloadAction<number>) {
-      state.loves = action.payload;
-    },
-    setCompare(state, action: PayloadAction<number>) {
-      state.compare = action.payload;
-    },
-    setProducts(state, action: PayloadAction<number>) {
-      state.products = action.payload;
-    },
     setMenu(state, action: PayloadAction<boolean>) {
       state.menu = action.payload;
     },

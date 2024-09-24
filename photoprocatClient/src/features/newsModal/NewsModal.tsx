@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { memo, useRef } from 'react';
 import { Modal } from '../../components/UI/modal/Modal';
 import Input from '../../components/UI/input/Input';
 import { newsSlice } from '../../store2/reducers/NewsSlice';
@@ -6,9 +6,10 @@ import useNews from '../../hooks/useNews';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import Button2 from '../../components/UI/button2/Button2';
 import MyTextArea from '../../components/UI/myTextArea/MyTextArea';
+import { selectModalNews } from '../../store2/selectors/newsSelectors';
 
-const NewsModal = () => {
-  const { modalNews } = useAppSelector((state) => state.reducer.news);
+const NewsModal = memo(() => {
+  const modalNews = useAppSelector(selectModalNews);
   const { setModalNews } = newsSlice.actions;
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -90,6 +91,6 @@ const NewsModal = () => {
       </div>
     </Modal>
   );
-};
+});
 
 export default NewsModal;

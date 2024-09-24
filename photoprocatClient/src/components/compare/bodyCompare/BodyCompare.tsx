@@ -6,9 +6,10 @@ import ItemsCompare from './itemsCompare/ItemsCompare';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import './BodyCompare.scss';
 import Swiper from 'swiper';
+import { selectCompare } from '../../../store2/selectors/compareSelectors';
 
 const BodyCompare = () => {
-  const { compare } = useAppSelector((state) => state.reducer.compare);
+  const compare = useAppSelector(selectCompare);
   const [firstSwiper, setFirstSwiper] = useState<Swiper | null>(null);
   const [secondSwiper, setSecondSwiper] = useState<Swiper | null>(null);
 

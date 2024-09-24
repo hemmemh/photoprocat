@@ -3,7 +3,7 @@ import { type Swiper as SwiperClass } from 'swiper';
 import { IInformation } from '../../https/productApi';
 import { ICompare, ICompareItem } from '../../https/compareApi';
 
-type initialState = {
+export type compareState = {
   firstSwiper: SwiperClass | null;
   secondSwiper: SwiperClass | null;
   activeType: string;
@@ -15,7 +15,7 @@ type initialState = {
   compare: ICompare | null;
 };
 
-const initialState: initialState = {
+const initialState: compareState = {
   firstSwiper: null,
   secondSwiper: null,
   activeType: '',

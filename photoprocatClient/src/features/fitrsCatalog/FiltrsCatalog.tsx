@@ -5,10 +5,14 @@ import { catalogSlice } from '../../store2/reducers/CatalogSlice';
 import RadioGroup from '../../entities/radioGroup/RadioGroup';
 import CheckBoxGroup from '../../entities/checkBoxGroup/CheckBoxGroup';
 import MyNumber from '../../components/UI/myNumber/MyNumber';
+import { memo } from 'react';
+import { selectInformations, selectInformationValues, selectSliderMouseOn, selectTypeInformation } from '../../store2/selectors/catalogSelectors';
 
-export const FiltrsCatalog = () => {
-  const { typeInformation, informations, informationValues, sliderMouseOn } =
-    useAppSelector((state) => state.reducer.catalog);
+export const FiltrsCatalog = memo(() => {
+  const typeInformation = useAppSelector(selectTypeInformation);
+  const informations = useAppSelector(selectInformations);
+  const informationValues = useAppSelector(selectInformationValues);
+  const sliderMouseOn = useAppSelector(selectSliderMouseOn);
   const dispatch = useAppDispatch();
   const { setInformationValues, setsliderMouseOn } = catalogSlice.actions;
 
@@ -117,4 +121,4 @@ export const FiltrsCatalog = () => {
         })}
     </>
   );
-};
+});

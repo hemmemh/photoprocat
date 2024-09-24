@@ -8,10 +8,13 @@ import { repeat } from '../../../../store2/actions/BasketActions';
 import { useNavigate } from 'react-router-dom';
 import { PRODUCT_ROUTE } from '../../../../app/config/routs';
 import { IOrderItem, IOrdersItemProduct } from '../../../../https/basketApi';
+import { selectToggle } from '../../../../store2/selectors/userSelectors';
+import { selectOrders } from '../../../../store2/selectors/basketSelectors';
 
 const Orders = () => {
-  const { toggle } = useAppSelector((state) => state.reducer.user);
-  const { orders } = useAppSelector((state) => state.reducer.basket);
+  const toggle = useAppSelector(selectToggle);
+  const orders = useAppSelector(selectOrders);
+  
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

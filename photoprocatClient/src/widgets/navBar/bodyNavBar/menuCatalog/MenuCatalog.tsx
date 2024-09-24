@@ -11,10 +11,12 @@ import {
   CATALOG_ROUTE,
   NEWS_ROUTE,
 } from '../../../../app/config/routs';
+import { selectMenu } from '../../../../store2/selectors/navBarSelectors';
+import { selectTypes } from '../../../../store2/selectors/catalogSelectors';
 
 export const MenuCatalog = () => {
-  const { menu } = useAppSelector((state) => state.reducer.navbar);
-  const { types } = useAppSelector((state) => state.reducer.catalog);
+  const menu = useAppSelector(selectMenu);
+  const types = useAppSelector(selectTypes);
   const dispatch = useAppDispatch();
   const { setMenu } = navbarSlice.actions;
   const { setTypes } = catalogSlice.actions;
@@ -76,12 +78,6 @@ export const MenuCatalog = () => {
         </div>
         <div onClick={() => navigate('*')} className="catalogNavbar__item_two">
           Контакты
-        </div>
-        <div
-          onClick={() => navigate(ADMIN_ROUTE)}
-          className="catalogNavbar__item_two"
-        >
-          Админ
         </div>
       </div>
     </div>

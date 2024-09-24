@@ -4,6 +4,9 @@ const uuid = require('uuid');
 const path = require('path');
 const fs = require('fs');
 const ApiError = require('../Errors/ApiError');
+const { newsData, commentsData } = require('../data/exapleData');
+const userService = require('./userService');
+const { getRandomElement } = require('../helpers/productsHelpers');
 class newsServices {
   async createNews(title, text, image) {
     try {
@@ -17,6 +20,34 @@ class newsServices {
       const response = new News({ title, text, image: imagePath, date });
       await response.save();
       return response;
+    } catch (e) {
+      console.log('e', e);
+      throw ApiError.BadRequest('недостаточно данных');
+    }
+  }
+
+
+  async createMany() {
+    try {
+      const users = await userService.getAll();
+      const news = newsData
+      const comments = commentsData
+      for(const newsItem of news){
+        const date = Date.now();
+        const {text, image, title} = newsItem
+        const response = new News({ title, text, image, date });
+        await response.save();
+        for (const user of users) {
+          const comment = getRandomElement(comments);
+          await this.addComment(
+            user.name,
+            user.sername,
+            comment.text,
+            response
+          );
+        }
+      }
+      return []
     } catch (e) {
       console.log('e', e);
       throw ApiError.BadRequest('недостаточно данных');

@@ -1,4 +1,4 @@
-import ItemsBasket from './itemsBasket/ItemsBasket';
+import ItemsBasket from '../itemsBasket/ItemsBasket';
 import './topicBasket.scss';
 
 const TopicBasket = () => {

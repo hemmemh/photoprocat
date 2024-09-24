@@ -11,6 +11,17 @@ class newsControllers {
       next(error);
     }
   }
+
+
+  async createMany(req, res, next) {
+    try {
+      const response = await newsServices.createMany();
+      return res.json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async addComment(req, res, next) {
     try {
       const { name, sername, text, news } = req.body;

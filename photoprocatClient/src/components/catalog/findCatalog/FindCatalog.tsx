@@ -1,11 +1,12 @@
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { selectProducts, selectProductsLoad } from '../../../store2/selectors/catalogSelectors';
 import './findCatalog.scss';
 
 export const FindCatalog = () => {
-  const { productsLoad, products } = useAppSelector(
-    (state) => state.reducer.catalog
-  );
 
+  const productsLoad = useAppSelector(selectProductsLoad);
+  const products = useAppSelector(selectProducts);
+  
   return (
     <div className="count">
       Найдено{' '}

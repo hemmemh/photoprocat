@@ -6,7 +6,7 @@ interface ILoaders {
   compare: boolean;
   love: boolean;
 }
-type initialState = {
+export type productState = {
   product: IProduct | null;
   productLoad: boolean;
   inBasket: boolean;
@@ -16,7 +16,7 @@ type initialState = {
   modal: boolean;
   loaders: ILoaders;
 };
-const initialState: initialState = {
+const initialState: productState = {
   product: null,
   productLoad: false,
   inBasket: false,

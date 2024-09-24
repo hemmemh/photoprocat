@@ -5,12 +5,12 @@ import Navigation from '../UI/navigation/Navigation';
 import Loader from '../UI/loader/Loader';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import './registration.scss';
+import { selectLoader } from '../../store2/selectors/navBarSelectors';
+import { selectSuccessfullReg } from '../../store2/selectors/registrationSelectors';
 
 const Mainregistration = () => {
-  const { loader, successfullReg } = useAppSelector(
-    (state) => state.reducer.registration
-  );
-
+  const loader = useAppSelector(selectLoader);
+  const successfullReg = useAppSelector(selectSuccessfullReg);
   return (
     <div className="Registration">
       <div className="Registration__container">

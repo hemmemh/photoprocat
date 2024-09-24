@@ -1,13 +1,14 @@
 import { Slider } from '@mui/material';
-import React from 'react';
+import React, { memo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { catalogSlice } from '../../store2/reducers/CatalogSlice';
 import './sliderSort.scss';
+import { selectInformationValues, selectSliderMouseOn } from '../../store2/selectors/catalogSelectors';
 
 const SliderSort = ({ typeName, arr }: { typeName: string; arr: string[] }) => {
-  const { informationValues, sliderMouseOn } = useAppSelector(
-    (state) => state.reducer.catalog
-  );
+  const informationValues = useAppSelector(selectInformationValues);
+  const sliderMouseOn = useAppSelector(selectSliderMouseOn);
+  
   const dispatch = useAppDispatch();
   const { setInformationValues, setsliderMouseOn } = catalogSlice.actions;
 
@@ -56,4 +57,4 @@ const SliderSort = ({ typeName, arr }: { typeName: string; arr: string[] }) => {
   );
 };
 
-export default SliderSort;
+export default memo(SliderSort);

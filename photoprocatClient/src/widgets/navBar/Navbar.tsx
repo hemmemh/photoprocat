@@ -6,11 +6,13 @@ import useScroll from '../../hooks/useScroll';
 import Loader from '../../components/UI/loader/Loader';
 import './navbar.scss';
 import BodyNavBar from './bodyNavBar/BodyNavBar';
+import { selectLoader, selectMenu, selectPassSucc } from '../../store2/selectors/navBarSelectors';
 
 const Navbar: FC = () => {
-  const { loader, passSucc, menu } = useAppSelector(
-    (state) => state.reducer.navbar
-  );
+  const loader = useAppSelector(selectLoader);
+  const passSucc = useAppSelector(selectPassSucc);
+  const menu = useAppSelector(selectMenu);
+  
   const navbarRef = useRef<HTMLDivElement>(null);
   const loaderRef = useRef<HTMLDivElement>(null);
   const { scroll } = useScroll(navbarRef);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { Modal } from '../../components/UI/modal/Modal';
 import Input from '../../components/UI/input/Input';
 import { Rating } from '@mui/material';
@@ -8,14 +8,15 @@ import { productSlice } from '../../store2/reducers/ProductSlice';
 import { addRaitingToProduct } from '../../store2/actions/ProductActions';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import MyTextArea from '../../components/UI/myTextArea/MyTextArea';
+import { selectModal } from '../../store2/selectors/productSelectors';
 
-const ProductRaiting = () => {
+const ProductRaiting = memo(() => {
   const [name, setname] = useState<string>('');
   const [sername, setsername] = useState<string>('');
   const [text, settext] = useState<string>('');
   const [raitingModal, setraitingModal] = useState<number | null>(1);
   const { id } = useParams();
-  const { modal } = useAppSelector((state) => state.reducer.product);
+  const modal = useAppSelector(selectModal);
   const { setModal } = productSlice.actions;
   const setRaitingToProduct = () => {
     if (!id) return;
@@ -70,6 +71,6 @@ const ProductRaiting = () => {
       </div>
     </Modal>
   );
-};
+});
 
 export default ProductRaiting;

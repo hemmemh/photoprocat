@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, memo, useEffect, useRef, useState } from 'react';
 import './fold.scss';
 
 interface FooterProps {
@@ -106,4 +106,4 @@ const Fold: FC<FooterProps> = ({
   );
 };
 
-export default Fold;
+export default memo(Fold);

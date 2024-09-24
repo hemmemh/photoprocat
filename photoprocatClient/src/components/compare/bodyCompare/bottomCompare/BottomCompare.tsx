@@ -5,6 +5,8 @@ import { useAppSelector } from '../../../../hooks/reduxHooks';
 import './bottomCompare.scss';
 import { IInformation } from '../../../../https/productApi';
 import { ICompareItem } from '../../../../https/compareApi';
+import { selectActiveType, selectCompare, selectFold } from '../../../../store2/selectors/compareSelectors';
+import { selectInformations } from '../../../../store2/selectors/catalogSelectors';
 
 const breakPoints = {
   786: {
@@ -28,9 +30,10 @@ const BottomCompare = ({
   setSecondSwiper: (value: SwiperClass) => void;
   firstSwiper: SwiperClass | null;
 }) => {
-  const { activeType, fold, informations, compare } = useAppSelector(
-    (state) => state.reducer.compare
-  );
+  const activeType = useAppSelector(selectActiveType);
+  const fold = useAppSelector(selectFold);
+  const informations = useAppSelector(selectInformations);
+  const compare = useAppSelector(selectCompare);
 
   return (
     <div className="bottom">

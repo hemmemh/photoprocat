@@ -6,12 +6,13 @@ import {
 import useItemsClick from '../../../../hooks/useItemsClick';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks';
 import './itemsComapre.scss';
+import { selectActiveType, selectCompare, selectCompareTypes } from '../../../../store2/selectors/compareSelectors';
 
 const ItemsCompare = () => {
-  const { activeType, compareTypes, compare } = useAppSelector(
-    (state) => state.reducer.compare
-  );
 
+  const activeType = useAppSelector(selectActiveType);
+  const compareTypes = useAppSelector(selectCompareTypes);
+  const compare = useAppSelector(selectCompare);
   const dispatch = useAppDispatch();
   const actionRef = useRef<HTMLDivElement>(null);
   const actionRef2 = useRef<HTMLDivElement>(null);

@@ -1,5 +1,5 @@
-import { LeftCatalog } from './leftCatalog/LeftCatalog';
-import { RightCatalog } from './rightCatalog/RightCatalog';
+import { LeftCatalog } from '../leftCatalog/LeftCatalog';
+import { RightCatalog } from '../rightCatalog/RightCatalog';
 import './bodyCatalog.scss';
 
 export const BodyCatalog = () => {

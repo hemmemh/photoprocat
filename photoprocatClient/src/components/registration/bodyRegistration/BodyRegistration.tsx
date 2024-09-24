@@ -14,22 +14,21 @@ import {
 } from '../../../store2/actions/RegistrationActions';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import './bodyRegistration.scss';
+import { selectMail, selectPassword, selectSecondName, selectValidationEmail, selectValidationPassword } from '../../../store2/selectors/registrationSelectors';
+import { selectData, selectName, selectTell } from '../../../store2/selectors/userSelectors';
 
 const BodyRegistration = () => {
   const calendarIcon = useRef<HTMLImageElement>(null);
   const calendarRef = useRef<HTMLDivElement>(null);
   const [calendar, setcalendar] = useState<boolean>(false);
-
-  const {
-    secondName,
-    name,
-    mail,
-    data,
-    password,
-    tell,
-    validationEmail,
-    validationPassword,
-  } = useAppSelector((state) => state.reducer.registration);
+  const secondName = useAppSelector(selectSecondName);
+  const name = useAppSelector(selectName);
+  const mail = useAppSelector(selectMail);
+  const data = useAppSelector(selectData);
+  const password = useAppSelector(selectPassword);
+  const tell = useAppSelector(selectTell);
+  const validationEmail = useAppSelector(selectValidationEmail);
+  const validationPassword = useAppSelector(selectValidationPassword);
   const { setData, setName, setSecondName, setTell } =
     registrationSlice.actions;
   const dispatch = useAppDispatch();

@@ -3,6 +3,7 @@ import Button2 from '../../../components/UI/button2/Button2';
 import Radio from '../../../components/UI/radio/Radio';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { catalogSlice } from '../../../store2/reducers/CatalogSlice';
+import { selectSortNumber } from '../../../store2/selectors/catalogSelectors';
 
 const items = [
   { direct: 1, class: '' },
@@ -11,7 +12,7 @@ const items = [
 const DirectionSort = () => {
   const dispatch = useAppDispatch();
   const { setSortNumber } = catalogSlice.actions;
-  const { sortNumber } = useAppSelector((state) => state.reducer.catalog);
+  const sortNumber = useAppSelector(selectSortNumber);
 
   return (
     <div className={cls.directSort}>

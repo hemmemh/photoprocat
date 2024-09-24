@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type initialState = {
+export type newsState = {
   modal: boolean;
   newsId: string;
   modalCooment: boolean;
   modalNews: boolean;
 };
 
-const initialState: initialState = {
+const initialState: newsState = {
   modal: false,
   newsId: '',
   modalCooment: false,

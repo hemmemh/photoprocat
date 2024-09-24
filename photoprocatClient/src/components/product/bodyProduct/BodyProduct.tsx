@@ -3,9 +3,10 @@ import RaitingsProduct from './raitingsProduct/RaitingsProduct';
 import Navigation from '../../UI/navigation/Navigation';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import SpinnerBody from '../../UI/spinnerBody/SpinnerBody';
+import { selectProductLoad } from '../../../store2/selectors/productSelectors';
 
 const BodyProduct = () => {
-  const { productLoad } = useAppSelector((state) => state.reducer.product);
+  const productLoad = useAppSelector(selectProductLoad);
 
   return (
     <>

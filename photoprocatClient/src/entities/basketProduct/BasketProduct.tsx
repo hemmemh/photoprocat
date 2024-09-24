@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, memo } from 'react';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { changeAm, removeFromBasket } from '../../store2/actions/BasketActions';
 import { API_URL } from '../../utils/config';
@@ -67,4 +67,4 @@ const BasketProduct: FC<BasketProduct> = ({ e }) => {
   );
 };
 
-export default BasketProduct;
+export default memo(BasketProduct);

@@ -4,11 +4,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { navbarSlice } from '../../../store2/reducers/NavBarSlice';
 import { CATALOG_ROUTE, USER_ROUTE } from '../../../app/config/routs';
 import './rightMenu.scss';
+import { selectUser } from '../../../store2/selectors/userSelectors';
+import { selectSearch } from '../../../store2/selectors/navBarSelectors';
 
 export const RightMenu = () => {
   const navigate = useNavigate();
-  const { search } = useAppSelector((state) => state.reducer.navbar);
-  const { user } = useAppSelector((state) => state.reducer.user);
+  const search = useAppSelector(selectSearch);
+  const user = useAppSelector(selectUser);
   const { setSearch, setLoginModal } = navbarSlice.actions;
   const dispatch = useAppDispatch();
   const location = useLocation();

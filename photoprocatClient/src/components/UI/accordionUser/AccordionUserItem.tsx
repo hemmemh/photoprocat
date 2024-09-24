@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, FC } from 'react';
+import React, { useEffect, useRef, useState, FC, memo } from 'react';
 import './accordionUser.scss';
 
 interface FooterItemProps {
@@ -110,4 +110,4 @@ const AccordionUserItem: FC<FooterItemProps> = ({
   );
 };
 
-export default AccordionUserItem;
+export default memo(AccordionUserItem);

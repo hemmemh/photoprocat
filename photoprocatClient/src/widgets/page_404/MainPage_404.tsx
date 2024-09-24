@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import './mainPage_404.scss';
 
 const MainPage_404 = () => {
@@ -10,4 +11,4 @@ const MainPage_404 = () => {
   );
 };
 
-export default MainPage_404;
+export default memo(MainPage_404);

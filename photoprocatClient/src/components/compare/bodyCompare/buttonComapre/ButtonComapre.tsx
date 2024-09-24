@@ -3,9 +3,11 @@ import Button from '../../../UI/button/Button';
 import './buttonCompare.scss';
 import { compareSlice } from '../../../../store2/reducers/CompareSlice';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks';
+import { selectFold } from '../../../../store2/selectors/compareSelectors';
 
 const ButtonComapre = () => {
-  const { fold } = useAppSelector((state) => state.reducer.compare);
+
+  const fold = useAppSelector(selectFold);
   const { setFold } = compareSlice.actions;
   const dispatch = useAppDispatch();
 

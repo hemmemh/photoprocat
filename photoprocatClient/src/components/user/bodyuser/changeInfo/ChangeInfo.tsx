@@ -11,11 +11,15 @@ import { userSlice } from '../../../../store2/reducers/UserSlice';
 import useCalendar from '../../../../hooks/useCalendar';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks';
 import './changeInfo.scss';
+import { selectData, selectName, selectSerName, selectTell, selectToggle, selectUser } from '../../../../store2/selectors/userSelectors';
 
 const ChangeInfo = () => {
-  const { toggle, name, serName, tell, data, user } = useAppSelector(
-    (state) => state.reducer.user
-  );
+  const toggle = useAppSelector(selectToggle);
+  const name = useAppSelector(selectName);
+  const serName = useAppSelector(selectSerName);
+  const tell = useAppSelector(selectTell);
+  const data = useAppSelector(selectData);
+  const user = useAppSelector(selectUser);
   const { setSerName, setName, setData, setTell } = userSlice.actions;
   const [mail, setmail] = useState<string>(user?.mail ?? '');
   const dispatch = useAppDispatch();

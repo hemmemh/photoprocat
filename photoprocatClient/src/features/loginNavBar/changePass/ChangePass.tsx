@@ -4,12 +4,13 @@ import useUpdatePassword from '../../../hooks/useUpdatePassword';
 import Input from '../../../components/UI/input/Input';
 import Button from '../../../components/UI/button/Button';
 import './changePass.scss';
+import { selectModalStage } from '../../../store2/selectors/navBarSelectors';
 
 export const ChangePass = () => {
   const mail = '';
   const [code, setcode] = useState<string>('');
   const [password, setpassword] = useState<string>('');
-  const { modalStage } = useAppSelector((state) => state.reducer.navbar);
+  const modalStage = useAppSelector(selectModalStage);
   const { updatePassword2 } = useUpdatePassword({
     email: mail,
     password,

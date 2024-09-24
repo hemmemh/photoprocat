@@ -4,9 +4,10 @@ import useComment from '../../../hooks/useComment';
 import { newsSlice } from '../../../store2/reducers/NewsSlice';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import Button2 from '../../UI/button2/Button2';
+import { selectModalCooment } from '../../../store2/selectors/newsSelectors';
 
 const CommentModal = () => {
-  const { modalCooment } = useAppSelector((state) => state.reducer.news);
+  const modalCooment = useAppSelector(selectModalCooment);
   const { setModalCooment } = newsSlice.actions;
   const dispatch = useAppDispatch();
 

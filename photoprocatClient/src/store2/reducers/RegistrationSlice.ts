@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type initialState = {
+export type registrationState = {
   loader: boolean;
   successfullReg: boolean;
   data: string;
@@ -13,7 +13,7 @@ type initialState = {
   validationPassword: boolean;
 };
 
-const initialState: initialState = {
+const initialState: registrationState = {
   loader: false,
   successfullReg: false,
   data: '2022-04-17',

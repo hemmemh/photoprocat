@@ -1,6 +1,7 @@
 import { Rating } from '@mui/material';
 import Button from '../../components/UI/button/Button';
 import './itemNews.scss';
+import { memo } from 'react';
 
 const ItemNews = () => {
   return (
@@ -30,4 +31,4 @@ const ItemNews = () => {
   );
 };
 
-export default ItemNews;
+export default memo(ItemNews);

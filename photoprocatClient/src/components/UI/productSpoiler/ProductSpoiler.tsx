@@ -91,4 +91,4 @@ const ProductSpoiler: FC<FooterProps> = memo(
   }
 );
 
-export default ProductSpoiler;
+export default memo(ProductSpoiler);

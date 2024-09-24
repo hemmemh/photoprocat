@@ -3,6 +3,7 @@ import ProductSpoiler from '../../../components/UI/productSpoiler/ProductSpoiler
 import Radio from '../../../components/UI/radio/Radio';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { catalogSlice } from '../../../store2/reducers/CatalogSlice';
+import { selectSort } from '../../../store2/selectors/catalogSelectors';
 import './optionsSort.scss';
 
 const sorts = [
@@ -15,7 +16,7 @@ const sorts = [
 const OptionsSort = () => {
   const dispatch = useAppDispatch();
   const { setSort } = catalogSlice.actions;
-  const { sort } = useAppSelector((state) => state.reducer.catalog);
+  const sort = useAppSelector(selectSort);
 
   return (
     <div className="options">

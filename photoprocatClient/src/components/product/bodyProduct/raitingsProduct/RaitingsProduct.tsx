@@ -4,6 +4,7 @@ import { productSlice } from '../../../../store2/reducers/ProductSlice';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks';
 import './ratingsProduct.scss';
 import Button2 from '../../../UI/button2/Button2';
+import { selectProduct } from '../../../../store2/selectors/productSelectors';
 
 const breakpoints = {
   500: {
@@ -20,7 +21,7 @@ const breakpoints = {
   },
 };
 const RaitingsProduct = () => {
-  const { product } = useAppSelector((state) => state.reducer.product);
+  const product = useAppSelector(selectProduct);
   const dispatch = useAppDispatch();
   const { setModal } = productSlice.actions;
 

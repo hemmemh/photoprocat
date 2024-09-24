@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Spinner from '../spinner/Spinner';
 import './spinnerBody.scss';
 
@@ -10,4 +10,4 @@ const SpinnerBody = ({ className = '' }: { className?: string }) => {
   );
 };
 
-export default SpinnerBody;
+export default memo(SpinnerBody);

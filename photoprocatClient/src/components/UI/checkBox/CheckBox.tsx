@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import './checkBox.scss';
 
 interface FooterProps {
@@ -41,4 +41,4 @@ const CheckBox: FC<FooterProps> = ({
   );
 };
 
-export default CheckBox;
+export default memo(CheckBox);

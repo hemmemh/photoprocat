@@ -72,4 +72,4 @@ const Toggle: FC<FooterProps> = memo(
   }
 );
 
-export default Toggle;
+export default memo(Toggle);

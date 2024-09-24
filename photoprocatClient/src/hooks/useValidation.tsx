@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from './reduxHooks';
 import { useNavigate } from 'react-router-dom';
 import { REGISTRATION_ROUTE } from '../app/config/routs';
 import { Login } from '../store2/actions/UserActions';
+import { selectValidationError, selectValidationErrorText } from '../store2/selectors/navBarSelectors';
 
 type useValidationType = {
   setmail: React.Dispatch<React.SetStateAction<string>>;
@@ -23,9 +24,9 @@ const useValidation = ({
   const [validationPassword, setvalidationPassword] = useState<boolean>(true);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { validationError, validationErrorText } = useAppSelector(
-    (state) => state.reducer.navbar
-  );
+  const validationError = useAppSelector(selectValidationError);
+  const validationErrorText = useAppSelector(selectValidationErrorText);
+  
   const { setValidationErrorText, setValidationError, setLoginModal } =
     navbarSlice.actions;
 

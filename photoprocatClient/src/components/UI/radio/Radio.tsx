@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import './Radio.scss';
 
 type Radio = {
@@ -35,4 +35,4 @@ const Radio: FC<Radio> = ({
   );
 };
 
-export default Radio;
+export default memo(Radio);

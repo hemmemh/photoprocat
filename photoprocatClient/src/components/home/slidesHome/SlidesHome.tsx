@@ -8,6 +8,10 @@ import SpinnerBody from '../../UI/spinnerBody/SpinnerBody';
 import cls from './slidesHome.module.scss';
 import { putProductsInSlides } from '../../../store2/actions/CatalogActions';
 import ProductItem from '../../../entities/productItem/ProductItem';
+import { selectProducts } from '../../../store2/selectors/catalogSelectors';
+import { selectBasket } from '../../../store2/selectors/basketSelectors';
+import { selectLoves } from '../../../store2/selectors/loveSelectors';
+import { selectCompare } from '../../../store2/selectors/compareSelectors';
 
 const navigation = {
   prevEl: '.slidesHome__prevButton',
@@ -28,10 +32,10 @@ const breakpoints = {
 export const SlidesHome = () => {
   const [loader, setloader] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const { products } = useAppSelector((state) => state.reducer.catalog);
-  const { basket } = useAppSelector((state) => state.reducer.basket);
-  const { loves } = useAppSelector((state) => state.reducer.love);
-  const { compare } = useAppSelector((state) => state.reducer.compare);
+  const products = useAppSelector(selectProducts);
+  const basket = useAppSelector(selectBasket);
+  const loves = useAppSelector(selectLoves);
+  const compare = useAppSelector(selectCompare);
 
   useEffect(() => {
     dispatch(putProductsInSlides()).then(() => {

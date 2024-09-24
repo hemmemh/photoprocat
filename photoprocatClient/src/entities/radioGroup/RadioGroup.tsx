@@ -1,12 +1,13 @@
+import { memo } from 'react';
 import Radio from '../../components/UI/radio/Radio';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { catalogSlice } from '../../store2/reducers/CatalogSlice';
 import './radioGroup.scss';
+import { selectInformationValues } from '../../store2/selectors/catalogSelectors';
 
 const RadioGroup = ({ arr, typeName }: { arr: string[]; typeName: string }) => {
-  const { informationValues } = useAppSelector(
-    (state) => state.reducer.catalog
-  );
+  const informationValues = useAppSelector(selectInformationValues);
+
   const dispatch = useAppDispatch();
   const { setInformationValues } = catalogSlice.actions;
 
@@ -58,4 +59,4 @@ const RadioGroup = ({ arr, typeName }: { arr: string[]; typeName: string }) => {
   );
 };
 
-export default RadioGroup;
+export default memo(RadioGroup);

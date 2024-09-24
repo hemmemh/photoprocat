@@ -53,6 +53,8 @@ export const refreshUser = () => async (dispatch: AppDispatch) => {
   try {
     dispatch(setLoadData(true));
     const data = await refresh();
+    console.log('data', data);
+    
     const user: IUser = jwtDecode(data.refreshToken);
 
     dispatch(setUser(user));
@@ -91,15 +93,29 @@ export const onLogout = () => async (dispatch: AppDispatch) => {
 export const Login =
   ({ mail, password }: ILogin) =>
   async (dispatch: AppDispatch) => {
-    const { setUser } = userSlice.actions;
-    const { setLoginModal } = navbarSlice.actions;
+    const { setUser} = userSlice.actions;
+    const { setLoginModal} = navbarSlice.actions;
+    const { setLoves } = loveSlice.actions;
+    const { setBasket, setOrders } = basketSlice.actions;
+    const { setCompare } = compareSlice.actions;
     try {
       const e = await login({ mail, password });
+      const user: IUser = jwtDecode(e.refreshToken);
 
-      dispatch(setUser(jwtDecode(e.refreshToken)));
+      dispatch(setUser(user));
+      const basket = await getBasket({ id: user.id });
+
+      dispatch(setBasket(basket));
+      const compare = await getCompare({ id: user.compare });
+
+      dispatch(setCompare(compare));
+      const loves = await getLoves({ id: user.loves });
+
+      dispatch(setLoves(loves));
+      const orders = await getOrder({ id: user.orders });
+  
+      dispatch(setOrders(orders));
       dispatch(setLoginModal(false));
-      window.location.replace(HOME_ROUTE);
-      window.location.reload();
     } catch (error) {
       console.log(error);
     }

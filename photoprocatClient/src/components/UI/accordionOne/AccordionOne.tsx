@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, FC } from 'react';
+import { useCallback, useEffect, useRef, useState, FC, memo } from 'react';
 import './accordionOne.scss';
 
 interface FooterProps {
@@ -107,4 +107,4 @@ const AccordionOne: FC<FooterProps> = ({
   );
 };
 
-export default AccordionOne;
+export default memo(AccordionOne);

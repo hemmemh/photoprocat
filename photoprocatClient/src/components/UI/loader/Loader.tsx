@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import './loader.scss';
 
 const Loader = ({ className = '' }: { className?: string }) => {
@@ -11,4 +12,4 @@ const Loader = ({ className = '' }: { className?: string }) => {
   );
 };
 
-export default Loader;
+export default memo(Loader);

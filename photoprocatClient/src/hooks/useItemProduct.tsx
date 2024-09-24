@@ -13,6 +13,7 @@ import {
   removeFromBasket,
 } from '../store2/actions/BasketActions';
 import { IProduct } from '../https/productApi';
+import { selectUser } from '../store2/selectors/userSelectors';
 
 type itemProduct = {
   inBasket: boolean;
@@ -35,7 +36,8 @@ const useItemProduct = ({
     compare: true,
     love: true,
   });
-  const { user } = useAppSelector((state) => state.reducer.user);
+  const user = useAppSelector(selectUser);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {

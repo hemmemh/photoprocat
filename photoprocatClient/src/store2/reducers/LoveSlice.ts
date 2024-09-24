@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ILoves, ILovesItem } from '../../https/lovesApi';
 
-type initialState = {
+export type loveState = {
   load: boolean;
   loves: ILoves | null;
 };
 
-const initialState: initialState = {
+const initialState: loveState = {
   load: false,
   loves: null,
 };

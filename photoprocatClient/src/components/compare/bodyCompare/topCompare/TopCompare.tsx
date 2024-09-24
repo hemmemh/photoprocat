@@ -1,5 +1,5 @@
-import LeftCompare from './leftCompare/LeftCompare';
-import TopSlider from './topSlider/TopSlider';
+import LeftCompare from '../leftCompare/LeftCompare';
+import TopSlider from '../topSlider/TopSlider';
 import './topCompare.scss';
 import Swiper from 'swiper';
 

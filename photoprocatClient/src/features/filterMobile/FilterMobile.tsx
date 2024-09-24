@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import AccordionUser from '../../components/UI/accordionUser/AccordionUser';
 import AccordionUserItem from '../../components/UI/accordionUser/AccordionUserItem';
@@ -9,12 +9,13 @@ import cls from './filterMobile.module.scss';
 import Button2 from '../../components/UI/button2/Button2';
 import CheckBoxGroup from '../../entities/checkBoxGroup/CheckBoxGroup';
 import { isStringArray } from '../../utils/guards/guards';
+import { selectInformations, selectTypeInformation } from '../../store2/selectors/catalogSelectors';
 
-export const FilterMobile = () => {
+export const FilterMobile = memo(() => {
   const [VisibleAccordionFiltr] = useState(false);
-  const { typeInformation, informations } = useAppSelector(
-    (state) => state.reducer.catalog
-  );
+  const typeInformation = useAppSelector(selectTypeInformation);
+  const informations = useAppSelector(selectInformations);
+  
 
   return (
     <div className={cls.filterAccordion}>
@@ -76,4 +77,4 @@ export const FilterMobile = () => {
       )}
     </div>
   );
-};
+});

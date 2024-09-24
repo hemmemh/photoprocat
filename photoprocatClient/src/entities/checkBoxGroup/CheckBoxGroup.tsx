@@ -2,6 +2,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { catalogSlice } from '../../store2/reducers/CatalogSlice';
 import CheckBox from '../../components/UI/checkBox/CheckBox';
 import './checkBoxGroup.scss';
+import { memo } from 'react';
+import { selectInformationValues } from '../../store2/selectors/catalogSelectors';
 
 const CheckBoxGroup = ({
   arr,
@@ -10,9 +12,8 @@ const CheckBoxGroup = ({
   arr: string[];
   typeName: string;
 }) => {
-  const { informationValues } = useAppSelector(
-    (state) => state.reducer.catalog
-  );
+  const informationValues = useAppSelector(selectInformationValues);
+
   const dispatch = useAppDispatch();
   const { setInformationValues } = catalogSlice.actions;
 
@@ -39,4 +40,4 @@ const CheckBoxGroup = ({
   );
 };
 
-export default CheckBoxGroup;
+export default memo(CheckBoxGroup) ;

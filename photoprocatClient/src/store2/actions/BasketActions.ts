@@ -95,8 +95,6 @@ export const addToBasketAction =
     const { setBasketItems } = basketSlice.actions;
 
     try {
-      console.log('****');
-
       if (!user || !basket) return;
 
       dispatch(setLoaders({ ...loaders, basket: false }));
@@ -105,7 +103,7 @@ export const addToBasketAction =
         product: id,
         count: 1,
       });
-      console.log('bakset', data, basket);
+
       const newBasketItems = [...basket.basketItems];
       newBasketItems.push(data);
       dispatch(setInBasket(true));
@@ -137,9 +135,11 @@ export const removeFromBasket =
         id: item._id,
         basketId: user.basket,
       });
+
       dispatch(
         setSumPrice(sumPrice - removedItem.product.price * removedItem.count)
       );
+      
       const newBasketItems = basket.basketItems.filter(
         (el) => el._id !== item._id
       );

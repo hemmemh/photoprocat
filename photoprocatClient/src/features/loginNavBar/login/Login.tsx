@@ -5,14 +5,15 @@ import useValidation from '../../../hooks/useValidation';
 import Input from '../../../components/UI/input/Input';
 import Button from '../../../components/UI/button/Button';
 import './loginModal.scss';
+import { selectLoginModal, selectModalStage } from '../../../store2/selectors/navBarSelectors';
 
 export const Login = () => {
   const [mail, setmail] = useState<string>('');
   const [password, setpassword] = useState<string>('');
 
-  const { loginModal, modalStage } = useAppSelector(
-    (state) => state.reducer.navbar
-  );
+  const loginModal = useAppSelector(selectLoginModal);
+  const modalStage = useAppSelector(selectModalStage);
+  
   const { setModalStage } = navbarSlice.actions;
   const dispatch = useAppDispatch();
   const {

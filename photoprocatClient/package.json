@@ -82,6 +82,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/webpack": "^5.28.5",
     "@types/webpack-dev-server": "^4.7.2",
+    "ajv": "^7.2.4",
     "css-loader": "^6.8.1",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",

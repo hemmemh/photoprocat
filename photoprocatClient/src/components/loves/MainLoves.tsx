@@ -7,11 +7,16 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ICompareItem } from '../../https/compareApi';
 import { IBasketItem } from '../../https/basketApi';
 import { ILovesItem } from '../../https/lovesApi';
+import { selectLoveLoad, selectLoves } from '../../store2/selectors/loveSelectors';
+import { selectCompare } from '../../store2/selectors/compareSelectors';
+import { selectBasket } from '../../store2/selectors/basketSelectors';
 
 const MainLoves = () => {
-  const { loves, load } = useAppSelector((state) => state.reducer.love);
-  const { compare } = useAppSelector((state) => state.reducer.compare);
-  const { basket } = useAppSelector((state) => state.reducer.basket);
+  const loves = useAppSelector(selectLoves);
+  const load = useAppSelector(selectLoveLoad);
+  const compare = useAppSelector(selectCompare);
+  const basket = useAppSelector(selectBasket);
+  
 
   return (
     <div className="Loves">

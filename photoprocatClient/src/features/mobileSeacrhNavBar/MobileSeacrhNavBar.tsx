@@ -1,10 +1,13 @@
+import { memo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import useSearch from '../../hooks/useSearch';
 import { navbarSlice } from '../../store2/reducers/NavBarSlice';
 import './mobileSearchNavBar.scss';
+import { selectFilterCatalog, selectSearch } from '../../store2/selectors/navBarSelectors';
 
-export const MobileSeacrhNavBar = () => {
-  const { search, filter } = useAppSelector((state) => state.reducer.navbar);
+export const MobileSeacrhNavBar = memo(() => {
+  const search = useAppSelector(selectSearch);
+  const filter = useAppSelector(selectFilterCatalog);
   const dispatch = useAppDispatch();
   const { setSearch } = navbarSlice.actions;
   const { setfilterTimeOn } = useSearch();
@@ -37,4 +40,4 @@ export const MobileSeacrhNavBar = () => {
       </div>
     </div>
   );
-};
+});

@@ -2,9 +2,11 @@ import TopicBasket from './topicBasket/TopicBasket';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import './basketBody.scss';
 import SpinnerBody from '../../UI/spinnerBody/SpinnerBody';
+import { selectBasket, selectBasketLoad} from '../../../store2/selectors/basketSelectors';
 
 export const BasketBody = () => {
-  const { basket, load } = useAppSelector((state) => state.reducer.basket);
+  const basket = useAppSelector(selectBasket)
+  const load= useAppSelector(selectBasketLoad)
 
   return (
     <>

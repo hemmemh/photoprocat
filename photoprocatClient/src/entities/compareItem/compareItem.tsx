@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { API_URL } from '../../utils/config';
 import './compareItem.scss';
@@ -38,4 +38,4 @@ const CompareItem: FC<ICompareItemInterface> = ({ el }) => {
   );
 };
 
-export default CompareItem;
+export default memo(CompareItem);

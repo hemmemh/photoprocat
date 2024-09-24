@@ -8,7 +8,7 @@ import { IInformation, IProducts } from '../../https/productApi';
 import { IType } from '../../https/typesApi';
 import { IBrand } from '../../https/brandsApi';
 
-type initialState = {
+export type catalogState = {
   typeInformation: ItypeInformationConst | null;
   informations: IInformation[];
   informationValues: IInformationValuesConst;
@@ -30,7 +30,7 @@ type initialState = {
 
   types: IType[];
 };
-const initialState: initialState = {
+const initialState: catalogState = {
   typeInformation: null,
   informations: [],
   informationValues: {},

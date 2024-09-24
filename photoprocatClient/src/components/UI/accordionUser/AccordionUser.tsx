@@ -5,6 +5,7 @@ import React, {
   useState,
   FC,
   cloneElement,
+  memo,
 } from 'react';
 import './accordionUser.scss';
 
@@ -91,4 +92,4 @@ const AccordionUser: FC<FooterProps> = ({
   );
 };
 
-export default AccordionUser;
+export default memo(AccordionUser);

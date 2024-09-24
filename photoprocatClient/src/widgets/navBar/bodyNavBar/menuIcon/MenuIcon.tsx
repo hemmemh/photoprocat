@@ -2,9 +2,10 @@ import { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks';
 import { navbarSlice } from '../../../../store2/reducers/NavBarSlice';
 import './menuIcon.scss';
+import { selectMenu } from '../../../../store2/selectors/navBarSelectors';
 
 export const MenuIcon = () => {
-  const { menu } = useAppSelector((state) => state.reducer.navbar);
+  const menu = useAppSelector(selectMenu);
   const dispatch = useAppDispatch();
   const menuIcon = useRef(null);
   const { setMenu } = navbarSlice.actions;

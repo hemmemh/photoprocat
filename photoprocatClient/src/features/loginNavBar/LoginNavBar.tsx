@@ -5,11 +5,14 @@ import { ChangePass } from './changePass/ChangePass';
 import { Login } from './login/Login';
 import { SetEmail } from './setEmail/SetEmail';
 import './loginNavBar.scss';
+import { memo } from 'react';
+import { selectLoginModal, selectValidationError, selectValidationErrorText } from '../../store2/selectors/navBarSelectors';
 
-export const LoginNavBar = () => {
-  const { loginModal, validationError, validationErrorText } = useAppSelector(
-    (state) => state.reducer.navbar
-  );
+export const LoginNavBar = memo(() => {
+  const loginModal = useAppSelector(selectLoginModal);
+  const validationError = useAppSelector(selectValidationError);
+  const validationErrorText = useAppSelector(selectValidationErrorText);
+  
   const { setLoginModal } = navbarSlice.actions;
 
   const dispatch = useAppDispatch();
@@ -30,4 +33,4 @@ export const LoginNavBar = () => {
       )}
     </Modal>
   );
-};
+});

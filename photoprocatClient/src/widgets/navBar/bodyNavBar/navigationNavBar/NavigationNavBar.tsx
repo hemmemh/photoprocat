@@ -23,12 +23,6 @@ export const NavigationNavBar = () => {
       <div onClick={() => navigate('*')} className="navigationNavbar__item">
         Контакты
       </div>
-      <div
-        onClick={() => navigate(ADMIN_ROUTE)}
-        className="navigationNavbar__item"
-      >
-        Админ
-      </div>
     </div>
   );
 };

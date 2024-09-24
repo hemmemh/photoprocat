@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import './navigation.scss';
 
 interface FooterProps {
@@ -15,4 +15,4 @@ const Navigation: FC<FooterProps> = ({
   return <div className={`Navigation ${navigationClass}`}>{children}</div>;
 };
 
-export default Navigation;
+export default memo(Navigation);

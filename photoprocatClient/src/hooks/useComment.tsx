@@ -3,10 +3,13 @@ import { addComment } from '../https/newsApi';
 import { useNavigate } from 'react-router-dom';
 import { HOME_ROUTE } from '../app/config/routs';
 import { useAppSelector } from './reduxHooks';
+import { selectUser } from '../store2/selectors/userSelectors';
+import { selectNewsId } from '../store2/selectors/newsSelectors';
 
 const useComment = () => {
-  const { user } = useAppSelector((state) => state.reducer.user);
-  const { newsId } = useAppSelector((state) => state.reducer.news);
+  const user = useAppSelector(selectUser);
+  const newsId = useAppSelector(selectNewsId);
+  
   const [name, setname] = useState<string>(user?.name ?? '');
   const [sername, setsername] = useState<string>(user?.sername ?? '');
   const [textComment, settextComment] = useState<string>('');

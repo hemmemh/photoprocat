@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IBasket, IBasketItem, IOrder } from '../../https/basketApi';
 
-type initialState = {
+export type basketState = {
   load: boolean;
   sumPrice: number;
   basket: IBasket | null;
   orders: IOrder | null;
 };
 
-const initialState: initialState = {
+const initialState: basketState = {
   load: false,
   sumPrice: 0,
   basket: null,

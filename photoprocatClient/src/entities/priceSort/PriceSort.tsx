@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { catalogSlice } from '../../store2/reducers/CatalogSlice';
 import { Slider } from '@mui/material';
 import useCheckMobileScreen from '../../hooks/DetectMobileHook';
 import './priceSort.scss';
 import MyNumber from '../../components/UI/myNumber/MyNumber';
+import { selectMinMaxPrice, selectpriceRange } from '../../store2/selectors/catalogSelectors';
 
 const PriceSort = () => {
-  const { priceRange, minMaxPrice } = useAppSelector(
-    (state) => state.reducer.catalog
-  );
+  const priceRange = useAppSelector(selectpriceRange);
+  const minMaxPrice = useAppSelector(selectMinMaxPrice);
   const dispatch = useAppDispatch();
   const { setPriceRange, setPriceValue } = catalogSlice.actions;
   const isMobile = useCheckMobileScreen(991.98);
@@ -63,4 +63,4 @@ const PriceSort = () => {
   );
 };
 
-export default PriceSort;
+export default memo(PriceSort);
