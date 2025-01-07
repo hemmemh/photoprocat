@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import useSearch from '../../hooks/useSearch';
-import { navbarSlice } from '../../store2/reducers/NavBarSlice';
 import './mobileSearchNavBar.scss';
-import { selectFilterCatalog, selectSearch } from '../../store2/selectors/navBarSelectors';
+import { useAppDispatch, useAppSelector } from '../../shared/hooks/reduxHooks';
+import useSearch from '../../shared/hooks/useSearch';
+import { selectFilterCatalog, selectSearch } from '../../entities/navBar/model/navBarSelectors';
+import { navbarSlice } from '../../entities/navBar/model/NavBarSlice';
 
 export const MobileSeacrhNavBar = memo(() => {
   const search = useAppSelector(selectSearch);

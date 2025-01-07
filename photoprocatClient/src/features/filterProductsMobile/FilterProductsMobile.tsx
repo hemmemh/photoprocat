@@ -1,0 +1,80 @@
+import { memo, useState } from 'react';
+import AccordionUser from '../../shared/UI/accordionUser/AccordionUser';
+import AccordionUserItem from '../../shared/UI/accordionUser/AccordionUserItem';
+import SliderSort from '../../entities/sliderSort/SliderSort';
+import PriceSort from '../../entities/priceSort/PriceSort';
+import RadioGroup from '../../entities/radioGroup/RadioGroup';
+import cls from './filterProductsMobile.module.scss';
+import Button2 from '../../shared/UI/button2/Button2';
+import CheckBoxGroup from '../../entities/checkBoxGroup/CheckBoxGroup';
+import { isStringArray } from '../../shared/utils/guards/guards';
+import { selectInformations, selectTypeInformation } from '../../entities/catalog/model/catalogSelectors';
+import { useAppSelector } from '../../shared/hooks/reduxHooks';
+
+export const FilterProductsMobile = memo(() => {
+  const [VisibleAccordionFiltr] = useState(false);
+  const typeInformation = useAppSelector(selectTypeInformation);
+  const informations = useAppSelector(selectInformations);
+  
+
+  return (
+    <div className={cls.filterAccordion}>
+      {typeInformation && (
+        <AccordionUser>
+          <AccordionUserItem>
+            <Button2 className={cls.sortButton}>Фильтры</Button2>
+            <AccordionUser VisibleAll={VisibleAccordionFiltr}>
+              {Object.entries(typeInformation).map((el) => {
+                const type = el[1];
+                const typeName = el[0];
+
+                let arr = [
+                  ...informations
+                    .filter((fil) => fil.name == typeName)
+                    .map((ee) => ee.description),
+                ];
+                arr = arr.filter((fil, pos) => arr.indexOf(fil) === pos);
+
+                if (type == 'radio' && isStringArray(arr as string[])) {
+                  return (
+                    <AccordionUserItem key={typeName}>
+                      <Button2 className={cls.sortButton}>{typeName}</Button2>
+                      <RadioGroup typeName={typeName} arr={arr as string[]} />
+                    </AccordionUserItem>
+                  );
+                }
+
+                if (type == 'check' && isStringArray(arr as string[])) {
+                  return (
+                    <AccordionUserItem key={typeName}>
+                      <Button2 className={cls.sortButton}>{typeName}</Button2>
+                      <CheckBoxGroup
+                        typeName={typeName}
+                        arr={arr as string[]}
+                      />
+                    </AccordionUserItem>
+                  );
+                }
+
+                if (type == 'slider') {
+                  return (
+                    <AccordionUserItem key={typeName}>
+                      <Button2 className={cls.sortButton}>{typeName}</Button2>
+                      <SliderSort typeName={typeName} arr={arr as string[]} />
+                    </AccordionUserItem>
+                  );
+                }
+
+                return <></>;
+              })}
+              <AccordionUserItem>
+                <Button2 className={cls.sortButton}>цена</Button2>
+                <PriceSort />
+              </AccordionUserItem>
+            </AccordionUser>
+          </AccordionUserItem>
+        </AccordionUser>
+      )}
+    </div>
+  );
+});

@@ -1,8 +1,8 @@
 import './footerBottom.scss';
 import { memo } from 'react';
-import LeftFooterBottom from './leftBottomFooter/LeftFooterBottom';
-import LinksFooterBottom from './linksFooterBottom/LinksFooterBottom';
-import PaymentFooterBottom from './paymentBottomFooter/PaymentFooterBottom';
+import LeftFooterBottom from '../leftBottomFooter/LeftFooterBottom';
+import LinksFooterBottom from '../linksFooterBottom/LinksFooterBottom';
+import PaymentFooterBottom from '../paymentBottomFooter/PaymentFooterBottom';
 
 const FooterBottom = () => {
   return (

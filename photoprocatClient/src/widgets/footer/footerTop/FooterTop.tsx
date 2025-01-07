@@ -1,8 +1,8 @@
 import './footerTop.scss';
 import { memo } from 'react';
-import LeftTopFooter from './leftTopFooter/LeftTopFooter';
-import CenterTopFooter from './centerTopFooter/CenterTopFooter';
-import RightCenterFooter from './rightCenterFooter/RightCenterFooter';
+import LeftTopFooter from '../leftTopFooter/LeftTopFooter';
+import CenterTopFooter from '../centerTopFooter/CenterTopFooter';
+import RightCenterFooter from '../rightCenterFooter/RightCenterFooter';
 
 const FooterTop = () => {
   return (

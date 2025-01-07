@@ -1,9 +1,9 @@
-import { useAppSelector } from '../../hooks/reduxHooks';
-import useSearch from '../../hooks/useSearch';
-import Button from '../../components/UI/button/Button';
+import Button from '../../shared/UI/button/Button';
 import './searchNavBar.scss';
 import { memo } from 'react';
-import { selectFilter, selectSearch } from '../../store2/selectors/navBarSelectors';
+import { useAppSelector } from '../../shared/hooks/reduxHooks';
+import useSearch from '../../shared/hooks/useSearch';
+import { selectFilter, selectSearch } from '../../entities/navBar/model/navBarSelectors';
 
 export const SearchNavBar = memo(() => {
   const search = useAppSelector(selectSearch);

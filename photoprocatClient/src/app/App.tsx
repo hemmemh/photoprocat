@@ -1,27 +1,24 @@
-import AppRouter from './AppRouter';
+import AppRouter from './routers/AppRouter';
 import { BrowserRouter } from 'react-router-dom';
 import './styles/style.scss';
 import { useState, useEffect } from 'react';
-import { useAppDispatch } from '../hooks/reduxHooks';
-import { refreshUser } from '../store2/actions/UserActions';
+import { refreshUser } from '../entities/user/model/UserActions';
+import { useAppDispatch } from '../shared/hooks/reduxHooks';
+import { Providers } from './providers/providers';
 
 function App() {
-  const [loader, setloader] = useState(false);
+  const [loader, setloader] = useState(true);
   const dispatch = useAppDispatch();
   useEffect(() => {
     setloader(false);
     dispatch(refreshUser()).then(() => {
-      setloader(true);
+      setloader(false);
     });
   }, []);
 
   return (
     <div className="App">
-      {loader && (
-        <BrowserRouter>
-          <AppRouter />
-        </BrowserRouter>
-      )}
+      {!loader && <AppRouter />}
     </div>
   );
 }

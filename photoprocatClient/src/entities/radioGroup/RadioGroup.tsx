@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import Radio from '../../components/UI/radio/Radio';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { catalogSlice } from '../../store2/reducers/CatalogSlice';
+import Radio from '../../shared/UI/radio/Radio';
+import { catalogSlice } from '../catalog/model/CatalogSlice';
 import './radioGroup.scss';
-import { selectInformationValues } from '../../store2/selectors/catalogSelectors';
+import { selectInformationValues } from '../catalog/model/catalogSelectors';
+import { useAppDispatch, useAppSelector } from '../../shared/hooks/reduxHooks';
 
 const RadioGroup = ({ arr, typeName }: { arr: string[]; typeName: string }) => {
   const informationValues = useAppSelector(selectInformationValues);

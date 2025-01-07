@@ -4,9 +4,9 @@ import FooterBottom from './footerBottom/FooterBottom';
 import FooterTop from './footerTop/FooterTop';
 export const Footer = memo(() => {
   return (
-    <div className="Footer">
+    <footer className="Footer">
       <FooterTop />
       <FooterBottom />
-    </div>
+    </footer>
   );
 });

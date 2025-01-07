@@ -1,9 +1,9 @@
 import { Slider } from '@mui/material';
 import React, { memo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { catalogSlice } from '../../store2/reducers/CatalogSlice';
+import { catalogSlice } from '../catalog/model/CatalogSlice';
 import './sliderSort.scss';
-import { selectInformationValues, selectSliderMouseOn } from '../../store2/selectors/catalogSelectors';
+import { selectInformationValues, selectSliderMouseOn } from '../catalog/model/catalogSelectors';
+import { useAppDispatch, useAppSelector } from '../../shared/hooks/reduxHooks';
 
 const SliderSort = ({ typeName, arr }: { typeName: string; arr: string[] }) => {
   const informationValues = useAppSelector(selectInformationValues);

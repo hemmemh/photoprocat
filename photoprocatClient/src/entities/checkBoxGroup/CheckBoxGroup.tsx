@@ -1,9 +1,9 @@
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { catalogSlice } from '../../store2/reducers/CatalogSlice';
-import CheckBox from '../../components/UI/checkBox/CheckBox';
+import { catalogSlice } from '../catalog/model/CatalogSlice';
+import CheckBox from '../../shared/UI/checkBox/CheckBox';
 import './checkBoxGroup.scss';
 import { memo } from 'react';
-import { selectInformationValues } from '../../store2/selectors/catalogSelectors';
+import { selectInformationValues } from '../catalog/model/catalogSelectors';
+import { useAppDispatch, useAppSelector } from '../../shared/hooks/reduxHooks';
 
 const CheckBoxGroup = ({
   arr,

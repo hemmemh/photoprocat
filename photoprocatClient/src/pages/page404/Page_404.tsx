@@ -1,0 +1,13 @@
+import React from 'react';
+import Layout from '../../app/layouts/Layout';
+import MainPage_404 from '../../widgets/page_404/MainPage_404';
+
+const Page_404 = () => {
+  return (
+    <Layout>
+      <MainPage_404 />
+    </Layout>
+  );
+};
+
+export default Page_404;

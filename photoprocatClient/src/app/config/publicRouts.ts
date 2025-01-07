@@ -10,17 +10,17 @@ import {
   NEWS_ROUTE,
   LOVES_ROUTE,
 } from './routs';
-import Page_404 from '../../pages/Page_404';
+import Page_404 from '../../pages/page404/Page_404';
 
-const HomeLazy = lazy(() => import('../../pages/Home'));
-const CatalogLazy = lazy(() => import('../../pages/Catalog'));
-const ProductLazy = lazy(() => import('../../pages/Product'));
-const CompareLazy = lazy(() => import('../../pages/Compare'));
-const BasketLazy = lazy(() => import('../../pages/Basket'));
-const UserLazy = lazy(() => import('../../pages/User'));
-const NewsLazy = lazy(() => import('../../pages/News'));
-const RegistrationLazy = lazy(() => import('../../pages/Registration'));
-const LovesLazy = lazy(() => import('../../pages/Loves'));
+const HomeLazy = lazy(() => import('../../pages/home/Home'));
+const CatalogLazy = lazy(() => import('../../pages/catalog/Catalog'));
+const ProductLazy = lazy(() => import('../../pages/product/Product'));
+const CompareLazy = lazy(() => import('../../pages/compare/Compare'));
+const BasketLazy = lazy(() => import('../../pages/basket/Basket'));
+const UserLazy = lazy(() => import('../../pages/user/User'));
+const NewsLazy = lazy(() => import('../../pages/news/News'));
+const RegistrationLazy = lazy(() => import('../../pages/registration/Registration'));
+const LovesLazy = lazy(() => import('../../pages/loves/Loves'));
 
 export const publicRouts = [
   {

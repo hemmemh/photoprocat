@@ -1,10 +1,10 @@
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { ReactComponent as CompareSvg } from '../../../images/compare.svg';
-import { ReactComponent as StarSvg } from '../../../images/star.svg';
+import { ReactComponent as CompareSvg } from '../../../shared/images/compare.svg';
+import { ReactComponent as StarSvg } from '../../../shared/images/star.svg';
 import './actionGallery.scss';
-import Loader from '../../../components/UI/loader/Loader';
-import useItemProduct from '../../../hooks/useItemProduct';
-import { selectInBasket, selectInCompare, selectInLoves, selectLoaders, selectProduct } from '../../../store2/selectors/productSelectors';
+import Loader from '../../../shared/UI/loader/Loader';
+import { selectInBasket, selectInCompare, selectInLoves, selectLoaders, selectProduct } from '../../../entities/productItem/model/productSelectors';
+import { useAppDispatch, useAppSelector } from '../../../shared/hooks/reduxHooks';
+import useItemProduct from '../../../shared/hooks/useItemProduct';
 
 const ActionsGallery = () => {
   const inCompare = useAppSelector(selectInCompare);

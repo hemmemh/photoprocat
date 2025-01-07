@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { navbarSlice } from '../../../store2/reducers/NavBarSlice';
-import useValidation from '../../../hooks/useValidation';
-import Input from '../../../components/UI/input/Input';
-import Button from '../../../components/UI/button/Button';
+import Input from '../../../shared/UI/input/Input';
+import Button from '../../../shared/UI/button/Button';
 import './loginModal.scss';
-import { selectLoginModal, selectModalStage } from '../../../store2/selectors/navBarSelectors';
+import { useAppDispatch, useAppSelector } from '../../../shared/hooks/reduxHooks';
+import useValidation from '../../../shared/hooks/useValidation';
+import { selectLoginModal, selectModalStage } from '../../../entities/navBar/model/navBarSelectors';
+import { navbarSlice } from '../../../entities/navBar/model/NavBarSlice';
 
 export const Login = () => {
   const [mail, setmail] = useState<string>('');
@@ -24,6 +24,7 @@ export const Login = () => {
     onLogin,
     onRegistration,
   } = useValidation({ setmail, setpassword, mail, password });
+
   useEffect(() => {
     if (loginModal === false) {
       dispatch(setModalStage(0));

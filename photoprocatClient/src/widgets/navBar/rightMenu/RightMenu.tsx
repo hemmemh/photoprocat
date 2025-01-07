@@ -1,11 +1,11 @@
 import { memo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { navbarSlice } from '../../../store2/reducers/NavBarSlice';
 import { CATALOG_ROUTE, USER_ROUTE } from '../../../app/config/routs';
 import './rightMenu.scss';
-import { selectUser } from '../../../store2/selectors/userSelectors';
-import { selectSearch } from '../../../store2/selectors/navBarSelectors';
+import { selectUser } from '../../../entities/user/model/userSelectors';
+import { useAppDispatch, useAppSelector } from '../../../shared/hooks/reduxHooks';
+import { selectSearch } from '../../../entities/navBar/model/navBarSelectors';
+import { navbarSlice } from '../../../entities/navBar/model/NavBarSlice';
 
 export const RightMenu = () => {
   const navigate = useNavigate();

@@ -1,12 +1,13 @@
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { navbarSlice } from '../../store2/reducers/NavBarSlice';
-import { Modal } from '../../components/UI/modal/Modal';
+
+import { Modal } from '../../shared/UI/modal/Modal';
 import { ChangePass } from './changePass/ChangePass';
 import { Login } from './login/Login';
 import { SetEmail } from './setEmail/SetEmail';
 import './loginNavBar.scss';
 import { memo } from 'react';
-import { selectLoginModal, selectValidationError, selectValidationErrorText } from '../../store2/selectors/navBarSelectors';
+import { useAppDispatch, useAppSelector } from '../../shared/hooks/reduxHooks';
+import { selectLoginModal, selectValidationError, selectValidationErrorText } from '../../entities/navBar/model/navBarSelectors';
+import { navbarSlice } from '../../entities/navBar/model/NavBarSlice';
 
 export const LoginNavBar = memo(() => {
   const loginModal = useAppSelector(selectLoginModal);

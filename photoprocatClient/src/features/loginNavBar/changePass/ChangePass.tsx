@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useAppSelector } from '../../../hooks/reduxHooks';
-import useUpdatePassword from '../../../hooks/useUpdatePassword';
-import Input from '../../../components/UI/input/Input';
-import Button from '../../../components/UI/button/Button';
+import Input from '../../../shared/UI/input/Input';
+import Button from '../../../shared/UI/button/Button';
 import './changePass.scss';
-import { selectModalStage } from '../../../store2/selectors/navBarSelectors';
+import { useAppSelector } from '../../../shared/hooks/reduxHooks';
+import useUpdatePassword from '../../../shared/hooks/useUpdatePassword';
+import { selectModalStage } from '../../../entities/navBar/model/navBarSelectors';
 
 export const ChangePass = () => {
   const mail = '';

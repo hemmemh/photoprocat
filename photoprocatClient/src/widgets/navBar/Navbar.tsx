@@ -1,12 +1,12 @@
 import { useRef, FC, memo } from 'react';
-import { useAppSelector } from '../../hooks/reduxHooks';
-import useBodyFixed from '../../hooks/useBodyFixed';
 import { LoginNavBar } from '../../features/loginNavBar/LoginNavBar';
-import useScroll from '../../hooks/useScroll';
-import Loader from '../../components/UI/loader/Loader';
+import Loader from '../../shared/UI/loader/Loader';
 import './navbar.scss';
 import BodyNavBar from './bodyNavBar/BodyNavBar';
-import { selectLoader, selectMenu, selectPassSucc } from '../../store2/selectors/navBarSelectors';
+import { useAppSelector } from '../../shared/hooks/reduxHooks';
+import useBodyFixed from '../../shared/hooks/useBodyFixed';
+import useScroll from '../../shared/hooks/useScroll';
+import { selectLoader, selectMenu, selectPassSucc } from '../../entities/navBar/model/navBarSelectors';
 
 const Navbar: FC = () => {
   const loader = useAppSelector(selectLoader);
@@ -19,7 +19,7 @@ const Navbar: FC = () => {
   useBodyFixed(menu);
 
   return (
-    <div ref={navbarRef} className={scroll ? 'Navbar active' : 'Navbar'}>
+    <header ref={navbarRef} className={scroll ? 'Navbar active' : 'Navbar'}>
       <BodyNavBar />
       <LoginNavBar />
       <div ref={loaderRef} className="Navbar__loader">
@@ -35,7 +35,7 @@ const Navbar: FC = () => {
           <Loader />
         </div>
       )}
-    </div>
+    </header>
   );
 };
 

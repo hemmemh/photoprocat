@@ -1,15 +1,15 @@
-import useCheckMobileScreen from '../../../hooks/DetectMobileHook';
 import RightMenu from '../rightMenu/RightMenu';
-import ActionsNavBar from './actionsNavBar/ActionsNavBar';
-import Logo from './logo/Logo';
-import { MenuCatalog } from './menuCatalog/MenuCatalog';
-import { MenuIcon } from './menuIcon/MenuIcon';
+import ActionsNavBar from '../actionsNavBar/ActionsNavBar';
+import Logo from '../logo/Logo';
+import { MenuCatalog } from '../menuCatalog/MenuCatalog';
+import { MenuIcon } from '../menuIcon/MenuIcon';
 import { MobileSeacrhNavBar } from '../../../features/mobileSeacrhNavBar/MobileSeacrhNavBar';
-import { NavigationNavBar } from './navigationNavBar/NavigationNavBar';
+import { NavigationNavBar } from '../navigationNavBar/NavigationNavBar';
 import { SearchNavBar } from '../../../features/searchNavBar/SearchNavBar';
-import Shedule from './shedule/Shedule';
+import Shedule from '../shedule/Shedule';
 import { memo } from 'react';
 import './bodyNavBar.scss';
+import useCheckMobileScreen from '../../../shared/hooks/DetectMobileHook';
 
 export const BodyNavBar = () => {
   const isMobile = useCheckMobileScreen(767.98);

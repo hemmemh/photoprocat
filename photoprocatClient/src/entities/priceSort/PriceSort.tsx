@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { catalogSlice } from '../../store2/reducers/CatalogSlice';
+import { catalogSlice } from '../catalog/model/CatalogSlice';
 import { Slider } from '@mui/material';
-import useCheckMobileScreen from '../../hooks/DetectMobileHook';
 import './priceSort.scss';
-import MyNumber from '../../components/UI/myNumber/MyNumber';
-import { selectMinMaxPrice, selectpriceRange } from '../../store2/selectors/catalogSelectors';
+import MyNumber from '../../shared/UI/myNumber/MyNumber';
+import { selectMinMaxPrice, selectpriceRange } from '../catalog/model/catalogSelectors';
+import useCheckMobileScreen from '../../shared/hooks/DetectMobileHook';
+import { useAppDispatch, useAppSelector } from '../../shared/hooks/reduxHooks';
 
 const PriceSort = () => {
   const priceRange = useAppSelector(selectpriceRange);
