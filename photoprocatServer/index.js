@@ -10,6 +10,7 @@ const fileUpload = require('express-fileupload')
 const path = require('path');
 const ApiErrorMiddleware = require('./middleWares/ApiErrorMiddleware');
 const filepathMiddleWare = require('./middleWares/filepathMiddleWare');
+const initService = require('./init/initService');
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors(
@@ -29,7 +30,7 @@ const start = async ()  =>{
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
-
+         await initService.initDatabase()
         app.listen(PORT,()=>console.log(`подключен к порту ${PORT}`))
     } catch (error) {
         console.log(error);

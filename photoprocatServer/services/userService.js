@@ -10,6 +10,13 @@ const tokenServices = require('../services/tokenService');
 const mailServices = require('../services/mailServices');
 const { usersData } = require('../data/exapleData');
 class userServices {
+
+  async isEmpty(){
+    const count =  await User.count()
+    return count === 0
+  }
+
+
   async registration(mail, password) {
     try {
       console.log(mail, password);
@@ -193,6 +200,8 @@ class userServices {
   }
 
   async createMany() {
+    const isEmpty = await this.isEmpty()
+    if(!isEmpty) return
     const users = usersData;
     for (const user of users) {
       await this.registration(user.mail, user.password);

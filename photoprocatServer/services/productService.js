@@ -11,6 +11,12 @@ const { getRandomElement } = require('../helpers/productsHelpers');
 const userService = require('./userService');
 const ratingService = require('./ratingService');
 class productServices {
+
+  async isEmpty(){
+    const count =  await Product.count()
+    return count === 0
+  }
+
   async createProduct(
     name,
     description,
@@ -258,6 +264,8 @@ class productServices {
 
   async createMany() {
     try {
+      const isEmpty = await this.isEmpty()
+      if(!isEmpty) return
       const products = productsData;
       const brands = await brandService.getAll();
       const users = await userService.getAll();

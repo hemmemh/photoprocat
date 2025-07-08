@@ -2,6 +2,12 @@ const Type = require('../models/Type');
 const ApiError = require('../Errors/ApiError');
 const { typeData } = require('../data/exapleData');
 class typeServices {
+
+  async isEmpty(){
+    const count =  await Type.count()
+    return count === 0
+  }
+
   async createType(name, informations) {
     try {
       const response = new Type({ name, informations });
@@ -43,6 +49,8 @@ class typeServices {
 
   async createMany() {
     try {
+      const isEmpty = await this.isEmpty()
+      if(!isEmpty) return
       const data = typeData;
       for (const type of data) {
         const response = new Type({

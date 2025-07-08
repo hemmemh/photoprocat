@@ -8,6 +8,12 @@ const { newsData, commentsData } = require('../data/exapleData');
 const userService = require('./userService');
 const { getRandomElement } = require('../helpers/productsHelpers');
 class newsServices {
+
+  async isEmpty(){
+    const count =  await News.count()
+    return count === 0
+  }
+
   async createNews(title, text, image) {
     try {
       const date = Date.now();
@@ -29,6 +35,8 @@ class newsServices {
 
   async createMany() {
     try {
+      const isEmpty = await this.isEmpty()
+      if(!isEmpty) return
       const users = await userService.getAll();
       const news = newsData
       const comments = commentsData

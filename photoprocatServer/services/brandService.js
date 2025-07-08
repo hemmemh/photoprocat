@@ -5,6 +5,12 @@ const fs = require('fs');
 const ApiError = require('../Errors/ApiError');
 const { brandData } = require('../data/exapleData');
 class brandServices {
+
+  async isEmpty(){
+    const count =  await Brand.count()
+    return count === 0
+  }
+
   async createBrand(name, image) {
     try {
       const imagePath = uuid.v4() + '.jpg';
@@ -42,6 +48,8 @@ class brandServices {
 
   async createMany() {
     try {
+      const isEmpty = await this.isEmpty()
+      if(!isEmpty) return
       const data = brandData;
       for (const brand of data) {
         const response = new Brand({ name: brand.name, image: brand.image });
