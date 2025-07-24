@@ -10,7 +10,6 @@ class ratingServices {
       if (!userModel) {
         return ApiError.unauthorized();
       }
-      console.log(userModel);
       const productRes = await Product.findById(product).populate('ratings');
 
       if (productRes.ratings.find((el) => el.user.toString() === user)) {
